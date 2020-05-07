@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Principal;
 using System.Text;
 
@@ -8,8 +9,9 @@ namespace Model
 {
     public class BookStoreModel
     {
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+
         public int BookID { get; set; }
 
        

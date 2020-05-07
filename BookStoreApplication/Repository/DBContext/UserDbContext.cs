@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Model;
+using Model.Model;
 
 namespace Repository.DBContext
 {
@@ -13,6 +14,7 @@ namespace Repository.DBContext
         }
         
         public DbSet<BookStoreModel> BookStore { get; set; }
+        public DbSet<CartModel> CartTable { get; set; }
         
 
     }
