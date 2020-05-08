@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import logo from '../logo.svg';
+import Tooltip from '@material-ui/core/Tooltip'; 
 
 class DisplayBooks extends Component {
     render() {
@@ -32,6 +33,7 @@ class DisplayBooks extends Component {
                             return (
                                 <>
                                     <Card className='note-card' >
+                                    <Tooltip title={ele.description}>
                                         <CardActionArea
                                             onMouseEnter={this.props.bookMouseEnterHandler}
                                             onMouseLeave={this.props.bookMouseLeaveHandler}
@@ -52,6 +54,7 @@ class DisplayBooks extends Component {
                                                 </Typography>
                                             </CardContent>
                                         </CardActionArea>
+                                        </Tooltip>
                                         <CardActions>
                                             <Button
                                                 variant='outlined'
