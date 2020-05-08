@@ -14,11 +14,11 @@ namespace BookStoreBackend.Controllers
     [ApiController]
     public class CartController : ControllerBase
     {
-        private readonly ICartManager bookManager;
+        private readonly ICartManager CartManager;
 
-        public CartController(ICartManager bookManager)
+        public CartController(ICartManager CartManager)
         {
-            this.bookManager = bookManager;
+            this.CartManager = CartManager;
         }
 
 
@@ -26,7 +26,7 @@ namespace BookStoreBackend.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCart(CartModel cartModel)
         {
-            var result = await this.bookManager.AddCart(cartModel); 
+            var result = await this.CartManager.AddCart(cartModel); 
             if (result == 1)
             {
                 return this.Ok(cartModel);
@@ -36,6 +36,13 @@ namespace BookStoreBackend.Controllers
                 return this.BadRequest();
             }
 
+        }
+
+        [Route("DeleteCart")]
+        [HttpDelete]
+        public CartModel DeleteCart(int id)
+        {
+            return CartManager.DeleteCart(id);
         }
     }
 }
