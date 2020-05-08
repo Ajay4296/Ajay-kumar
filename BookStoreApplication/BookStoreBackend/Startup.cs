@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Manager;
 using Manager.AddressManager;
+using Manager.Manager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -17,6 +18,7 @@ using Microsoft.OpenApi.Models;
 using Repository;
 using Repository.AddressRepository;
 using Repository.DBContext;
+using Repository.Repository;
 
 namespace BookStoreBackend
 {
@@ -36,9 +38,10 @@ namespace BookStoreBackend
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IBookManager, BookManager>();
-            
             services.AddTransient<IAddressManager, ProductAddressManager>();
             services.AddTransient<IAddressRepository, ProductAddressRepository>();
+            services.AddTransient<ICartManager, CartManager>();
+            services.AddTransient<ICartRepository, CartRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
