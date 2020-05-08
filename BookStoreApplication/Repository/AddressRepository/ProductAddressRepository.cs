@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository
+namespace Repository.AddressRepository
 {
-   public class ProductAddressRepository
+   public class ProductAddressRepository :IAddressRepository
     {
         private readonly UserDbContext addressDB;
 
