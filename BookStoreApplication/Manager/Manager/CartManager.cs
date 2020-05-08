@@ -19,5 +19,10 @@ namespace Manager.Manager
         {
             return cartRepository.AddCart(cartModel);
         }
+
+        public CartModel DeleteCart(int id)
+        {
+            return cartRepository.DeleteCart(id);
+        }
     }
 }

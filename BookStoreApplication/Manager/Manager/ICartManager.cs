@@ -9,5 +9,6 @@ namespace Manager.Manager
     public interface ICartManager
     {
         Task<int> AddCart(CartModel cartModel);
+        CartModel DeleteCart(int id);
     }
 }
