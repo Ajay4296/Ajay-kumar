@@ -27,6 +27,12 @@ namespace BookStoreBackend.Controllers
             return bookManager.GetALLBooks();
         }
 
+        [Route("CountBook")]
+        [HttpGet]
+        public int CountBook()
+        {
+            return bookManager.CountBook();
+        }
 
     }
 }
