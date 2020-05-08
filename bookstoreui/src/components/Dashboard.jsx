@@ -61,16 +61,37 @@ class Dashboard extends Component {
             sliceData: []
     }
    
-    
+    componentDidMount()
+{
+    this.changePageHandler();
+}
+    onChangePaginationHandler =  (event,value) => {
+        event.preventDefault();
+        let pageNumber = value;
+        let offset = pageNumber * this.state.perPage;
+        console.log(pageNumber);
+        this.setState({
+            offset: offset
+        })
+     this.changePageHandler();
+    }
+
+    changePageHandler =  () => {
+        let books = this.state.books;
+        let sliceData = books.slice(this.state.offset, this.state.offset + this.state.perPage);
+        this.setState({
+            sliceData: sliceData
+        })
+
+    }
 
     render() {
         return (
             <>
                 <Header />
                 <DisplayBooks books={this.state.books}
-                    bookMouseEnterHandler={this.bookMouseEnterHandler}
-                    bookMouseLeaveHandler={this.bookMouseLeaveHandler}
-                    bookHoverState={this.state.bookHoverState}
+                 onChangePaginationHandler={this.onChangePaginationHandler}
+                 sliceData={this.state.sliceData}
                 />
                 <Footer/>
             </>

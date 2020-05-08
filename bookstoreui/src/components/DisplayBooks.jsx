@@ -28,7 +28,7 @@ class DisplayBooks extends Component {
                 </div>
                 <div className='display-books-div'>
                     {
-                        this.props.books.map((ele) => {
+                        this.props.sliceData.map((ele) => {
                             return (
                                 <>
                                     <Card className='note-card' >
@@ -65,18 +65,7 @@ class DisplayBooks extends Component {
 
                                         </CardActions>
                                     </Card>
-
-                                  {
-                                      this.props.bookHoverState ?
-                                      <Card className="hover-card">
-                                        <CardContent>
-                                            <Typography>
-                                            {ele.description}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card> : null
-
-                                  } 
+                                 
                                 </>
                             );
                         })
