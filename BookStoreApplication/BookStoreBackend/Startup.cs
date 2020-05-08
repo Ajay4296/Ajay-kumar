@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Manager;
+
 using Manager.AddressManager;
 using Manager.Manager;
 using Microsoft.AspNetCore.Builder;
@@ -42,6 +43,10 @@ namespace BookStoreBackend
             services.AddTransient<IAddressRepository, ProductAddressRepository>();
             services.AddTransient<ICartManager, CartManager>();
             services.AddTransient<ICartRepository, CartRepository>();
+
+            services.AddTransient<ICartRepository, CartRepository>();
+            services.AddTransient<ICartManager,CartManager>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });

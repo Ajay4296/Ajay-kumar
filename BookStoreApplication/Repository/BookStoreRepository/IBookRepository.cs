@@ -10,7 +10,9 @@ namespace Repository
     {
         IEnumerable<BookStoreModel> GetALLBooks();
 
-        // int CountBook();
+        
         Task<int> AddBooksDetail(BookStoreModel bookStoreModel);
+
+       int CountBook();
     }
 }

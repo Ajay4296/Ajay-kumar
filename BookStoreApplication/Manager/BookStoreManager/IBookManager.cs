@@ -10,6 +10,9 @@ namespace Manager
     public interface IBookManager
     {
         IEnumerable<BookStoreModel> GetALLBooks();
+
         Task<int> AddBooksDetail(BookStoreModel bookStoreModel);
+
+        int CountBook();
     }
 }

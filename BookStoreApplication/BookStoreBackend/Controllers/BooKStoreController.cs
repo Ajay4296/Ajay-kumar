@@ -27,6 +27,7 @@ namespace BookStoreBackend.Controllers
             return bookManager.GetALLBooks();
         }
 
+
         [Route("AddBookDetails")]
         [HttpPost]
         public async Task<IActionResult> AddBookDetails(BookStoreModel bookStoreModel)
@@ -40,6 +41,14 @@ namespace BookStoreBackend.Controllers
             {
                 return this.BadRequest();
             }
+        }
+
+
+        [Route("CountBook")]
+        [HttpGet]
+        public int CountBook()
+        {
+            return bookManager.CountBook();
 
         }
 
