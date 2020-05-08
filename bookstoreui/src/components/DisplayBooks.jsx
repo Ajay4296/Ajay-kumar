@@ -15,7 +15,7 @@ class DisplayBooks extends Component {
             <>
                 <div className='bookcount-sortby-div'>
                     <Typography variant='h5'>
-                        Books(128 items)
+                        Books({this.props.bookCount} items)
                         </Typography>
                     <div>
                         <select name="Sort By Relevance" id="Sort_By_Relevance" className='form-control text-dark font-weight-bold' >

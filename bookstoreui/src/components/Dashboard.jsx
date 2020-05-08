@@ -54,7 +54,7 @@ class Dashboard extends Component {
                 image: ""
 
             }],
-            bookCount: 128,
+            bookCount: 17,
             pageNo: 0,
             offset: 0,
             perPage: 12,
@@ -92,6 +92,7 @@ class Dashboard extends Component {
                 <DisplayBooks books={this.state.books}
                  onChangePaginationHandler={this.onChangePaginationHandler}
                  sliceData={this.state.sliceData}
+                 bookCount = {this.state.bookCount}
                 />
                 <Footer/>
             </>
