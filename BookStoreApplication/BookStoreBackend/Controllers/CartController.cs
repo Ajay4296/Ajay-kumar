@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Manager;
+using Manager.Manager;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Model.Model;
 
 namespace BookStoreBackend.Controllers
 {
@@ -12,18 +14,28 @@ namespace BookStoreBackend.Controllers
     [ApiController]
     public class CartController : ControllerBase
     {
-        private readonly IBookManager bookManager;
+        private readonly ICartManager bookManager;
 
-        public CartController(IBookManager bookManager)
+        public CartController(ICartManager bookManager)
         {
             this.bookManager = bookManager;
         }
 
+
         [Route("AddCart")]
         [HttpPost]
-        public Task<IActionResult> AddCart(IBookManager bookManager)
+        public async Task<IActionResult> AddCart(CartModel cartModel)
         {
-            return bookManager.
+            var result = await this.bookManager.AddCart(cartModel); 
+            if (result == 1)
+            {
+                return this.Ok(cartModel);
+            }
+            else
+            {
+                return this.BadRequest();
+            }
+
         }
     }
 }

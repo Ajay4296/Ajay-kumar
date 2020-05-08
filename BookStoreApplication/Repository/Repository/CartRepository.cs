@@ -7,7 +7,7 @@ using Repository.DBContext;
 
 namespace Repository.Repository
 {
-    public class CartRepository : ICartRepositorycs
+    public class CartRepository : ICartRepository
     {
         private readonly UserDbContext userDbContext;
 
@@ -17,5 +17,7 @@ namespace Repository.Repository
             var result = userDbContext.SaveChangesAsync();
             return result;
         }
+
+
     }
 }
