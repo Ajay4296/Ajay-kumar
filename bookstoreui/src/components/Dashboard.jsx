@@ -54,22 +54,14 @@ class Dashboard extends Component {
                 image: ""
 
             }],
-            bookHoverState : false
+            bookCount: 128,
+            pageNo: 0,
+            offset: 0,
+            perPage: 12,
+            sliceData: []
     }
    
-    bookMouseEnterHandler=()=>{
-      const doesBookHoverState = this.state.bookHoverState;
-      this.setState({
-        bookHoverState:!doesBookHoverState
-      })
-    }
-
-    bookMouseLeaveHandler=()=>{
-        const doesBookHoverState = this.state.bookHoverState;
-        this.setState({
-          bookHoverState:!doesBookHoverState
-        })
-      }
+    
 
     render() {
         return (

@@ -84,7 +84,8 @@ class DisplayBooks extends Component {
 
                 </div>
                 <div className='pagination-div'>
-                    <Pagination count={10} color="primary" />
+                    <Pagination count={10} 
+                    color="primary" />
                 </div>
             </>
         )
