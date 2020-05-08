@@ -9,6 +9,7 @@ namespace Repository.Repository
     public interface ICartRepository
     {
       Task<int> AddCart(CartModel cartModel);
+       CartModel DeleteCart(int id);
         
     }
 }

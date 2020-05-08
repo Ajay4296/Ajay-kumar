@@ -18,6 +18,15 @@ namespace Repository.Repository
             return result;
         }
 
-
+        public CartModel DeleteCart(int id)
+        {
+           CartModel cartModel= userDbContext.CartTable.Find(id);
+            if (cartModel != null)
+            {
+                userDbContext.CartTable.Remove(cartModel);
+                userDbContext.SaveChanges();
+            }
+            return cartModel;
+        }
     }
 }
