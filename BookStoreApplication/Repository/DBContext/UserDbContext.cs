@@ -15,7 +15,8 @@ namespace Repository.DBContext
         
         public DbSet<BookStoreModel> BookStore { get; set; }
         public DbSet<CartModel> CartTable { get; set; }
-        
+        public DbSet<AddressModel> AddressSpace { get; set; }
+
 
     }
 }

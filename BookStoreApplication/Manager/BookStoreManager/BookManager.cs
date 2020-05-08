@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Model;
 using Repository;
 
@@ -18,6 +19,10 @@ namespace Manager
         public IEnumerable<BookStoreModel> GetALLBooks()
         {
             return bookRepository.GetALLBooks();
+        }
+        public Task<int> AddBooksDetail(BookStoreModel bookStoreModel)
+        {
+            return this.bookRepository.AddBooksDetail(bookStoreModel);
         }
     }
 }

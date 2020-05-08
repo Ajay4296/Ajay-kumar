@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Model;
 using Repository.DBContext;
 
@@ -26,6 +27,12 @@ namespace Repository
         IEnumerable<BookStoreModel> IBookRepository.GetALLBooks()
         {
             return userDBContext.BookStore;
+        }
+        public Task<int> AddBooksDetail(BookStoreModel bookStoreModel)
+        {
+            userDBContext.BookStore.Add(bookStoreModel);
+            var result = userDBContext.SaveChangesAsync();
+            return result;
         }
     }
 }
