@@ -10,6 +10,7 @@ namespace Repository.Repository
     public class CartRepository : ICartRepositorycs
     {
         private readonly UserDbContext userDbContext;
+
         public Task<int> AddCart(CartModel cartModel)
         {
             userDbContext.CartTable.Add(cartModel);
