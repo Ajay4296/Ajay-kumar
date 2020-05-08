@@ -10,6 +10,6 @@ namespace Manager
     public interface IBookManager
     {
         IEnumerable<BookStoreModel> GetALLBooks();
-       
+        int CountBook();
     }
 }

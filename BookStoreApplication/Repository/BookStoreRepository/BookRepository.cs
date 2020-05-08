@@ -16,12 +16,13 @@ namespace Repository
             this.userDBContext = userDBContext;
         }
 
-        //public int CountBook()
-        //{
-        //   // List<int> x = new List<int>();
-        //   //userDBContext.BookStore.ToList();
+        public int CountBook()
+        {
             
-        //}
+           var result=userDBContext.BookStore.ToList();
+            return result.Count;
+
+        }
 
         IEnumerable<BookStoreModel> IBookRepository.GetALLBooks()
         {

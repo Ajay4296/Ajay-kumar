@@ -8,6 +8,6 @@ namespace Repository
    public  interface IBookRepository
     {
         IEnumerable<BookStoreModel> GetALLBooks();
-       // int CountBook();
+       int CountBook();
     }
 }
