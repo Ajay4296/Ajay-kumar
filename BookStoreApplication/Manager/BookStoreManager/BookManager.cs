@@ -14,6 +14,10 @@ namespace Manager
             this.bookRepository = bookRepository;
         }
 
+        public int CountBook()
+        {
+            return bookRepository.CountBook();
+        }
 
         public IEnumerable<BookStoreModel> GetALLBooks()
         {
