@@ -42,7 +42,7 @@ class Header extends Component {
                             <ShoppingCartIcon fontSize='large' />
                         </div>
                         <div className='wishlist-div'>
-                            <span className='badge badge-warning' id='lblWishCount'> 5 </span>
+                            <span className='badge badge-warning' id='lblWishCount'> {this.props.wishListCount} </span>
                             <FavoriteIcon fontSize='large' />
                         </div>
                     </div>

@@ -65,6 +65,7 @@ class DisplayBooks extends Component {
                                             <Button
                                                 variant='outlined'
                                                 color='secondary'
+                                                onClick={this.props.addToWishlistClickHandler}
                                             > WishList</Button>
 
                                         </CardActions>

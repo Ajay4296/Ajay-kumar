@@ -94,16 +94,25 @@ addToBagClickHandler=()=>{
     })
 }
 
+addToWishlistClickHandler=()=>{
+    let wishListCount = this.state.wishListCount;
+    this.setState({
+      wishListCount : wishListCount + 1  
+    })
+}
+
     render() {
         return (
             <>
                 <Header
                  cartCount={this.state.cartCount}
+                 wishListCount={this.state.wishListCount}
                  />
                 <DisplayBooks 
                 books={this.state.books}
                 bookCount = {this.state.bookCount}
                 addToBagClickHandler={this.addToBagClickHandler}
+                addToWishlistClickHandler={this.addToWishlistClickHandler}
                 />
                 <Footer/>
             </>
