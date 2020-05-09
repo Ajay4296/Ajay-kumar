@@ -38,11 +38,11 @@ class Header extends Component {
                     </div>
                     <div className='cart-wishlist-div'>
                         <div className='cart-div'>
-                            <span className='badge badge-warning' id='lblCartCount'> {this.props.cartCount} </span>
+                            <span className='icon-counter' id='lblCartCount'> {this.props.cartCount} </span>
                             <ShoppingCartIcon fontSize='large' />
                         </div>
                         <div className='wishlist-div'>
-                            <span className='badge badge-warning' id='lblWishCount'> {this.props.wishListCount} </span>
+                            <span className='icon-counter' id='lblWishCount'> {this.props.wishListCount} </span>
                             <FavoriteIcon fontSize='large' />
                         </div>
                     </div>
