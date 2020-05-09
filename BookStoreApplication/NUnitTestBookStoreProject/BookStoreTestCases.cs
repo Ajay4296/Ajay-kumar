@@ -17,7 +17,7 @@ namespace NUnitTestBookStoreProject
         {
         }
 
-        /* [Test]
+         [Test]
          public void GivenController_Api_Should_Return_Data()
          {
              var service = new Mock<IBookManager>();
@@ -29,7 +29,7 @@ namespace NUnitTestBookStoreProject
              book.Summary = "this book is written to expose my biography";
              book.Price = 400;
              book.BookImage = "img.jpg";
-         }*/
+         }
         /// <summary>
         /// Given instance and checking the API in controller for GetALLBooks() method 
         /// testing return value is not null
