@@ -41,7 +41,7 @@ namespace NUnitTestBookStoreProject
             Assert.IsNotNull(data);
         }
         /// <summary>
-        /// invkoing manager class addbook method and with  repository intereface  to useing mock as instance interface implemneted class 
+        /// invkoing manager class addbook method and with parameter  repository intereface  to using mock as instance interface implemneted class 
         /// </summary>
         [Test]
         public void GivenManager_AddBook_Method_Should_Return_Data()
