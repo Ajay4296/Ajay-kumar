@@ -35,9 +35,24 @@ margin-right: 80px;
   position: relative;
   right: 100px;
 }
-
+.cart-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .wishlist-div{
+display: flex;
+flex-direction: column;
+justify-content: center;  
 margin-left: 20px;
+}
+.badge {
+  padding-left: 9px;
+  padding-right: 2px;
+  border-radius: 50%;
+  height: 22px;
+  width: 15px;
+  background-color: white;
 }
 
 .bookcount-sortby-div{
