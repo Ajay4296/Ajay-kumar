@@ -89,7 +89,7 @@ margin-left: 20px;
     align-items: center; */
     display: grid;
     grid-template-columns: 300px 300px 300px;
-    grid-gap: 20px;
+    grid-gap: 30px;
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
