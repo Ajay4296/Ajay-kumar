@@ -19,7 +19,7 @@ class DisplayBooks extends Component {
                         Books({this.props.bookCount} items)
                         </Typography>
                     <div>
-                        <select name="Sort By Relevance" id="Sort_By_Relevance" className='form-control text-dark font-weight-bold' >
+                        <select name="Sort By Relevance" id="Sort_By_Relevance" >
                             <option value="-1" selected>Sort By Relevance</option>
                             <option name="price:low to high">price:low to high</option>
                             <option name="price:high to low">price:high to low</option>
@@ -47,10 +47,10 @@ class DisplayBooks extends Component {
                                                     {ele.bookName}
                                                 </Typography>
                                                 <Typography id='note-content' variant="body2" color="textSecondary" component="p">
-                                                    {ele.authorName}
+                                                    by: {ele.authorName}
                                                 </Typography>
                                                 <Typography id='note-content' variant="body2" color="textSecondary" component="p">
-                                                    {ele.price}
+                                                ₹ {ele.price}
                                                 </Typography>
                                             </CardContent>
                                         </CardActionArea>
