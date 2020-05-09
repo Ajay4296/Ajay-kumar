@@ -54,31 +54,45 @@ class Dashboard extends Component {
                 image: ""
 
             }],
-            bookHoverState : false
+            bookCount: 17,
+            pageNo: 0,
+            offset: 0,
+            perPage: 12,
+            sliceData: []
     }
    
-    bookMouseEnterHandler=()=>{
-      const doesBookHoverState = this.state.bookHoverState;
-      this.setState({
-        bookHoverState:!doesBookHoverState
-      })
+    componentDidMount()
+{
+    this.changePageHandler();
+}
+    onChangePaginationHandler =  (event,value) => {
+        event.preventDefault();
+        let pageNumber = value;
+        let offset = pageNumber * this.state.perPage;
+        console.log(pageNumber);
+        this.setState({
+            offset: offset
+        })
+     this.changePageHandler();
     }
 
-    bookMouseLeaveHandler=()=>{
-        const doesBookHoverState = this.state.bookHoverState;
+    changePageHandler =  () => {
+        let books = this.state.books;
+        let sliceData = books.slice(this.state.offset, this.state.offset + this.state.perPage);
         this.setState({
-          bookHoverState:!doesBookHoverState
+            sliceData: sliceData
         })
-      }
+
+    }
 
     render() {
         return (
             <>
                 <Header />
                 <DisplayBooks books={this.state.books}
-                    bookMouseEnterHandler={this.bookMouseEnterHandler}
-                    bookMouseLeaveHandler={this.bookMouseLeaveHandler}
-                    bookHoverState={this.state.bookHoverState}
+                 onChangePaginationHandler={this.onChangePaginationHandler}
+                 sliceData={this.state.sliceData}
+                 bookCount = {this.state.bookCount}
                 />
                 <Footer/>
             </>

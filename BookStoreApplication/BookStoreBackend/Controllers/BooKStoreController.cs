@@ -52,5 +52,11 @@ namespace BookStoreBackend.Controllers
 
         }
 
+        [Route("Image")]
+        [HttpPost]
+        public string Image(IFormFile file, int id)
+        {
+            return bookManager.Image(file,id);
+        }
     }
 }

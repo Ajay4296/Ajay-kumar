@@ -22,7 +22,7 @@ namespace BookStoreBackend.Controllers
 
         [Route("GetALLAddress")]
         [HttpGet]
-        public IEnumerable<AddressModel> GetALLBooks()
+        public IEnumerable<AddressModel> GetAddress()
         {
             return addressManager.GetAddress();
         }

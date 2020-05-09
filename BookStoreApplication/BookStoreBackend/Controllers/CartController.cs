@@ -26,15 +26,24 @@ namespace BookStoreBackend.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCart(CartModel cartModel)
         {
-            var result = await this.CartManager.AddCart(cartModel); 
-            if (result == 1)
+            try
             {
-                return this.Ok(cartModel);
+                var result = await this.CartManager.AddCart(cartModel);
+                if (result == 1)
+                {
+                    return this.Ok(cartModel);
+                }
+                else
+                {
+                    return this.BadRequest();
+                }
             }
-            else
+
+            catch(Exception e)
             {
-                return this.BadRequest();
+                throw new Exception(e.Message);
             }
+           
 
         }
 
