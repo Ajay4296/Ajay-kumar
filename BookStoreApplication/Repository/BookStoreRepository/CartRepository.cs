@@ -11,6 +11,11 @@ namespace Repository.Repository
     {
         private readonly UserDbContext userDbContext;
 
+        public CartRepository(UserDbContext userDbContext)
+        {
+            this.userDbContext = userDbContext;
+        }
+
         public Task<int> AddCart(CartModel cartModel)
         {
             userDbContext.CartTable.Add(cartModel);

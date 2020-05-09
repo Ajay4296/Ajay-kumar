@@ -27,12 +27,36 @@ namespace BookStoreBackend.Controllers
             return bookManager.GetALLBooks();
         }
 
+
+        [Route("AddBookDetails")]
+        [HttpPost]
+        public async Task<IActionResult> AddBookDetails(BookStoreModel bookStoreModel)
+        {
+            var result = await this.bookManager.AddBooksDetail(bookStoreModel);
+            if (result == 1)
+            {
+                return this.Ok(bookStoreModel);
+            }
+            else
+            {
+                return this.BadRequest();
+            }
+        }
+
+
         [Route("CountBook")]
         [HttpGet]
         public int CountBook()
         {
             return bookManager.CountBook();
+
         }
 
+        [Route("Image")]
+        [HttpPost]
+        public string Image(IFormFile file, int id)
+        {
+            return bookManager.Image(file,id);
+        }
     }
 }
