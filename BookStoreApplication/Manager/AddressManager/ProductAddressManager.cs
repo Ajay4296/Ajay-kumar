@@ -21,6 +21,7 @@ namespace Manager.AddressManager
         {
             return addressRepository.GetAddress();
         }
+
         public Task<int> AddDetailAddress(AddressModel addressModel)
         {
             return this.addressRepository.AddDetailAddress(addressModel);
