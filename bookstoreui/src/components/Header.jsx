@@ -38,14 +38,16 @@ class Header extends Component {
                     </div>
                     <div className='cart-wishlist-div'>
                         <div className='cart-div'>
+                            <span className='badge badge-warning' id='lblCartCount'> 5 </span>
                             <ShoppingCartIcon fontSize='large' />
                         </div>
                         <div className='wishlist-div'>
+                            <span className='badge badge-warning' id='lblWishCount'> 5 </span>
                             <FavoriteIcon fontSize='large' />
                         </div>
                     </div>
                 </div>
-                
+
             </>
         )
 
