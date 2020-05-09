@@ -59,6 +59,7 @@ class DisplayBooks extends Component {
                                             <Button
                                                 variant='outlined'
                                                 color='primary'
+                                                onClick={this.props.addToBagClickHandler}
                                             > Add to Bag</Button>
 
                                             <Button

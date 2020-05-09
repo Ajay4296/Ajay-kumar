@@ -55,10 +55,12 @@ class Dashboard extends Component {
 
             }],
             bookCount: 17,
-            pageNo: 0,
-            offset: 0,
-            perPage: 12,
-            sliceData: []
+            cartCount : 0 ,
+            wishListCount : 0
+            // pageNo: 0,
+            // offset: 0,
+            // perPage: 12,
+            // sliceData: []
     }
    
 //     componentDidMount()
@@ -85,13 +87,23 @@ class Dashboard extends Component {
 
 //     }
 
+addToBagClickHandler=()=>{
+    let cartCount = this.state.cartCount;
+    this.setState({
+      cartCount : cartCount + 1  
+    })
+}
+
     render() {
         return (
             <>
-                <Header />
+                <Header
+                 cartCount={this.state.cartCount}
+                 />
                 <DisplayBooks 
                 books={this.state.books}
                 bookCount = {this.state.bookCount}
+                addToBagClickHandler={this.addToBagClickHandler}
                 />
                 <Footer/>
             </>
