@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Model;
 using Repository;
 
@@ -27,6 +28,11 @@ namespace Manager
         public Task<int> AddBooksDetail(BookStoreModel bookStoreModel)
         {
             return this.bookRepository.AddBooksDetail(bookStoreModel);
+        }
+
+        public string Image(IFormFile file, int id)
+        {
+            return bookRepository.Image(file,id);
         }
     }
 }
