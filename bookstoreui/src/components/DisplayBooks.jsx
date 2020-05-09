@@ -29,7 +29,7 @@ class DisplayBooks extends Component {
                 </div>
                 <div className='display-books-div'>
                     {
-                        this.props.sliceData.map((ele) => {
+                        this.props.books.map((ele) => {
                             return (
                                 <>
                                     <Card className='note-card' >
