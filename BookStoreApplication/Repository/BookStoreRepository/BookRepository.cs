@@ -48,7 +48,7 @@ namespace Repository
             }
             var stream = file.OpenReadStream();
             var name = file.FileName;
-            Account account = new Account("bridgeLabz", "528399974555442", "Ts5d5Nso2b5SA1OwNPFMIdtutg0");
+            Account account = new Account("dwfuzvg7h", "335663819648742", "BKYXockUt0Hs_3Vs5BIQBG2JK6o");
             Cloudinary cloudinary = new Cloudinary(account);
             var uploadParams = new ImageUploadParams()
             {
@@ -57,7 +57,7 @@ namespace Repository
             ImageUploadResult uploadResult = cloudinary.Upload(uploadParams);
             cloudinary.Api.UrlImgUp.BuildUrl(String.Format("{0}.{1}", uploadResult.PublicId, uploadResult.Format));
             //var data = this.userDBContext.Items.Where(t => t.ItemId == id).FirstOrDefault();
-            var data = this.userDBContext.BookStore.Where(t=>t.BookID==id).FirstOrDefault();
+            var data = this.userDBContext.BookStore.Where(t=>t.BookID == id).FirstOrDefault();
             data.BookImage = uploadResult.Uri.ToString();
             try
             {
