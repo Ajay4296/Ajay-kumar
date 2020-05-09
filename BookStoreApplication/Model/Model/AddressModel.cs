@@ -16,7 +16,7 @@ namespace Model.Model
         public string FullName { get; set; }
 
         [Required]
-        public int ContactNumber { get; set; }
+        public double ContactNumber { get; set; }
 
         [Required]
         public string Email { get; set; }
