@@ -6,7 +6,7 @@ class Dashboard extends Component {
     state = {
         books: [
             {
-                bookid: 212323,
+                bookid: 1,
                 bookName: "shreyash's biography",
                 authorName: "shreyash kaushal",
                 price: 1235,
@@ -14,23 +14,23 @@ class Dashboard extends Component {
                 image: ""
             },
             {
-                bookid: 212323,
-                bookName: "Saad's    biography",
+                bookid: 2,
+                bookName: "Saad's biography",
                 authorName: "Saad Samim",
                 price: 12356,
                 description: "bfjhgsbmhgszbxkvbgmbfdkjbvmbfmvbdxbcmf",
                 image: ""
 
             }, {
-                bookid: 212323,
-                bookName: "Shradha's world",
+                bookid: 3,
+                bookName: "Shraddha's world",
                 authorName: "Shraddha Singh",
                 price: 12356,
                 description: "bfjhgsbmhgszbxkvbgmbfdkjbvmbfmvbdxbcmf",
                 image: ""
 
             }, {
-                bookid: 212323,
+                bookid: 4,
                 bookName: "World of PUBG",
                 authorName: "Jayant Pareek",
                 price: 12356,
@@ -38,7 +38,7 @@ class Dashboard extends Component {
                 image: ""
 
             }, {
-                bookid: 212323,
+                bookid: 5,
                 bookName: "Chess Life",
                 authorName: "Shivam Dewangan",
                 price: 12356,
@@ -46,7 +46,7 @@ class Dashboard extends Component {
                 image: ""
 
             }, {
-                bookid: 212323,
+                bookid: 6,
                 bookName: "Food is life",
                 authorName: "Mayank Singh",
                 price: 12356,
@@ -55,44 +55,64 @@ class Dashboard extends Component {
 
             }],
             bookCount: 17,
-            pageNo: 0,
-            offset: 0,
-            perPage: 12,
-            sliceData: []
+            cartCount : 0 ,
+            wishListCount : 0
+            // pageNo: 0,
+            // offset: 0,
+            // perPage: 12,
+            // sliceData: []
     }
    
-    componentDidMount()
-{
-    this.changePageHandler();
+//     componentDidMount()
+// {
+//     this.changePageHandler();
+// }
+//     onChangePaginationHandler =  (event,value) => {
+//         event.preventDefault();
+//         let pageNumber = value;
+//         let offset = pageNumber * this.state.perPage;
+//         console.log(pageNumber);
+//         this.setState({
+//             offset: offset
+//         })
+//      this.changePageHandler();
+//     }
+
+//     changePageHandler =  () => {
+//         let books = this.state.books;
+//         let sliceData = books.slice(this.state.offset, this.state.offset + this.state.perPage);
+//         this.setState({
+//             sliceData: sliceData
+//         })
+
+//     }
+
+addToBagClickHandler=()=>{
+    let cartCount = this.state.cartCount;
+    this.setState({
+      cartCount : cartCount + 1  
+    })
 }
-    onChangePaginationHandler =  (event,value) => {
-        event.preventDefault();
-        let pageNumber = value;
-        let offset = pageNumber * this.state.perPage;
-        console.log(pageNumber);
-        this.setState({
-            offset: offset
-        })
-     this.changePageHandler();
-    }
 
-    changePageHandler =  () => {
-        let books = this.state.books;
-        let sliceData = books.slice(this.state.offset, this.state.offset + this.state.perPage);
-        this.setState({
-            sliceData: sliceData
-        })
-
-    }
+addToWishlistClickHandler=()=>{
+    let wishListCount = this.state.wishListCount;
+    this.setState({
+      wishListCount : wishListCount + 1  
+    })
+}
 
     render() {
         return (
             <>
-                <Header />
-                <DisplayBooks books={this.state.books}
-                 onChangePaginationHandler={this.onChangePaginationHandler}
-                 sliceData={this.state.sliceData}
-                 bookCount = {this.state.bookCount}
+                <Header
+                 cartCount={this.state.cartCount}
+                 wishListCount={this.state.wishListCount}
+                 />
+                <DisplayBooks 
+                books={this.state.books}
+                bookCount = {this.state.bookCount}
+                addToBagClickHandler={this.addToBagClickHandler}
+                addToWishlistClickHandler={this.addToWishlistClickHandler}
                 />
                 <Footer/>
             </>
