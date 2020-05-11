@@ -38,7 +38,7 @@ class DisplayBooks extends Component {
                                             onMouseEnter={this.props.bookMouseEnterHandler}
                                             onMouseLeave={this.props.bookMouseLeaveHandler}
                                         >
-                                            <img src={logo} />
+                                            <img id='img' src={logo} />
                                             {/* <CardMedia
                                 image={logo}
                             /> */}
