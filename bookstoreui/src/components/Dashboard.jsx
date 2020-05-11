@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Header from './Header';
 import DisplayBooks from './DisplayBooks';
 import Footer from './Footer';
+import {getAllBooksRequestMethod,getBookCountRequestMethod} from '../services/BookServices';
+
 class Dashboard extends Component {
     state = {
         books: [],
@@ -14,10 +16,18 @@ class Dashboard extends Component {
         // sliceData: []
     }
 
-    //     componentDidMount()
-    // {
-    //     this.changePageHandler();
-    // }
+    componentDidMount()
+{
+    Promise.all([getAllBooksRequestMethod(),getBookCountRequestMethod()])
+    .then(([getallBookResult,countBookResult])=>{
+        this.setState({
+            books:getallBookResult.data,
+            bookCount : countBookResult.data
+        })
+    })
+}
+
+    
     //     onChangePaginationHandler =  (event,value) => {
     //         event.preventDefault();
     //         let pageNumber = value;
