@@ -42,7 +42,9 @@ namespace Repository
 
         public string Image(IFormFile file, int id)
         {
-            if (file == null)
+            try
+            {
+                if (file == null)
             {
                 return "Empty";
             }
@@ -60,11 +62,10 @@ namespace Repository
             ImageUploadResult uploadResult = cloudinary.Upload(uploadParams);
             cloudinary.Api.UrlImgUp.BuildUrl(String.Format("{0}.{1}", uploadResult.PublicId, uploadResult.Format));
             //var data = this.userDBContext.Items.Where(t => t.ItemId == id).FirstOrDefault();
-            var data = this.userDBContext.BookStore.Where(t=>t.BookID == id).FirstOrDefault();
+            var data = this.userDBContext.BookStore.Where(book=>book.BookID == id).FirstOrDefault();
             data.BookImage = uploadResult.Uri.ToString();
 
-            try
-            {
+            
                 var result = this.userDBContext.SaveChanges();
                 return data.BookImage;
             }
