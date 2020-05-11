@@ -17,7 +17,7 @@ class Header extends Component {
                         </div>
                         <div className='book-title'>
                             <Typography variant='h4'>
-                                Book Store
+                                Bookstore
                         </Typography>
                         </div>
 

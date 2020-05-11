@@ -12,7 +12,7 @@ namespace Model.Model
         [Key]
         public int CartID { get; set; }
 
-        public BookStoreModel Cart { get; set; }
+        public int AddCart_ID { get; set; }
 
     }
 }
