@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import DisplayBooks from './DisplayBooks';
 import Footer from './Footer';
-import {getAllBooksRequestMethod,getBookCountRequestMethod} from '../services/BookServices';
+import {getAllBooksRequestMethod,getBookCountRequestMethod} from '../services/BookService';
 
 class Dashboard extends Component {
     state = {
