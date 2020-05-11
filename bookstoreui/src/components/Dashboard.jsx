@@ -21,7 +21,8 @@ class Dashboard extends Component {
                 description: "bfjhgsbmhgszbxkvbgmbfdkjbvmbfmvbdxbcmf",
                 image: ""
 
-            }, {
+            },
+             {
                 bookid: 3,
                 bookName: "Shraddha's world",
                 authorName: "Shraddha Singh",
