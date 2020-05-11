@@ -10,16 +10,17 @@ namespace Model.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int BookID { get; set; }
+        [Required]
+        public string Email { get; set; }
+
+        [Required]
+        public string Password { get; set; }
 
         [Required]
         public string FullName { get; set; }
 
         [Required]
         public int ContactNumber { get; set; }
-
-        [Required]
-        public string Email { get; set; }
 
         [Required]
         public string deliveryAddress { get; set; }
@@ -34,3 +35,4 @@ namespace Model.Model
         public string LandMark { get; set; }
     }
 }
+ 

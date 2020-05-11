@@ -10,5 +10,6 @@ namespace Manager.AddressManager
     {
         IEnumerable<AddressModel> GetAddress();
         Task<int> AddDetailAddress(AddressModel addressModel);
+        bool Login(AddressModel addressModel);
     }
 }
