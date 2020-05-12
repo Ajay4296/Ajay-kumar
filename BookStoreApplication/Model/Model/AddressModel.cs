@@ -8,24 +8,20 @@ using System.Text;
 namespace Model.Model
 {
    public class AddressModel
-
     {
         [Key]        
         [Required]
         public string Email { get; set; }
 
         [Required]
-        public string Password { get; set; }
+        public string Password { get; set; }     
 
         [Required]
         public string FullName { get; set; }
-
-        
+ 
         [Required]
         public int ContactNumber { get; set; }
-
-        
-
+       
         [Required]
         public string DeliveryAddress { get; set; }
 

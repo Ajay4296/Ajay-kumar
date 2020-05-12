@@ -28,7 +28,7 @@ namespace Repository.AddressRepository
             return result;
         }
         public bool Login(AddressModel addressModel)
-         {
+          {
             var result = addressDB.AddressSpace.Where(items => items.Email == addressModel.Email && items.Password == addressModel.Password).FirstOrDefault();
 
             if (result != null)
