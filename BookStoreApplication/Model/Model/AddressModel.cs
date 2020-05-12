@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -7,9 +8,9 @@ using System.Text;
 namespace Model.Model
 {
    public class AddressModel
+
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]        
         [Required]
         public string Email { get; set; }
 
@@ -19,11 +20,14 @@ namespace Model.Model
         [Required]
         public string FullName { get; set; }
 
+        
         [Required]
         public int ContactNumber { get; set; }
 
+        
+
         [Required]
-        public string deliveryAddress { get; set; }
+        public string DeliveryAddress { get; set; }
 
         [Required]
         public int ZipCode { get; set; }

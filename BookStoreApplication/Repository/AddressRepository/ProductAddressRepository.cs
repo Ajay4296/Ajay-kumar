@@ -23,12 +23,12 @@ namespace Repository.AddressRepository
         }
         public Task<int> AddDetailAddress(AddressModel addressModel)
         {
-            addressDB.AddressSpace.Add(addressModel);
+            addressDB.AddressSpace.Add(addressModel);           
             var result = addressDB.SaveChangesAsync();
             return result;
         }
         public bool Login(AddressModel addressModel)
-        {
+         {
             var result = addressDB.AddressSpace.Where(items => items.Email == addressModel.Email && items.Password == addressModel.Password).FirstOrDefault();
 
             if (result != null)
@@ -36,6 +36,6 @@ namespace Repository.AddressRepository
                 return true;
             }
             return false;
-        }
+        }   
     }
 }

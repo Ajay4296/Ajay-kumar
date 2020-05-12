@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 using Model.Model;
 using Repository.DBContext;
 
@@ -33,5 +34,8 @@ namespace Repository.Repository
             }
             return cartModel;
         }
+
+       
+       
     }
 }
