@@ -22,7 +22,7 @@ namespace Repository.AddressRepository
         }
         public Task<int> AddDetailAddress(AddressModel addressModel)
         {
-            addressDB.AddressSpace.Add(addressModel);
+            addressDB.AddressSpace.Add(addressModel);           
             var result = addressDB.SaveChangesAsync();
             return result;
         }
