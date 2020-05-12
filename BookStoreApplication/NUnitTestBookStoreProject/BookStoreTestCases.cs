@@ -114,7 +114,8 @@ namespace NUnitTestBookStoreProject
         {
             CartModel cartmodel = new CartModel();
             cartmodel.CartID = 1;
-            cartmodel.Cart = new BookStoreModel();
+            cartmodel.Book_ID = 001;
+            cartmodel.SelectBookCount = 2;
             var service = new Mock<ICartRepository>();
             var cartmanager = new CartManager(service.Object);
             var data = cartmanager.AddCart(cartmodel);
@@ -129,7 +130,8 @@ namespace NUnitTestBookStoreProject
         {
             CartModel cartmodel = new CartModel();
             cartmodel.CartID = 1;
-            cartmodel.Cart = new BookStoreModel();
+            cartmodel.Book_ID = 001;
+            cartmodel.SelectBookCount = 2;
             var service = new Mock<ICartRepository>();
             var cartmanager = new CartManager(service.Object);
             var data = cartmanager.DeleteCart(cartmodel.CartID);
@@ -154,10 +156,8 @@ namespace NUnitTestBookStoreProject
         public void GivenAddressManager_AddDetailAddress_Method_ShouldReturn_Data()
         {
             AddressModel addressmodel = new AddressModel();
-            addressmodel.BookID = 1;
             addressmodel.CityTown = "khammam";
             addressmodel.ContactNumber = 9505012267;
-            addressmodel.deliveryAddress = "kusumanchi";
             addressmodel.Email = "nalagatiravindghar@gmail.com";
             addressmodel.FullName = "Nalagati Ravindhar";
             addressmodel.ZipCode = 507159;
@@ -184,10 +184,8 @@ namespace NUnitTestBookStoreProject
         public void GivenAddressController_AddDetailAddress_Method_ShouldReturn_Data()
         {
             AddressModel addressmodel = new AddressModel();
-            addressmodel.BookID = 1;
             addressmodel.CityTown = "khammam";
             addressmodel.ContactNumber = 9505012267;
-            addressmodel.deliveryAddress = "kusumanchi";
             addressmodel.Email = "nalagatiravindghar@gmail.com";
             addressmodel.FullName = "Nalagati Ravindhar";
             addressmodel.ZipCode = 507159;
