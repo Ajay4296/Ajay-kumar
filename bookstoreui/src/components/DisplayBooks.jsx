@@ -16,10 +16,10 @@ class DisplayBooks extends Component {
             <>
                 <div className='bookcount-sortby-div'>
                     <Typography variant='h5'>
-                        Books({this.props.bookCount} items)
+                        Books<span id='bookcountfont'>({this.props.bookCount} items)</span>
                         </Typography>
                     <div>
-                        <select name="Sort By Relevance" id="Sort_By_Relevance" className='form-control text-dark font-weight-bold' >
+                        <select name="Sort By Relevance" id="Sort_By_Relevance" >
                             <option value="-1" selected>Sort By Relevance</option>
                             <option name="price:low to high">price:low to high</option>
                             <option name="price:high to low">price:high to low</option>
@@ -29,7 +29,7 @@ class DisplayBooks extends Component {
                 </div>
                 <div className='display-books-div'>
                     {
-                        this.props.sliceData.map((ele) => {
+                        this.props.books.map((ele) => {
                             return (
                                 <>
                                     <Card className='note-card' >
@@ -38,7 +38,7 @@ class DisplayBooks extends Component {
                                             onMouseEnter={this.props.bookMouseEnterHandler}
                                             onMouseLeave={this.props.bookMouseLeaveHandler}
                                         >
-                                            <img src={logo} />
+                                            <img id='img' src={logo} />
                                             {/* <CardMedia
                                 image={logo}
                             /> */}
@@ -47,10 +47,10 @@ class DisplayBooks extends Component {
                                                     {ele.bookName}
                                                 </Typography>
                                                 <Typography id='note-content' variant="body2" color="textSecondary" component="p">
-                                                    {ele.authorName}
+                                                    by: {ele.authorName}
                                                 </Typography>
                                                 <Typography id='note-content' variant="body2" color="textSecondary" component="p">
-                                                    {ele.price}
+                                                ₹ {ele.price}
                                                 </Typography>
                                             </CardContent>
                                         </CardActionArea>
@@ -59,11 +59,13 @@ class DisplayBooks extends Component {
                                             <Button
                                                 variant='outlined'
                                                 color='primary'
+                                                onClick={this.props.addToBagClickHandler}
                                             > Add to Bag</Button>
 
                                             <Button
                                                 variant='outlined'
                                                 color='secondary'
+                                                onClick={this.props.addToWishlistClickHandler}
                                             > WishList</Button>
 
                                         </CardActions>
@@ -75,10 +77,10 @@ class DisplayBooks extends Component {
                     }
 
                 </div>
-                <div className='pagination-div'>
+                {/* <div className='pagination-div'>
                     <Pagination count={10} 
                     color="primary" />
-                </div>
+                </div> */}
             </>
         )
 

@@ -17,7 +17,7 @@ class Header extends Component {
                         </div>
                         <div className='book-title'>
                             <Typography variant='h4'>
-                                Book Store
+                                Bookstore
                         </Typography>
                         </div>
 
@@ -38,14 +38,16 @@ class Header extends Component {
                     </div>
                     <div className='cart-wishlist-div'>
                         <div className='cart-div'>
+                            <span className='icon-counter' id='lblCartCount'> {this.props.cartCount} </span>
                             <ShoppingCartIcon fontSize='large' />
                         </div>
                         <div className='wishlist-div'>
+                            <span className='icon-counter' id='lblWishCount'> {this.props.wishListCount} </span>
                             <FavoriteIcon fontSize='large' />
                         </div>
                     </div>
                 </div>
-                
+                                
             </>
         )
 
