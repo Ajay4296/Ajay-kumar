@@ -53,5 +53,12 @@ namespace BookStoreBackend.Controllers
         {
             return CartManager.DeleteCart(id);
         }
+
+        [Route("CountCart")]
+        [HttpGet]
+        public int CountCart()
+        {
+            return CartManager.CountCart();
+        }
     }
 }
