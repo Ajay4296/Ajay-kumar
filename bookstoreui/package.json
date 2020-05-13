@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "bookstoreui",
-=======
-  "name": "bookstore",
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,10 +14,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
-<<<<<<< HEAD
-=======
     "react-paginate": "^6.3.2",
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1"
   },
