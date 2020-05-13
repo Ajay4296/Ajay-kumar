@@ -64,7 +64,7 @@ namespace BookStoreBackend.Controllers
 
         [Route("GetAllCartValue")]
         [HttpGet]
-        public  IEnumerable<BookStoreModel> GetAllCartValue()
+        public IQueryable GetAllCartValue()
         {
             return CartManager.GetAllCartValue();
         }

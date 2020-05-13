@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Model.Model;
 using Model;
 using Repository.Repository;
+using System.Linq;
 
 namespace Manager.Manager
 {
@@ -31,7 +32,7 @@ namespace Manager.Manager
             return cartRepository.CountCart();
         }
 
-        public IEnumerable<BookStoreModel> GetAllCartValue()
+        public IQueryable GetAllCartValue()
         {
             return cartRepository.GetAllCartValue();
         }
