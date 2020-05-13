@@ -24,5 +24,10 @@ namespace Manager.Manager
         {
             return cartRepository.DeleteCart(id);
         }
+
+        public int CountCart()
+        {
+            return cartRepository.CountCart();
+        }
     }
 }
