@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { Typography, Button } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+<<<<<<< HEAD
 import logo from '../logo.svg';
+=======
+import logo from '../assets/2states.jpg';
+>>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
 
 class MyCart extends Component {
     render() {
@@ -12,12 +16,21 @@ class MyCart extends Component {
                     <Typography variant="h4">My cart (1)</Typography>
                     <div className='book-image-details-div'>
                         <div className='book-image-div'>
+<<<<<<< HEAD
                             <img src={logo} alt='error' />
                         </div>
                         <div className='book-details-div'>
                             <Typography variant="h5" >Book name</Typography>
                             <Typography>Author name</Typography>
                             <Typography>price</Typography>
+=======
+                            <img id='img-cart' src={logo} alt='error' />
+                        </div>
+                        <div className='book-details-div'>
+                            <Typography variant="h5" >2 States</Typography>
+                            <Typography>Chetan Bhagat</Typography>
+                            <Typography>₹ 390</Typography>
+>>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
                             <div className='item-quantity-div'>
                                 <Button>
                                     <RemoveCircleOutlineIcon />
@@ -36,14 +49,27 @@ class MyCart extends Component {
                         </div>
                     </div>
                     <div className='place-order-btn-div'>
+<<<<<<< HEAD
                         <Button variant='contained' color='primary'>
+=======
+                        <Button 
+                        variant='contained' 
+                        color='primary' 
+                        onClick={this.props.placeOrderClickedHandler}>
+>>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
                             Place order
                     </Button>
                     </div>
                 </div>
                 <div className='customer-details-div'>
                     <Typography variant="h5">Customer Details</Typography>
+<<<<<<< HEAD
                     <form action="" className=" p-5" name="myForm" id="f" >
+=======
+                    {
+                        this.props.showCustomerDetails ?
+                        <form action="" className=" p-5" name="myForm" id="f" >
+>>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
                         <div className="row">
                             <div className="col">
                                 <div className="form-group">
@@ -91,6 +117,7 @@ class MyCart extends Component {
                             <label>type</label>
                         </div>
                         <div class="form-group form-check" id='check-box-div'>
+<<<<<<< HEAD
                             <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" /> Home
                             </label>
@@ -98,14 +125,28 @@ class MyCart extends Component {
                                 <input class="form-check-input" type="checkbox" /> Work
                             </label>
                             <label class="form-check-label">
+=======
+                            <label class="form-check-label" id='form-check-label'>
+                                <input class="form-check-input" type="checkbox" /> Home
+                            </label>
+                            <label class="form-check-label" id='form-check-label'>
+                                <input class="form-check-input" type="checkbox" /> Work
+                            </label>
+                            <label class="form-check-label" id='form-check-label'>
+>>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
                                 <input class="form-check-input" type="checkbox" /> other
                             </label>
                         </div>
                         <div className='form-group'>
                             <button type="submit" id="continue" className="btn btn-primary">Continue</button>
                         </div>
+<<<<<<< HEAD
                     </form>
 
+=======
+                    </form> : null 
+                    }
+>>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
                 </div>
                 <div className='order-summary-div'>
                     <Typography variant="h5">Order summary</Typography>
