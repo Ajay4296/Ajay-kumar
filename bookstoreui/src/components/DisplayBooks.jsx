@@ -16,7 +16,7 @@ class DisplayBooks extends Component {
             <>
                 <div className='bookcount-sortby-div'>
                     <Typography variant='h5'>
-                        Books({this.props.bookCount} items)
+                        Books<span id='bookcountfont'>({this.props.bookCount} items)</span>
                         </Typography>
                     <div>
                         <select name="Sort By Relevance" id="Sort_By_Relevance" >
@@ -38,7 +38,7 @@ class DisplayBooks extends Component {
                                             onMouseEnter={this.props.bookMouseEnterHandler}
                                             onMouseLeave={this.props.bookMouseLeaveHandler}
                                         >
-                                            <img src={logo} />
+                                            <img id='img' src={logo} />
                                             {/* <CardMedia
                                 image={logo}
                             /> */}
@@ -77,10 +77,10 @@ class DisplayBooks extends Component {
                     }
 
                 </div>
-                <div className='pagination-div'>
+                {/* <div className='pagination-div'>
                     <Pagination count={10} 
                     color="primary" />
-                </div>
+                </div> */}
             </>
         )
 
