@@ -11,6 +11,7 @@ namespace Repository.Repository
 {
     public class CartRepository : ICartRepository
     {
+        
         private readonly UserDbContext userDbContext;
 
         public CartRepository(UserDbContext userDbContext)
@@ -42,5 +43,18 @@ namespace Repository.Repository
             return result.Count;
         }
 
+        public IEnumerable<BookStoreModel> GetAllCartValue()
+        {
+            List<CartModel> cartList = new List<CartModel>();
+            List<BookStoreModel> getAllCartByBookType = new List<BookStoreModel>();
+            cartList = userDbContext.CartTable.ToList();
+            for (int i = 0; i < cartList.Count; i++)
+            {
+                getAllCartByBookType.Add(userDbContext.BookStore.Find(cartList[i].Book_ID));
+            }
+
+            //foreach(var x in cartList)
+            return getAllCartByBookType;
+        }
     }
 }

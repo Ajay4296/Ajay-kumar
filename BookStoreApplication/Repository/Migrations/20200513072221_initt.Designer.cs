@@ -9,8 +9,8 @@ using Repository.DBContext;
 namespace Repository.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20200511093814_initialadd")]
-    partial class initialadd
+    [Migration("20200513072221_initt")]
+    partial class initt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

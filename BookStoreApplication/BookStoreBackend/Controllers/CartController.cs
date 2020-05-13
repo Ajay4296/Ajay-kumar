@@ -60,5 +60,7 @@ namespace BookStoreBackend.Controllers
         {
             return CartManager.CountCart();
         }
+
+
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repository.Migrations
 {
-    public partial class initialadd : Migration
+    public partial class car : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,7 +55,18 @@ namespace Repository.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CartTable", x => x.CartID);
+                    table.ForeignKey(
+                        name: "FK_CartTable_BookStore_Book_ID",
+                        column: x => x.Book_ID,
+                        principalTable: "BookStore",
+                        principalColumn: "BookID",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartTable_Book_ID",
+                table: "CartTable",
+                column: "Book_ID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -64,10 +75,10 @@ namespace Repository.Migrations
                 name: "AddressSpace");
 
             migrationBuilder.DropTable(
-                name: "BookStore");
+                name: "CartTable");
 
             migrationBuilder.DropTable(
-                name: "CartTable");
+                name: "BookStore");
         }
     }
 }
