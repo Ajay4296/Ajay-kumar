@@ -13,6 +13,8 @@ namespace Repository.Repository
     {
         
         private readonly UserDbContext userDbContext;
+        List<BookStoreModel> GetAll_CartValue = new List<BookStoreModel>();
+        List<CartModel> Cart_List = new List<CartModel>();
 
         public CartRepository(UserDbContext userDbContext)
         {
@@ -45,14 +47,13 @@ namespace Repository.Repository
 
         public IEnumerable<BookStoreModel> GetAllCartValue()
         {
-           
-            List<BookStoreModel> GetAllCartValue = new List<BookStoreModel>();
-            List<CartModel> Cart_List = userDbContext.CartTable.ToList();
+
+            Cart_List = userDbContext.CartTable.ToList();
             for (int i = 0; i < Cart_List.Count; i++)
             {
-                GetAllCartValue.Add(userDbContext.BookStore.Find(Cart_List[i].Book_ID));
+                GetAll_CartValue.Add(userDbContext.BookStore.Find(Cart_List[i].Book_ID));
             }            
-            return GetAllCartValue;
+            return GetAll_CartValue;
         }
     }
 }
