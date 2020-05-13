@@ -45,16 +45,14 @@ namespace Repository.Repository
 
         public IEnumerable<BookStoreModel> GetAllCartValue()
         {
-            List<CartModel> cartList = new List<CartModel>();
-            List<BookStoreModel> getAllCartByBookType = new List<BookStoreModel>();
-            cartList = userDbContext.CartTable.ToList();
-            for (int i = 0; i < cartList.Count; i++)
+           
+            List<BookStoreModel> GetAllCartValue = new List<BookStoreModel>();
+            List<CartModel> Cart_List = userDbContext.CartTable.ToList();
+            for (int i = 0; i < Cart_List.Count; i++)
             {
-                getAllCartByBookType.Add(userDbContext.BookStore.Find(cartList[i].Book_ID));
-            }
-
-            //foreach(var x in cartList)
-            return getAllCartByBookType;
+                GetAllCartValue.Add(userDbContext.BookStore.Find(Cart_List[i].Book_ID));
+            }            
+            return GetAllCartValue;
         }
     }
 }
