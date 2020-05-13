@@ -45,15 +45,22 @@ namespace Repository.Repository
             return result.Count;
         }
 
-        public IEnumerable<BookStoreModel> GetAllCartValue()
+        public IQueryable GetAllCartValue()
         {
-
-            Cart_List = userDbContext.CartTable.ToList();
-            for (int i = 0; i < Cart_List.Count; i++)
-            {
-                GetAll_CartValue.Add(userDbContext.BookStore.Find(Cart_List[i].Book_ID));
-            }            
-            return GetAll_CartValue;
+            var result = this.userDbContext.CartTable.Join(this.userDbContext.BookStore,
+                Cart => Cart.Book_ID,
+                Book => Book.BookID,
+                (Cart, Book) =>
+                new
+                {
+                    bookId = Book.BookID,
+                    bookTitle = Book.BookTittle,
+                    authorName = Book.AuthorName,
+                    bookImage = Book.BookImage,
+                    bookPrice = Book.Price,
+                    numOfCopies = Cart.SelectBookCount
+                });
+            return result;
         }
     }
 }
