@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Model.Model;
+using Model;
 using Repository.Repository;
 
 namespace Manager.Manager
@@ -28,6 +29,11 @@ namespace Manager.Manager
         public int CountCart()
         {
             return cartRepository.CountCart();
+        }
+
+        public IEnumerable<BookStoreModel> GetAllCartValue()
+        {
+            return cartRepository.GetAllCartValue();
         }
     }
 }
