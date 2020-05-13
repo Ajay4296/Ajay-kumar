@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
@@ -35,7 +36,11 @@ namespace Repository.Repository
             return cartModel;
         }
 
-       
-       
+        public int CountCart()
+        {
+            var result = userDbContext.CartTable.ToList();
+            return result.Count;
+        }
+
     }
 }
