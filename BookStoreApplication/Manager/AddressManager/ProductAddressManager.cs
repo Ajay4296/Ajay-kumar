@@ -26,11 +26,7 @@ namespace Manager.AddressManager
         {
             return this.addressRepository.AddDetailAddress(addressModel);
         }
-
-       public bool Login(AddressModel addressModel)
-        {
-            return this.addressRepository.Login(addressModel);
-        }
+    
 
         public AddressModel LoginID(string Email)
         {

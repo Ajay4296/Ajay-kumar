@@ -27,16 +27,7 @@ namespace Repository.AddressRepository
             var result = addressDB.SaveChangesAsync();
             return result;
         }
-        public bool Login(AddressModel addressModel)
-        {
-            var result = addressDB.AddressSpace.Where(items => items.Email == addressModel.Email && items.Password == addressModel.Password).FirstOrDefault();
-            //  AddressModel addressModel = addressDB.AddressSpace.Find(Email);
-            if (result != null)
-            {
-                return true;
-            }
-            return false;
-        }
+       
 
         public AddressModel LoginID(string Email)
         {

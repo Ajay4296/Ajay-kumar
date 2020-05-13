@@ -48,20 +48,6 @@ namespace BookStoreBackend.Controllers
         {
             return addressManager.LoginID(Email);
         }
-
-        //[Route("Login")]
-        //[HttpGet]
-        //public IActionResult Login(AddressModel addressModel)
-        //{
-        //    var result = this.addressManager.Login(addressModel);
-        //    if (result == true)
-        //    {
-        //        return this.Ok(addressModel);
-        //    }
-        //    else
-        //    {
-        //        return this.BadRequest("Email or password is incorrect");
-        //    }
-        //}
+        
     }
 }
