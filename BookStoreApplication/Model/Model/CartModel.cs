@@ -15,6 +15,7 @@ namespace Model.Model
         public int Book_ID { get; set; }
 
         public int SelectBookCount { get; set; }
+        
 
     }
 }
