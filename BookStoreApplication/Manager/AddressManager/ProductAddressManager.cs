@@ -28,9 +28,9 @@ namespace Manager.AddressManager
         }
     
 
-        public AddressModel LoginID(string Email)
+        public AddressModel LoginID(string Email, string _Password)
         {
-            return addressRepository.LoginID(Email);
+            return addressRepository.LoginID(Email,_Password);
         }
     }
 }

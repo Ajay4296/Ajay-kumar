@@ -9,7 +9,7 @@ namespace Manager.AddressManager
    public interface IAddressManager
     {
         IEnumerable<AddressModel> GetAddress();
-        Task<int> AddDetailAddress(AddressModel addressModel);      
-        AddressModel LoginID(string Email);
+        Task<int> AddDetailAddress(AddressModel addressModel);
+        AddressModel LoginID(string Email, string _Password);
     }
 }

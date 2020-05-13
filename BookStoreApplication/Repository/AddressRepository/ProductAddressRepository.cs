@@ -3,6 +3,7 @@ using Repository.DBContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,10 +30,15 @@ namespace Repository.AddressRepository
         }
        
 
-        public AddressModel LoginID(string Email)
-        {
-            return addressDB.AddressSpace.Find(Email);
+        public AddressModel LoginID(string Email,string _Password)
+        {           
+                AddressModel address = addressDB.AddressSpace.Find(Email);
+                if(address.Email == null && address.Password != _Password)
+                {
+                    return null;
+                }
+                return address;
             
-        }
+        }        
     }
 }

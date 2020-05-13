@@ -9,7 +9,7 @@ namespace Repository.AddressRepository
    public interface IAddressRepository
     {
         IEnumerable<AddressModel> GetAddress();
-        Task<int> AddDetailAddress(AddressModel addressModel);        
-        AddressModel LoginID(string email);
+        Task<int> AddDetailAddress(AddressModel addressModel);
+        AddressModel LoginID(string Email, string _Password);
     }
 }
