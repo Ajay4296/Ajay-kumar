@@ -31,5 +31,10 @@ namespace Manager.AddressManager
         {
             return this.addressRepository.Login(addressModel);
         }
+
+        public AddressModel LoginID(string Email)
+        {
+            return addressRepository.LoginID(Email);
+        }
     }
 }

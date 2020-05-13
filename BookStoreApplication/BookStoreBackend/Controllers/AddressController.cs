@@ -43,18 +43,25 @@ namespace BookStoreBackend.Controllers
 
         }
         [Route("Login")]
-        [HttpPost]
-        public IActionResult Login(AddressModel addressModel)
+        [HttpGet]
+        public AddressModel LoginID(string Email)
         {
-            var result = this.addressManager.Login(addressModel);
-            if (result == true)
-            {
-                return this.Ok(addressModel);
-            }
-            else
-            {
-                return this.BadRequest("Email or password is incorrect");
-            }
+            return addressManager.LoginID(Email);
         }
+
+        //[Route("Login")]
+        //[HttpGet]
+        //public IActionResult Login(AddressModel addressModel)
+        //{
+        //    var result = this.addressManager.Login(addressModel);
+        //    if (result == true)
+        //    {
+        //        return this.Ok(addressModel);
+        //    }
+        //    else
+        //    {
+        //        return this.BadRequest("Email or password is incorrect");
+        //    }
+        //}
     }
 }

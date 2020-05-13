@@ -11,5 +11,6 @@ namespace Repository.AddressRepository
         IEnumerable<AddressModel> GetAddress();
         Task<int> AddDetailAddress(AddressModel addressModel);
         bool Login(AddressModel addressModel);
+        AddressModel LoginID(string email);
     }
 }
