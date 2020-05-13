@@ -236,3 +236,6 @@ margin-left: 20px;
 #bookcountfont{
   font-size: small;
 }
+#cart-icon-div{
+display: flex;
+}
