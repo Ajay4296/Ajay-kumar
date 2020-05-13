@@ -12,6 +12,6 @@ namespace Manager.Manager
         Task<int> AddCart(CartModel cartModel);
         CartModel DeleteCart(int id);
         int CountCart();
-        IEnumerable<BookStoreModel> GetAllCartValue();
+        IQueryable GetAllCartValue();
     }
 }
