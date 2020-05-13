@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
 .header{
   display: flex;
   background-color: #a71621;
@@ -45,20 +40,13 @@ margin-right: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-<<<<<<< HEAD
-=======
   align-items: center;
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
 }
 .wishlist-div{
 display: flex;
 flex-direction: column;
 justify-content: center;  
 margin-left: 20px;
-<<<<<<< HEAD
-}
-.icon-counter{
-=======
 align-items: center;
 }
 
@@ -66,7 +54,6 @@ align-items: center;
   color: white;
 }
 .icon-counter {
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
   padding-left: 9px;
   padding-right: 2px;
   border-radius: 50%;
@@ -114,20 +101,9 @@ align-items: center;
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
-<<<<<<< HEAD
- 
-}
-
-.MuiCardActions-root {
-  display: flex;
-  padding: 8px;
-  align-items: center;
-  justify-content: space-around;
-=======
     min-height: 699px;
 
  
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
 }
 
 .MuiPaper-root.MuiCard-root.note-card.MuiPaper-elevation1.MuiPaper-rounded{ 
@@ -137,8 +113,6 @@ align-items: center;
   background-color: #f1faee;
 }
 
-<<<<<<< HEAD
-=======
 .MuiCardActions-root {
   display: flex;
   padding: 8px;
@@ -146,7 +120,6 @@ align-items: center;
   justify-content: space-around;
 }
 
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
 .hover-card{ 
   width:18%;
   height: 40%;
@@ -155,11 +128,7 @@ align-items: center;
 }
 .footer-div {
     display: flex;
-<<<<<<< HEAD
-      position: absolute;
-=======
       position: relative;
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
       left: 0;
       bottom: 0;
       width: 100%;
@@ -168,10 +137,6 @@ align-items: center;
       height: 40px;
       justify-content: center;
       align-items: center;
-<<<<<<< HEAD
-
-=======
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
     }
 
     .my-cart-main-div {
@@ -179,12 +144,9 @@ align-items: center;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-<<<<<<< HEAD
-=======
       margin-top: 20px;
       margin-bottom: 20px;
       min-height: 771px;
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
       /* height: 800px; */
       
   }
@@ -194,7 +156,7 @@ align-items: center;
     flex-direction: column;
     justify-content:flex-start;
     width: 1000px;
-    height: 300px;
+    height: auto;
     border: 1px solid;
     box-shadow: 11px 9px 20px 0px black;
     padding-left: 10px;
@@ -236,11 +198,7 @@ align-items: center;
 
 #check-box-div{
   display: flex;
-<<<<<<< HEAD
-  justify-content: space-around;
-=======
   
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
 }
 
 .customer-details-div{
@@ -251,14 +209,9 @@ align-items: center;
   height: auto;
   border: 1px solid;
   box-shadow: 11px 9px 20px 0px black;
-<<<<<<< HEAD
-  padding-left: 10px;
-  padding-top: 10px;
-=======
   /* padding-left: 10px;
   padding-top: 10px; */
   padding: 10px;
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
   margin-bottom: 30px;
 }
 
@@ -270,14 +223,9 @@ align-items: center;
   height: auto;
   border: 1px solid;
   box-shadow: 11px 9px 20px 0px black;
-<<<<<<< HEAD
-  padding-left: 10px;
-  padding-top: 10px
-=======
   /* padding-left: 10px;
   padding-top: 10px */
   padding: 10px;
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
 }
 
 .order-main-div{
@@ -285,11 +233,7 @@ align-items: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-  height: 800px;
-=======
   margin-top: 30px;
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
 }
 #img {
   vertical-align: middle;
@@ -299,8 +243,6 @@ align-items: center;
   padding: 10px;
 }
 
-<<<<<<< HEAD
-=======
 #form-check-label {
   margin-bottom: 0;
   padding-right: 40px;
@@ -315,7 +257,6 @@ align-items: center;
 
 }
 
->>>>>>> 94232d33ace64fdab9adbcf9c6338da4cd36410a
 #bookcountfont{
   font-size: small;
 }
