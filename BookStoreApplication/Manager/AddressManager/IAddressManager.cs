@@ -10,6 +10,6 @@ namespace Manager.AddressManager
     {
         IEnumerable<AddressModel> GetAddress();
         Task<int> AddDetailAddress(AddressModel addressModel);
-        AddressModel LoginID(string Email, string _Password);
+        object LoginID(string Email, string _Password);
     }
 }

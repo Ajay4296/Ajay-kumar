@@ -1,4 +1,5 @@
 ﻿using Model.Model;
+using Repository.Common;
 using Repository.DBContext;
 using System;
 using System.Collections.Generic;
@@ -30,14 +31,21 @@ namespace Repository.AddressRepository
         }
        
 
-        public AddressModel LoginID(string Email,string _Password)
-        {           
+        public object LoginID(string Email,string _Password)
+        {
+            try
+            {
                 AddressModel address = addressDB.AddressSpace.Find(Email);
-                if(address.Email == null && address.Password != _Password)
+                if (address==null || address.Password != _Password)
                 {
-                    return null;
+                    throw new BookStoreException("invalid password or Email");
                 }
                 return address;
+             }
+            catch (BookStoreException e)
+            {
+                return e.Message;
+            }
             
         }        
     }
