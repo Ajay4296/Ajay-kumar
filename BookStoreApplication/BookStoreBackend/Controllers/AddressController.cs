@@ -49,7 +49,7 @@ namespace BookStoreBackend.Controllers
             var result = this.addressManager.Login(addressModel);
             if (result == true)
             {
-                return this.Ok(addressModel.Email);
+                return this.Ok(addressModel);
             }
             else
             {
