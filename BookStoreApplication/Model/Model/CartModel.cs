@@ -17,7 +17,7 @@ namespace Model.Model
         public int SelectBookCount { get; set; }
 
         [ForeignKey("Book_ID")]
-        public BookStoreModel book { get;set }
+        public BookStoreModel book { get; set; }
 
 
     }
