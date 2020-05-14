@@ -260,3 +260,18 @@ align-items: center;
 #bookcountfont{
   font-size: small;
 }
+
+form#form {
+  width: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px -2px 5px 3px black;
+}
+
+h2#welcome-text {
+  text-align: center;
+  margin: 50px;
+  color: #a71621;
+}

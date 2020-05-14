@@ -2,17 +2,63 @@ import React, { Component } from 'react';
 import { Typography, Button } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import {getCartAddedCountRequestMethod,getCartValuesRequestMethod,deleteCartValueRequestMethod} from '../services/CartServices';
 import logo from '../assets/2states.jpg';
 
 class MyCart extends Component {
+    state={
+        cartAddedCount:0,
+        cart : [],
+        showCustomerDetails: false,
+
+    }
+    componentDidMount(){
+        Promise.all([getCartAddedCountRequestMethod(),getCartValuesRequestMethod()])
+        .then(([cartAddedCountResult,getCartValues]) => {
+            this.setState({
+                cartAddedCount: cartAddedCountResult.data,
+                cart : getCartValues.data
+            })
+        })
+    }
+
+    deleteCartHandler = async(id)=>{
+        const response = deleteCartValueRequestMethod({ params: { id: id } });
+         await response.then(res=>{
+           console.log(res.data)
+          const cartCountRes= getCartAddedCountRequestMethod();
+          cartCountRes.then(
+              res=>{
+                  this.setState({
+                      cartAddedCount : res.data
+                  })
+              }
+          )
+          const cartValuesRes= getCartValuesRequestMethod();
+               cartValuesRes.then(
+                   res=>{
+                       this.setState({
+                           cart : res.data
+                       })
+                   }
+               )
+           })
+       }
+
+       placeOrderClickedHandler=()=>{
+        let doesShowCustomerDetails = this.state.showCustomerDetails;
+        this.setState({
+            showCustomerDetails : !doesShowCustomerDetails
+        })
+    }
     render() {
         return (
             <div className='my-cart-main-div'>
                 <div className='my-cart-sub-div'>
-                    <Typography variant="h4">My cart ({this.props.cartAddedCount})</Typography>
+                    <Typography variant="h4">My cart ({this.state.cartAddedCount})</Typography>
                     
                     {
-                        this.props.cart.map((ele)=>{
+                        this.state.cart.map((ele)=>{
                             return(
                                 <>
                                 <div className='book-image-details-div'>
@@ -35,7 +81,7 @@ class MyCart extends Component {
                                 <Button
                                     variant='outlined'
                                     color='secondary'
-                                    onClick={()=>{this.props.deleteCartHandler(ele.cartID)}}
+                                    onClick={()=>{this.deleteCartHandler(ele.cartID)}}
                                 >Remove</Button>
 
                             </div>
@@ -50,7 +96,7 @@ class MyCart extends Component {
                         <Button 
                         variant='contained' 
                         color='primary' 
-                        onClick={this.props.placeOrderClickedHandler}>
+                        onClick={this.placeOrderClickedHandler}>
                             Place order
                     </Button>
                     </div>
@@ -58,7 +104,7 @@ class MyCart extends Component {
                 <div className='customer-details-div'>
                     <Typography variant="h5">Customer Details</Typography>
                     {
-                        this.props.showCustomerDetails ?
+                        this.state.showCustomerDetails ?
                         <form action="" className=" p-5" name="myForm" id="f" >
                         <div className="row">
                             <div className="col">
