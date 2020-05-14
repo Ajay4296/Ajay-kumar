@@ -12,10 +12,7 @@ namespace Model.Model
         [Key]        
         [Required]
         public string Email { get; set; }
-        
-        [Required]
-        public string Password { get; set; }     
-
+       
         [Required]
         public string FullName { get; set; }
  
@@ -33,6 +30,9 @@ namespace Model.Model
 
         [Required]
         public string LandMark { get; set; }
+
+        [Required]
+        public string AddressType { get; set; }
     }
 }
  
