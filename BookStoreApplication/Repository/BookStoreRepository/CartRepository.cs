@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
@@ -10,7 +11,10 @@ namespace Repository.Repository
 {
     public class CartRepository : ICartRepository
     {
+        
         private readonly UserDbContext userDbContext;
+        List<BookStoreModel> GetAll_CartValue = new List<BookStoreModel>();
+        List<CartModel> Cart_List = new List<CartModel>();
 
         public CartRepository(UserDbContext userDbContext)
         {
@@ -35,7 +39,28 @@ namespace Repository.Repository
             return cartModel;
         }
 
-       
-       
+        public int CountCart()
+        {
+            var result = userDbContext.CartTable.ToList();
+            return result.Count;
+        }
+
+        public IQueryable GetAllCartValue()
+        {
+            var result = this.userDbContext.CartTable.Join(this.userDbContext.BookStore,
+                Cart => Cart.Book_ID,
+                Book => Book.BookID,
+                (Cart, Book) =>
+                new
+                {
+                    bookId = Book.BookID,
+                    bookTitle = Book.BookTittle,
+                    authorName = Book.AuthorName,
+                    bookImage = Book.BookImage,
+                    bookPrice = Book.Price,
+                    numOfCopies = Cart.SelectBookCount
+                });
+            return result;
+        }
     }
 }

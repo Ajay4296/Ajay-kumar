@@ -8,20 +8,19 @@ using System.Text;
 namespace Model.Model
 {
    public class AddressModel
-    {        
+    {
+        [Key]        
         [Required]
-        public string FullName { get; set; }
-
+        public string Email { get; set; }
+        
         [Required]
         public double ContactNumber { get; set; }
 
-        [Key]
-        [Required]
-        public string Email { get; set; }
+        public string Password { get; set; }     
 
         [Required]
-        public string Password { get; set; }
-
+        public string FullName { get; set; }
+ 
         [Required]
         public string DeliveryAddress { get; set; }
 
@@ -35,3 +34,4 @@ namespace Model.Model
         public string LandMark { get; set; }
     }
 }
+ 

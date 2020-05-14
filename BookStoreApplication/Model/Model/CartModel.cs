@@ -12,9 +12,14 @@ namespace Model.Model
         [Key]
         public int CartID { get; set; }
 
+       // [ForeignKey("book")]
         public int Book_ID { get; set; }
 
         public int SelectBookCount { get; set; }
+
+        //[ForeignKey("Book_ID")]
+        //public BookStoreModel book { get; set; }
+
 
     }
 }

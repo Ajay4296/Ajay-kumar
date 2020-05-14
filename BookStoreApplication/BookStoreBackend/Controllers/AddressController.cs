@@ -42,5 +42,12 @@ namespace BookStoreBackend.Controllers
             }
 
         }
+        [Route("Login")]
+        [HttpGet]
+        public object LoginID(string Email, string _Password)
+        {
+            return addressManager.LoginID(Email,_Password);
+        }
+        
     }
 }

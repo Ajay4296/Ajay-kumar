@@ -6,6 +6,7 @@ using Manager;
 using Manager.Manager;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Model;
 using Model.Model;
 
 namespace BookStoreBackend.Controllers
@@ -52,6 +53,20 @@ namespace BookStoreBackend.Controllers
         public CartModel DeleteCart(int id)
         {
             return CartManager.DeleteCart(id);
+        }
+
+        [Route("CountCart")]
+        [HttpGet]
+        public int CountCart()
+        {
+            return CartManager.CountCart();
+        }
+
+        [Route("GetAllCartValue")]
+        [HttpGet]
+        public IQueryable GetAllCartValue()
+        {
+            return CartManager.GetAllCartValue();
         }
     }
 }

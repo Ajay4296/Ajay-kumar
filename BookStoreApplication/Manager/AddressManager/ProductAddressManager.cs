@@ -26,5 +26,11 @@ namespace Manager.AddressManager
         {
             return this.addressRepository.AddDetailAddress(addressModel);
         }
+    
+
+        public object LoginID(string Email, string _Password)
+        {
+            return addressRepository.LoginID(Email,_Password);
+        }
     }
 }

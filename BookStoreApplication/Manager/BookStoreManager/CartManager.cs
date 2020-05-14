@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Model.Model;
+using Model;
 using Repository.Repository;
+using System.Linq;
 
 namespace Manager.Manager
 {
@@ -23,6 +25,16 @@ namespace Manager.Manager
         public CartModel DeleteCart(int id)
         {
             return cartRepository.DeleteCart(id);
+        }
+
+        public int CountCart()
+        {
+            return cartRepository.CountCart();
+        }
+
+        public IQueryable GetAllCartValue()
+        {
+            return cartRepository.GetAllCartValue();
         }
     }
 }
