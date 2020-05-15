@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Manager;
 
 using Manager.AddressManager;
+using Manager.LoginManager;
 using Manager.Manager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +20,7 @@ using Microsoft.OpenApi.Models;
 using Repository;
 using Repository.AddressRepository;
 using Repository.DBContext;
+using Repository.LoginRepo;
 using Repository.Repository;
 
 namespace BookStoreBackend
@@ -46,6 +48,8 @@ namespace BookStoreBackend
 
             services.AddTransient<ICartRepository, CartRepository>();
             services.AddTransient<ICartManager,CartManager>();
+            services.AddTransient<ILoginRepo, ImpLoginRepo>();
+            services.AddTransient<ILogin,ImpLoginManager>();
 
             services.AddSwaggerGen(c =>
             {
@@ -66,6 +70,12 @@ namespace BookStoreBackend
             {
                 app.UseHsts();
             }
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin();
+                builder.AllowAnyMethod();
+                builder.AllowAnyHeader();
+            });
 
             app.UseHttpsRedirection();
             app.UseMvc();
