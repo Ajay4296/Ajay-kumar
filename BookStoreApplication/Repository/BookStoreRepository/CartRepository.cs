@@ -13,8 +13,7 @@ namespace Repository.Repository
     {
         
         private readonly UserDbContext userDbContext;
-        List<BookStoreModel> GetAll_CartValue = new List<BookStoreModel>();
-        List<CartModel> Cart_List = new List<CartModel>();
+       
 
         public CartRepository(UserDbContext userDbContext)
         {

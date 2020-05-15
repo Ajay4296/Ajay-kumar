@@ -2,31 +2,18 @@ import React, { Component } from 'react';
 import Header from './Header';
 import DisplayBooks from './DisplayBooks';
 import Footer from './Footer';
-<<<<<<< HEAD
-
-=======
->>>>>>> 9b8b32f6efb6ee4e1af5f94cfe86cbd72052d9b7
 import { getAllBooksRequestMethod, getBookCountRequestMethod } from '../services/BookServices';
-import {AddCartRequestMethod} from '../services/CartServices';
 import MyCart from './MyCart';
 class Dashboard extends Component {
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 9b8b32f6efb6ee4e1af5f94cfe86cbd72052d9b7
     state = {
         books: [],
         bookCount: 0,
         cartCount: 0,
-<<<<<<< HEAD
-
-=======
->>>>>>> 9b8b32f6efb6ee4e1af5f94cfe86cbd72052d9b7
         wishlistCount: 0,
         clickedId: [],
         addToBagBtnText: "Add to Bag",
         showMyCartComponent: false,
+        showCustomerDetails: false
 
         // pageNo: 0,
         // offset: 0,
@@ -60,15 +47,11 @@ class Dashboard extends Component {
             .then(([getallBookResult, countBookResult]) => {
                 this.setState({
                     books: getallBookResult.data,
-                    bookCount: countBookResult.data,
+                    bookCount: countBookResult.data
                 })
             })    
     }
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> 9b8b32f6efb6ee4e1af5f94cfe86cbd72052d9b7
     //     onChangePaginationHandler =  (event,value) => {
     //         event.preventDefault();
     //         let pageNumber = value;
@@ -89,10 +72,7 @@ class Dashboard extends Component {
 
     //     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 9b8b32f6efb6ee4e1af5f94cfe86cbd72052d9b7
     cartIconClickedHandler = () => {
         let doesShowMyCartComponent = this.state.showMyCartComponent;
         this.setState({
@@ -100,9 +80,14 @@ class Dashboard extends Component {
         })
     }
 
-  
+    placeOrderClickedHandler=()=>{
+        let doesShowCustomerDetails = this.state.showCustomerDetails;
+        this.setState({
+            showCustomerDetails : !doesShowCustomerDetails
+        })
+    }
 
-    addToBagClickHandler = (clickedID,bookAvailable) => {
+    addToBagClickHandler = (clickedID) => {
         let cartCount = this.state.cartCount;
         let clickedidArray = this.state.clickedId;
         clickedidArray.push(clickedID);
@@ -111,33 +96,16 @@ class Dashboard extends Component {
             cartCount: cartCount + 1,
             clickedId: [...clickedidArray],
             addToBagBtnText: "Added to bag"
-<<<<<<< HEAD
 
-=======
->>>>>>> 9b8b32f6efb6ee4e1af5f94cfe86cbd72052d9b7
         })
-        var cart = {
-            Book_ID: clickedID ,
-            SelectBookCount: bookAvailable
-        }
-       const response = AddCartRequestMethod(cart);
-       response.then(res=>{
-          console.log(res.data); 
-       })
     }
 
     addToWishlistClickHandler = () => {
-<<<<<<< HEAD
 
         let wishlistCount = this.state.wishlistCount;
         this.setState({
             wishlistCount: wishlistCount + 1
 
-=======
-        let wishlistCount = this.state.wishlistCount;
-        this.setState({
-            wishlistCount: wishlistCount + 1
->>>>>>> 9b8b32f6efb6ee4e1af5f94cfe86cbd72052d9b7
         })
     }
 
@@ -146,16 +114,16 @@ class Dashboard extends Component {
             <>
                 <Header
                     cartCount={this.state.cartCount}
-<<<<<<< HEAD
 
-=======
->>>>>>> 9b8b32f6efb6ee4e1af5f94cfe86cbd72052d9b7
                     wishlistCount={this.state.wishlistCount}
                     cartIconClickedHandler={this.cartIconClickedHandler}
                 />
                 {
                     this.state.showMyCartComponent ?
-                        <MyCart/>
+                        <MyCart
+                            placeOrderClickedHandler={this.placeOrderClickedHandler}
+                            showCustomerDetails = {this.state.showCustomerDetails}
+                        />
                         :
                         <DisplayBooks
                             books={this.state.books}

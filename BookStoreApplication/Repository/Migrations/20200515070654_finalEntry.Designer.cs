@@ -9,8 +9,8 @@ using Repository.DBContext;
 namespace Repository.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20200513140859_Initial-Migration")]
-    partial class InitialMigration
+    [Migration("20200515070654_finalEntry")]
+    partial class finalEntry
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,6 +48,9 @@ namespace Repository.Migrations
                     b.Property<string>("Email")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("AddressType")
+                        .IsRequired();
+
                     b.Property<string>("CityTown")
                         .IsRequired();
 
@@ -60,9 +63,6 @@ namespace Repository.Migrations
                         .IsRequired();
 
                     b.Property<string>("LandMark")
-                        .IsRequired();
-
-                    b.Property<string>("Password")
                         .IsRequired();
 
                     b.Property<int>("ZipCode");
@@ -85,6 +85,19 @@ namespace Repository.Migrations
                     b.HasKey("CartID");
 
                     b.ToTable("CartTable");
+                });
+
+            modelBuilder.Entity("Model.Model.User", b =>
+                {
+                    b.Property<string>("Email")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Password")
+                        .IsRequired();
+
+                    b.HasKey("Email");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

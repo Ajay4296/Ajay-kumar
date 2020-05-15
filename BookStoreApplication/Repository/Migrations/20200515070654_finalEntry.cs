@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repository.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class finalEntry : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,13 +12,13 @@ namespace Repository.Migrations
                 columns: table => new
                 {
                     Email = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: false),
                     FullName = table.Column<string>(nullable: false),
                     ContactNumber = table.Column<int>(nullable: false),
                     DeliveryAddress = table.Column<string>(nullable: false),
                     ZipCode = table.Column<int>(nullable: false),
                     CityTown = table.Column<string>(nullable: false),
-                    LandMark = table.Column<string>(nullable: false)
+                    LandMark = table.Column<string>(nullable: false),
+                    AddressType = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,6 +56,18 @@ namespace Repository.Migrations
                 {
                     table.PrimaryKey("PK_CartTable", x => x.CartID);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Email = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Email);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -68,6 +80,9 @@ namespace Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "CartTable");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }
