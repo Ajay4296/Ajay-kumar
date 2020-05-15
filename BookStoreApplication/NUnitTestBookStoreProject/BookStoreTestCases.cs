@@ -162,6 +162,7 @@ namespace NUnitTestBookStoreProject
             addressmodel.FullName = "Nalagati Ravindhar";
             addressmodel.ZipCode = 507159;
             addressmodel.LandMark = "oppo police station";
+            addressmodel.Password = "applechoki1434";
             var service = new Mock<IAddressRepository>();
             var addressmanager = new ProductAddressManager(service.Object);
             var data = addressmanager.AddDetailAddress(addressmodel);
@@ -190,6 +191,7 @@ namespace NUnitTestBookStoreProject
             addressmodel.FullName = "Nalagati Ravindhar";
             addressmodel.ZipCode = 507159;
             addressmodel.LandMark = "oppo police station";
+            addressmodel.Password = "applechoki1434";
             var service = new Mock<IAddressManager>();
             var addresscontroller = new AddressController(service.Object);
             var data = addresscontroller.AddDetailAddreess(addressmodel);
