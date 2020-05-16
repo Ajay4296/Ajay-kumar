@@ -150,7 +150,7 @@ namespace NUnitTestBookStoreProject
             Assert.IsNotNull(data);
         }
         /// <summary>
-        ///invoking the add detail  
+        ///invoking the add detail  method from repository class 
         /// </summary>
         [Test]
         public void GivenAddressManager_AddDetailAddress_Method_ShouldReturn_Data()
