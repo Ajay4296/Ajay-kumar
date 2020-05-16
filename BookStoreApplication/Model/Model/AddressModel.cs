@@ -17,7 +17,6 @@ namespace Model.Model
         public double ContactNumber { get; set; }
         [Required]
         public string Password { get; set; }     
-
         [Required]
         public string FullName { get; set; }
  
@@ -32,6 +31,9 @@ namespace Model.Model
 
         [Required]
         public string LandMark { get; set; }
+
+        [Required]
+        public string AddressType { get; set; }
     }
 }
  

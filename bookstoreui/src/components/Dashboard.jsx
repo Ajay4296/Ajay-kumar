@@ -3,7 +3,7 @@ import Header from './Header';
 import DisplayBooks from './DisplayBooks';
 import Footer from './Footer';
 import { getAllBooksRequestMethod, getBookCountRequestMethod } from '../services/BookServices';
-import {AddCartRequestMethod,getCartAddedCountRequestMethod,getCartValuesRequestMethod,deleteCartValueRequestMethod} from '../services/CartServices';
+import {AddCartRequestMethod} from '../services/CartServices';
 import MyCart from './MyCart';
 class Dashboard extends Component {
 
@@ -15,9 +15,6 @@ class Dashboard extends Component {
         clickedId: [],
         addToBagBtnText: "Add to Bag",
         showMyCartComponent: false,
-        showCustomerDetails: false,
-        cartAddedCount : 0,
-        cart:[]
 
         // pageNo: 0,
         // offset: 0,
@@ -47,23 +44,16 @@ class Dashboard extends Component {
     //     })
     //   }
     componentDidMount() {
-        Promise.all([getAllBooksRequestMethod(), getBookCountRequestMethod(),getCartAddedCountRequestMethod(),getCartValuesRequestMethod()])
-            .then(([getallBookResult, countBookResult,cartAddedCountResult,getCartValues]) => {
+        Promise.all([getAllBooksRequestMethod(), getBookCountRequestMethod()])
+            .then(([getallBookResult, countBookResult]) => {
                 this.setState({
                     books: getallBookResult.data,
                     bookCount: countBookResult.data,
-                    cartAddedCount: cartAddedCountResult.data,
-                    cart : getCartValues.data
                 })
             })    
     }
 
-    deleteCartHandler = async(id)=>{
-     const response = deleteCartValueRequestMethod({ params: { id: id } });
-      await response.then(res=>{
-            console.log(res.data);
-        })
-    }
+    
     //     onChangePaginationHandler =  (event,value) => {
     //         event.preventDefault();
     //         let pageNumber = value;
@@ -91,12 +81,7 @@ class Dashboard extends Component {
         })
     }
 
-    placeOrderClickedHandler=()=>{
-        let doesShowCustomerDetails = this.state.showCustomerDetails;
-        this.setState({
-            showCustomerDetails : !doesShowCustomerDetails
-        })
-    }
+  
 
     addToBagClickHandler = (clickedID,bookAvailable) => {
         let cartCount = this.state.cartCount;
@@ -135,13 +120,7 @@ class Dashboard extends Component {
                 />
                 {
                     this.state.showMyCartComponent ?
-                        <MyCart
-                            placeOrderClickedHandler={this.placeOrderClickedHandler}
-                            showCustomerDetails = {this.state.showCustomerDetails}
-                            cartAddedCount = {this.state.cartAddedCount}
-                            cart = {this.state.cart}
-                            deleteCartHandler={this.deleteCartHandler}
-                        />
+                        <MyCart/>
                         :
                         <DisplayBooks
                             books={this.state.books}
