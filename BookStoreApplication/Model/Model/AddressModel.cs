@@ -10,28 +10,20 @@ namespace Model.Model
    public class AddressModel
     {
         [Key]        
-        [Required]
         public string Email { get; set; }
        
-        [Required]
         public string FullName { get; set; }
  
-        [Required]
-        public int ContactNumber { get; set; }
+        public string ContactNumber { get; set; }
        
-        [Required]
         public string DeliveryAddress { get; set; }
 
-        [Required]
-        public int ZipCode { get; set; }
-
-        [Required]
+        public string ZipCode { get; set; }
+        
         public string CityTown { get; set; }
 
-        [Required]
-        public string LandMark { get; set; }
+        public string LandMark { get; set; }    
 
-        [Required]
         public string AddressType { get; set; }
     }
 }

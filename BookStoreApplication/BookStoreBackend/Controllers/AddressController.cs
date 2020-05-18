@@ -20,14 +20,16 @@ namespace BookStoreBackend.Controllers
             this.addressManager = AddressManager;
         }
 
-        [Route("GetALLAddress")]
+        [Route("GetCustomerAddress")]
         [HttpGet]
-        public IEnumerable<AddressModel> GetAddress()
+        public AddressModel GetCustomerAddress(string email)
         {
-            return addressManager.GetAddress();
+            return this.addressManager.GetCustomerAddress(email);
         }
 
-        [Route("AddDetailAddress")]
+    
+
+    [Route("AddDetailAddress")]
         [HttpPost]
         public async Task<IActionResult> AddDetailAddreess(AddressModel addressModel)
         {

@@ -17,9 +17,9 @@ namespace Manager.AddressManager
         }
 
 
-        public IEnumerable<AddressModel> GetAddress()
+        public AddressModel GetCustomerAddress(string email)
         {
-            return addressRepository.GetAddress();
+            return this.addressRepository.GetCustomerAddress(email);
         }
 
         public Task<int> AddDetailAddress(AddressModel addressModel)

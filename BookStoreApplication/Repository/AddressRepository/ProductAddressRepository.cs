@@ -19,9 +19,9 @@ namespace Repository.AddressRepository
             this.addressDB = addressDB;
         }
 
-        public IEnumerable<AddressModel> GetAddress()
+        public AddressModel GetCustomerAddress(string email)
         {
-            return addressDB.AddressSpace;
+            return addressDB.AddressSpace.Find(email);
         }
         public Task<int> AddDetailAddress(AddressModel addressModel)
         {
