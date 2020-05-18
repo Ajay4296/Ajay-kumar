@@ -33,6 +33,7 @@ class Login extends Component {
       Email: this.state.email,
       Password: this.state.password
     }
+    sessionStorage.setItem("email",this.state.email);
     const response = LoginRequestMethod(data);
     response.then(res => {
       console.log(res.data);

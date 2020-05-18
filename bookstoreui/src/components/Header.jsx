@@ -7,9 +7,13 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Typography from '@material-ui/core/Typography';
 import { Button } from '@material-ui/core';
+import {getCartAddedCountRequestMethod} from '../services/CartServices';
 class Header extends Component {
+    
     render() {
+        console.log(this.props.cartCount);
         return (
+            
             <>
                 <div className='header'>
                     <div className='book-logo-search-div'>
@@ -17,9 +21,7 @@ class Header extends Component {
                             <MenuBookIcon fontSize='large' />
                         </div>
                         <div className='book-title'>
-                            <Typography variant='h4'>
-                                Book Store
-                        </Typography>
+                            <h4 className='title'>BookStore</h4>
                         </div>
 
                         <div className='search-div'>
@@ -34,7 +36,9 @@ class Header extends Component {
                                 }}
                                 id="outlined-basic"
                                 placeholder='search'
-                                variant="outlined" />
+                                variant="outlined" 
+                                onChange={this.props.searchHandler}   
+                                />
                         </div>
                     </div>
                     <div className='cart-wishlist-div'>
@@ -44,7 +48,7 @@ class Header extends Component {
                         </div>
                         <div className='wishlist-div'>
                         <span className='icon-counter' id='lblWishListCount'> {this.props.wishlistCount} </span>
-                           <Button id='icon-btn'> <FavoriteIcon fontSize='large' /> </Button>
+                           <Button id='icon-btn' onClick={this.props.wishListIconClickedHandler}> <FavoriteIcon fontSize='large' /> </Button>
                         </div>
                     </div>
                 </div>

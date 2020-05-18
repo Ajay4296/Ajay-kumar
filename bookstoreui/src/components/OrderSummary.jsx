@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
 import { Typography, Button } from '@material-ui/core';
-import orderImage from '../assets/ordersuccessful.jpg'
+import orderImage from '../assets/ordersuccessful.jpg';
+import {withRouter } from 'react-router-dom';
 
 class OrderSummary extends Component {
+    constructor(props)
+    {
+        super(props)
+        this.state={
+        }
+    
+    }
+    
+    continueShoppingHandler=()=>{
+        console.log('inside continue');
+        //this.props.history.push('/Dashboard');
+        window.location.reload();
+    }
     render() {
         return (
-            <div className='order-main-div'>
-                <Typography variant='h3'>Order Placed Successfully</Typography>
+            <>
+                <div className='order-main-div'>
+                <Typography id='order-summary-title' variant='h3'>Order Placed Successfully</Typography>
                 <div className='order-image-div'>
-                <img className='img' id='img' src={orderImage}/>
+                <img className='img' id='img-ordersummary' src={orderImage}/>
                 </div>
                 <p><b>Hurray!! your order is confirmed ,<br />
-                the order id is #12112 save the order id for<br />
+                the order id is #{this.props.orderID} save the order id for<br />
                 further communication...</b></p>
-                <div className='order-summary-table-div'>
-                    <table class="table table-bordered">
+                <div className='table-responsive' id='table-div'>
+                    <table class=" table table-bordered" id='address-table'>
                         <thead>
                             <tr>
                                 <th>Email us</th>
@@ -31,9 +46,12 @@ class OrderSummary extends Component {
                         </tbody>
                     </table>          
                 </div>
-                <Button variant='outlined' color='primary'>Continue Shopping</Button>
+                <Button variant='outlined'
+                 color='primary'
+                 onClick={this.continueShoppingHandler}>Continue Shopping</Button>
             </div>
+            </>
         )
     }
 }
-export default OrderSummary;
+export default withRouter(OrderSummary);

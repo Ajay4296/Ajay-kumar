@@ -14,14 +14,14 @@ class DisplayBooks extends Component {
         return (
             <>
                 <div className='bookcount-sortby-div'>
-                    <Typography variant='h5'>
+                    <Typography id='display-book-title' variant='h5'>
                         Books<span id='bookcountfont'>({this.props.bookCount} items)</span>
                         </Typography>
-                    <div>
-                        <select name="Sort By Relevance" id="Sort_By_Relevance" >
+                    <div className='sortby-div'>
+                        <select name="Sort By Relevance" id="Sort_By_Relevance" onChange={this.props.sortByRelevanceHandler} >
                             <option value="-1" selected>Sort By Relevance</option>
-                            <option name="price:low to high">price:low to high</option>
-                            <option name="price:high to low">price:high to low</option>
+                            <option name="price:low to high">price: low to high</option>
+                            <option name="price:high to low">price: high to low</option>
                             <option name="Newest Arrivals">Newest Arrivals</option>
                         </select>
                     </div>
@@ -35,7 +35,7 @@ class DisplayBooks extends Component {
                                         
                                         <Tooltip  title={ele.summary}> 
                                         <CardActionArea> 
-                                            <img id='img' src={ele.bookImage} />
+                                            <img id='img-book' src={ele.bookImage} />
                                             
                                             {
                                                 /* <CardMedia
@@ -73,7 +73,7 @@ class DisplayBooks extends Component {
                                             <Button
                                                 variant='outlined'
                                                 color='secondary'
-                                                onClick = {this.props.addToWishlistClickHandler}
+                                                onClick = {()=>this.props.addToWishlistClickHandler(ele.bookID)}
                                             > WishList</Button>
                                             </>
                                         }

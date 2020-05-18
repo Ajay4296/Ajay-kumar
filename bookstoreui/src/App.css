@@ -21,7 +21,11 @@ margin-right: 20px;
 
 .book-title{
 margin-right: 80px;
+height: 26px;
+display: flex;
 }
+
+
 
 .search-textfield{
  width: 700px;
@@ -66,9 +70,10 @@ align-items: center;
 .bookcount-sortby-div{
   display: flex;
   justify-content: space-between;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 16%;
+  margin-right: 18%;
   margin-top: 40px;
+  align-items: center;
 }
 
 #Sort_By_Relevance{
@@ -86,15 +91,6 @@ align-items: center;
 }
 
 .display-books-div{
-  /* display: flex;
-    flex-wrap: wrap;
-    height: 1000px;
-    margin-top: 50px;
-    margin-right: 10%;
-    margin-left: 10%;
-    justify-content: center;
-    width: 1400px;
-    align-items: center; */
     display: grid;
     grid-template-columns: 300px 300px 300px 300px;
     grid-gap: 30px;
@@ -102,14 +98,12 @@ align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
     min-height: 699px;
-
- 
 }
 
 .MuiPaper-root.MuiCard-root.note-card.MuiPaper-elevation1.MuiPaper-rounded{ 
   width:100%;
   margin:1%;
-  height: 100%;
+  height: 480px;
   background-color: #f1faee;
 }
 
@@ -125,6 +119,11 @@ align-items: center;
   height: 40%;
   background-color: transparent;
   z-index: 1;
+}
+
+#pagination{
+  display: flex;
+  justify-content: center;
 }
 .footer-div {
     display: flex;
@@ -157,8 +156,7 @@ align-items: center;
     justify-content:flex-start;
     width: 1000px;
     height: auto;
-    border: 1px solid;
-    box-shadow: 11px 9px 20px 0px black;
+    border: 1px solid #aaa;
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -188,7 +186,7 @@ align-items: center;
 #mycart-counter{
   padding-left: 10px;
   padding-right: 10px;
-  background-color: lemonchiffon;
+  border: 1px solid #aaa;
 }
 .place-order-btn-div{
   display: flex;
@@ -207,10 +205,7 @@ align-items: center;
   justify-content:flex-start;
   width: 1000px;
   height: auto;
-  border: 1px solid;
-  box-shadow: 11px 9px 20px 0px black;
-  /* padding-left: 10px;
-  padding-top: 10px; */
+  border: 1px solid #aaa;
   padding: 10px;
   margin-bottom: 30px;
 }
@@ -221,8 +216,7 @@ align-items: center;
   justify-content:flex-start;
   width: 1000px;
   height: auto;
-  border: 1px solid;
-  box-shadow: 11px 9px 20px 0px black;
+  border: 1px solid #aaa;
   /* padding-left: 10px;
   padding-top: 10px */
   padding: 10px;
@@ -234,8 +228,17 @@ align-items: center;
   justify-content: center;
   align-items: center;
   margin-top: 30px;
+  min-height: 781px;
 }
-#img {
+#img-ordersummary {
+  vertical-align: middle;
+  border-style: none;
+  width: 300px;
+  height: 300px;
+  padding: 10px;
+}
+
+#img-book{
   vertical-align: middle;
   border-style: none;
   width: 300px;
@@ -267,11 +270,172 @@ form#form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 2px -2px 5px 3px black;
+  border: 1px solid #aaa
 }
 
 h2#welcome-text {
   text-align: center;
   margin: 50px;
   color: #a71621;
+}
+.MuiTypography-h4{
+  font-size: 2.5rem !important;
+}
+
+#table-div {
+  display: flex;
+  justify-content: center;
+  width: auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+/* Media Query  */
+/* @media  screen and (max-width:1280px) and (min-width: 1024px){
+  .display-books-div{
+    display: grid;
+    grid-template-columns: repeat(4,1fr) !important;
+    grid-gap: 30px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: 699px;
+}
+
+} */
+
+@media all and (max-width:768px)  
+{
+  /* .display-books-div {
+    grid-template-columns: repeat(2,1fr) !important;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.search-textfield {
+  width: 0px;
+}
+.search-div {
+  margin-left: -30px;
+} */
+}
+
+ @media all and (max-width: 360px) 
+{
+  .book-logo-search-div {
+    display: flex;
+    position: relative;
+    left: 0px;
+    align-items: center;
+}
+.book-title {
+  margin-right: 18px;
+  margin-top: 8px;
+}
+
+.search-textfield {
+  width: 100%;
+}
+
+.cart-wishlist-div {
+  right: 0px;
+}
+
+.wishlist-div {
+  margin-left: -34px;
+}
+
+.bookcount-sortby-div {
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-top: 30px;
+}
+
+.display-books-div {
+  display: grid;
+  grid-template-columns: 300px;
+}
+
+.MuiSvgIcon-fontSizeLarge {
+  font-size: 20px !important;
+}
+.icon-counter {
+  padding-left: 7px;
+  padding-right: 2px;
+  height: 22px;
+  width: 24px;
+  font-size: 12px;
+}
+
+h4.title {
+  font-size: 17px;
+}
+
+.MuiOutlinedInput-root {
+  height: 40px;
+}
+
+#Sort_By_Relevance {
+  padding: 0px;
+  font-size: 12px;
+}
+
+#display-book-title{
+  font-size: 18px;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 0rem;
+  font-size: 10px;
+}
+
+.my-cart-sub-div {
+   width: 347px;
+}
+.customer-details-div {
+  width: 347px;
+}  
+.order-summary-div {
+  width: 347px;
+} 
+#mycart-title{
+ font-size: 17px !important; 
+}
+
+#img-cart {
+  height: 170px;
+  width: 153px;
+}
+.increment-div {
+  display: flex;
+}
+.item-quantity-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#mycart-counter {
+  padding-left: 0px;
+  padding-right: 0px; 
+}
+
+.MuiButton-label {
+  font-size: 10px;
+}
+.order-main-div {
+  min-height: 526px;
+  margin-top: 0px; 
+}
+#order-summary-title{
+font-size: 20px;
+}
+
+#img-ordersummary {
+  width: 200px;
+  height: 184px;
+}
+
+#address-table{
+  font-size: 10px;
+}
 }
