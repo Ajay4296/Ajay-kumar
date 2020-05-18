@@ -15,7 +15,7 @@ using System.Threading;
 
 namespace NUnitTestBookStoreProject
 {
-    public class Tests
+    public class BookStoreTestCases
     {
         BookStoreModel book = new BookStoreModel();
         [SetUp]
@@ -26,7 +26,7 @@ namespace NUnitTestBookStoreProject
         /// invoking controller AddBook method with mock for bookmanager interface and testing return type 
         /// </summary>
         [Test]
-        public void GivenController_AddBook_Method_Should_Return_Data()
+        public void GivenBookDetails_WhenPassedToBookController_ShouldReturnBookAdded()
         {
             var service = new Mock<IBookManager>();
             var controller = new BookStoreController(service.Object);
@@ -44,7 +44,7 @@ namespace NUnitTestBookStoreProject
         /// invkoing manager class addbook method and with parameter  repository intereface  to using mock as instance interface implemneted class 
         /// </summary>
         [Test]
-        public void GivenManager_AddBook_Method_Should_Return_Data()
+        public void GivenBookDetails_WhenPassedToBookManager_ShouldReturnBookAdded()
         {
             var service = new Mock<IBookRepository>();
             var manager = new BookManager(service.Object);
@@ -63,7 +63,7 @@ namespace NUnitTestBookStoreProject
         /// testing return value is not null
         /// </summary>
         [Test]
-        public void GivenController_GetAllBooks_Method_ShouldReturn_Data()
+        public void GivenGetAllBooks_WhenPassedToBookController_ShouldReturnBooksDetails()
         {
             var service = new Mock<IBookManager>();
             var controller = new BookStoreController(service.Object);
@@ -74,7 +74,7 @@ namespace NUnitTestBookStoreProject
         /// invoking the Getallbooks method from BookRepository class which implements repositroy interface
         /// </summary>
         [Test]
-        public void GivenManager_GetAllBooks_Method_ShouldReturn_Data()
+        public void GivenGetAllBooks_WhenPassedToBookManager_ShouldReturnBooksDetails()
         {
             var service = new Mock<IBookRepository>();
             var manager = new BookManager(service.Object); ;
@@ -86,7 +86,7 @@ namespace NUnitTestBookStoreProject
         /// is implemented by bookmanger class
         /// </summary>
         [Test]
-        public void GivenController_ConutBook_Method_ShouldReturn_Count()
+        public void GivenCountBook_WhenPassedToBookController_ShouldReturnBooksCount()
         {
             var service = new Mock<IBookManager>();
             var controller = new BookStoreController(service.Object);
@@ -98,7 +98,7 @@ namespace NUnitTestBookStoreProject
         /// is implemented by bookmanger class
         /// </summary>
         [Test]
-        public void GivenManager_CountBook_Method_ShouldReturn_Count()
+        public void GivenCountBook_WhenPassedToBookManager_ShouldReturnBooksCount()
         {
             var service = new Mock<IBookRepository>();
             var manager = new BookManager(service.Object);
@@ -110,7 +110,7 @@ namespace NUnitTestBookStoreProject
         /// is implemented by cartrepository class
         /// </summary>
         [Test]
-        public void GivenCartManager_AddCart_Method_ShouldReturn_Data()
+        public void GivenAddCart_WhenPassedToCartManager_ShouldReturnAddedCart()
         {
             CartModel cartmodel = new CartModel();
             cartmodel.CartID = 1;
@@ -126,7 +126,7 @@ namespace NUnitTestBookStoreProject
         /// is implemented by cartrepository  class
         /// </summary>
         [Test]
-        public void GivenCartManager_DeleteCart_Method_ShouldReturn_Output()
+        public void GivenDelete_WhenPassedToCartManager_ShouldReturnDeletedCart()
         {
             CartModel cartmodel = new CartModel();
             cartmodel.CartID = 1;
@@ -142,7 +142,7 @@ namespace NUnitTestBookStoreProject
         /// address classs
         /// </summary>
         [Test]
-        public void GivenAddressManager_GetAddress_Method_ShouldReturn_Data()
+        public void GivenGetAddress_WhenPassedToProductAddressManager_ShouldReturnGetAddress()
         {
             var service = new Mock<IAddressRepository>();
             var addressmanager = new ProductAddressManager(service.Object);
@@ -153,7 +153,7 @@ namespace NUnitTestBookStoreProject
         ///invoking the add detail  method from repository class 
         /// </summary>
         [Test]
-        public void GivenAddressManager_AddDetailAddress_Method_ShouldReturn_Data()
+        public void GivenAddDetailAddress_WhenPassedToProductAddressManager_ShouldReturnGetDetailAddress()
         {
             AddressModel addressmodel = new AddressModel();
             addressmodel.CityTown = "khammam";
@@ -172,7 +172,7 @@ namespace NUnitTestBookStoreProject
         ///invoking the getaddress method from addresscontroller class with arguments Iaddressmanager repository which will get instance 
         /// </summary>
         [Test]
-        public void GivenAddressController_GetAddress_Method_ShouldReturn_Data()
+        public void GivenGetAddress_WhenPassedToAddressController_ShouldReturnGetAddress()
         {
             var service = new Mock<IAddressManager>();
             var addresscontroller = new AddressController(service.Object);
@@ -182,7 +182,7 @@ namespace NUnitTestBookStoreProject
         /// invoking the adddetailaddress method from addresscontroller  class with arguements Addreesmodel class
         /// </summary>
         [Test]
-        public void GivenAddressController_AddDetailAddress_Method_ShouldReturn_Data()
+        public void GivenAddDetail_WhenPassedToProductAddressController_ShouldReturnAddedAddressDetails()
         {
             AddressModel addressmodel = new AddressModel();
             addressmodel.CityTown = "khammam";
