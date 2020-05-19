@@ -6,7 +6,9 @@ import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Typography from '@material-ui/core/Typography';
+
 import { Button } from '@material-ui/core';
+
 class Header extends Component {
     render() {
         return (
@@ -18,7 +20,9 @@ class Header extends Component {
                         </div>
                         <div className='book-title'>
                             <Typography variant='h4'>
+
                                 Book Store
+
                         </Typography>
                         </div>
 
@@ -40,6 +44,7 @@ class Header extends Component {
                     <div className='cart-wishlist-div'>
                         <div className='cart-div'>
                             <span className='icon-counter' id='lblCartCount'> {this.props.cartCount} </span>
+
                             <Button id='icon-btn' onClick={this.props.cartIconClickedHandler}  ><ShoppingCartIcon fontSize='large'/></Button>
                         </div>
                         <div className='wishlist-div'>
@@ -47,8 +52,8 @@ class Header extends Component {
                            <Button id='icon-btn'> <FavoriteIcon fontSize='large' /> </Button>
                         </div>
                     </div>
-                </div>
-                
+                </div>              
+
             </>
         )
 

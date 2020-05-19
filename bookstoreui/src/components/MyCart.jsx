@@ -2,73 +2,24 @@ import React, { Component } from 'react';
 import { Typography, Button } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
-import {getCartAddedCountRequestMethod,getCartValuesRequestMethod,deleteCartValueRequestMethod} from '../services/CartServices';
+
 import logo from '../assets/2states.jpg';
-
 class MyCart extends Component {
-    state={
-        cartAddedCount:0,
-        cart : [],
-        showCustomerDetails: false,
-
-    }
-    componentDidMount(){
-        Promise.all([getCartAddedCountRequestMethod(),getCartValuesRequestMethod()])
-        .then(([cartAddedCountResult,getCartValues]) => {
-            this.setState({
-                cartAddedCount: cartAddedCountResult.data,
-                cart : getCartValues.data
-            })
-        })
-    }
-
-    deleteCartHandler = async(id)=>{
-        const response = deleteCartValueRequestMethod({ params: { id: id } });
-         await response.then(res=>{
-           console.log(res.data)
-          const cartCountRes= getCartAddedCountRequestMethod();
-          cartCountRes.then(
-              res=>{
-                  this.setState({
-                      cartAddedCount : res.data
-                  })
-              }
-          )
-          const cartValuesRes= getCartValuesRequestMethod();
-               cartValuesRes.then(
-                   res=>{
-                       this.setState({
-                           cart : res.data
-                       })
-                   }
-               )
-           })
-       }
-
-       placeOrderClickedHandler=()=>{
-        let doesShowCustomerDetails = this.state.showCustomerDetails;
-        this.setState({
-            showCustomerDetails : !doesShowCustomerDetails
-        })
-    }
     render() {
         return (
             <div className='my-cart-main-div'>
                 <div className='my-cart-sub-div'>
-                    <Typography variant="h4">My cart ({this.state.cartAddedCount})</Typography>
-                    
-                    {
-                        this.state.cart.map((ele)=>{
-                            return(
-                                <>
-                                <div className='book-image-details-div'>
-                                <div className='book-image-div'>
-                            <img id='img-cart' src={ele.bookImage} alt='error' />
+                    <Typography variant="h4">My cart (1)</Typography>
+                    <div className='book-image-details-div'>
+                        <div className='book-image-div'>
+
+                            <img id='img-cart' src={logo} alt='error' />
                         </div>
                         <div className='book-details-div'>
-                            <Typography variant="h5" >{ele.bookTitle}</Typography>
-                            <Typography>{ele.authorName}</Typography>
-                            <Typography>₹ {ele.bookPrice}</Typography>
+                            <Typography variant="h5" >2 States</Typography>
+                            <Typography>Chetan Bhagat</Typography>
+                            <Typography>₹ 390</Typography>
+
                             <div className='item-quantity-div'>
                                 <Button>
                                     <RemoveCircleOutlineIcon />
@@ -81,31 +32,29 @@ class MyCart extends Component {
                                 <Button
                                     variant='outlined'
                                     color='secondary'
-                                    onClick={()=>{this.deleteCartHandler(ele.cartID)}}
                                 >Remove</Button>
 
                             </div>
                         </div>
                     </div>
-                    </>
-                            )
-                        })
-                    }
-                       
                     <div className='place-order-btn-div'>
+
                         <Button 
                         variant='contained' 
                         color='primary' 
-                        onClick={this.placeOrderClickedHandler}>
+                        onClick={this.props.placeOrderClickedHandler}>
+
                             Place order
                     </Button>
                     </div>
                 </div>
                 <div className='customer-details-div'>
                     <Typography variant="h5">Customer Details</Typography>
+
                     {
-                        this.state.showCustomerDetails ?
+                        this.props.showCustomerDetails ?
                         <form action="" className=" p-5" name="myForm" id="f" >
+
                         <div className="row">
                             <div className="col">
                                 <div className="form-group">
@@ -153,6 +102,7 @@ class MyCart extends Component {
                             <label>type</label>
                         </div>
                         <div class="form-group form-check" id='check-box-div'>
+
                             <label class="form-check-label" id='form-check-label'>
                                 <input class="form-check-input" type="checkbox" /> Home
                             </label>
@@ -160,14 +110,17 @@ class MyCart extends Component {
                                 <input class="form-check-input" type="checkbox" /> Work
                             </label>
                             <label class="form-check-label" id='form-check-label'>
+
                                 <input class="form-check-input" type="checkbox" /> other
                             </label>
                         </div>
                         <div className='form-group'>
                             <button type="submit" id="continue" className="btn btn-primary">Continue</button>
                         </div>
+
                     </form> : null 
                     }
+
                 </div>
                 <div className='order-summary-div'>
                     <Typography variant="h5">Order summary</Typography>

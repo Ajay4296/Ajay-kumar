@@ -1,3 +1,4 @@
+
 .header{
   display: flex;
   background-color: #a71621;
@@ -40,7 +41,9 @@ margin-right: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   align-items: center;
+
 }
 .wishlist-div{
 display: flex;
@@ -54,6 +57,7 @@ align-items: center;
   color: white;
 }
 .icon-counter {
+
   padding-left: 9px;
   padding-right: 2px;
   border-radius: 50%;
@@ -101,9 +105,8 @@ align-items: center;
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
-    min-height: 699px;
 
- 
+    min-height: 699px;
 }
 
 .MuiPaper-root.MuiCard-root.note-card.MuiPaper-elevation1.MuiPaper-rounded{ 
@@ -112,6 +115,7 @@ align-items: center;
   height: 100%;
   background-color: #f1faee;
 }
+
 
 .MuiCardActions-root {
   display: flex;
@@ -137,6 +141,7 @@ align-items: center;
       height: 40px;
       justify-content: center;
       align-items: center;
+
     }
 
     .my-cart-main-div {
@@ -147,6 +152,7 @@ align-items: center;
       margin-top: 20px;
       margin-bottom: 20px;
       min-height: 771px;
+
       /* height: 800px; */
       
   }
@@ -156,7 +162,7 @@ align-items: center;
     flex-direction: column;
     justify-content:flex-start;
     width: 1000px;
-    height: auto;
+    height: 300px;
     border: 1px solid;
     box-shadow: 11px 9px 20px 0px black;
     padding-left: 10px;
@@ -209,6 +215,7 @@ align-items: center;
   height: auto;
   border: 1px solid;
   box-shadow: 11px 9px 20px 0px black;
+
   /* padding-left: 10px;
   padding-top: 10px; */
   padding: 10px;
@@ -223,6 +230,7 @@ align-items: center;
   height: auto;
   border: 1px solid;
   box-shadow: 11px 9px 20px 0px black;
+
   /* padding-left: 10px;
   padding-top: 10px */
   padding: 10px;
@@ -243,6 +251,7 @@ align-items: center;
   padding: 10px;
 }
 
+
 #form-check-label {
   margin-bottom: 0;
   padding-right: 40px;
@@ -259,19 +268,4 @@ align-items: center;
 
 #bookcountfont{
   font-size: small;
-}
-
-form#form {
-  width: 520px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 2px -2px 5px 3px black;
-}
-
-h2#welcome-text {
-  text-align: center;
-  margin: 50px;
-  color: #a71621;
 }

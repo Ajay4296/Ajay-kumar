@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Typography } from '@material-ui/core';
-import { LoginRequestMethod } from '../services/LoginServices'
+import { loginEmployeeRequestHandler } from '../../Services/LoginServices';
 class Login extends Component {
   constructor(props) {
     super(props)
@@ -8,7 +7,7 @@ class Login extends Component {
       email: "",
       password: "",
       loginAuthentication: false,
-      showError: false
+      showError:false
     }
   }
 
@@ -30,52 +29,55 @@ class Login extends Component {
   submitHandler = (event) => {
     event.preventDefault();
     var data = {
-      Email: this.state.email,
-      Password: this.state.password
+      email: this.state.email,
+      password: this.state.password
     }
-    const response = LoginRequestMethod(data);
-    response.then(res => {
-      console.log(res.data);
-      if (res.data === data.Email) {
+    const response = loginEmployeeRequestHandler(data);
+      response.then(res => {
+        console.log(res);
+        if (res.data === data.email) {
+          this.setState({
+            loginAuthentication: true
+          })
+        }
+        this.props.history.push('/Dashboard');
+      }).catch(()=>{
+        //alert("email or password is incorrect");
         this.setState({
-          loginAuthentication: true
+          showError:true
         })
-      }
-      this.props.history.push('/Dashboard');
-    }).catch(() => {
-      //alert("email or password is incorrect");
-      this.setState({
-        showError: true
       })
-    })
   }
 
   render() {
-
+    
     return (
       <>
-        <Typography variant='h2' id='welcome-text'>Welcome to Book Store</Typography>
-        <form className=" container p-5 bg-light text-primary mx-auto" id='form' onSubmit={this.submitHandler} >
+
+        <form className=" p-5 bg-light text-primary mx-auto" id='form' >
+
           <div className="form-group">
             <h1 className='display-3 text-dark'>Login</h1>
           </div>
           <div className="form-group">
             <label for="email">Email :</label>
-            <input type="text" id="email" className="form-control " onChange={this.emailHandler} />
 
+            <input type="text" id="email" className="form-control "  />
           </div>
           <div className="form-group">
             <label for="password">Password :</label>
-            <input type="password" id="password" className="form-control " onChange={this.passwordHandler} />
-          </div>
-          {
-            this.state.showError ? <div className="form-group text-danger" id="error">Email or Password is incorrect </div> : null
-          }
 
+            <input type="password" id="password" className="form-control "  />
+          </div>
+          {/* {
+            this.state.showError ? <div className="form-group text-danger" id="error">Email or Password is incorrect </div> : null
+          } */}
+
+          
           <div className="form-group text-secondary">
             Don't have an account ? register
           </div>
-          <button type="submit" className="btn btn-success" id="submitBtn" >Login</button>
+          <button type="submit" className="btn btn-success" id="submitBtn">Login</button>
         </form>
       </>
     )

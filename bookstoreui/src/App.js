@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Dashboard from './components/Dashboard';
+
 import MyCart from './components/MyCart';
 import Login from './components/Login';
 import OrderSummary from './components/OrderSummary';
@@ -9,9 +10,11 @@ function App() {
   return (
   <Router>
   <Switch>
-   <Route path='/' exact component={Login} />
-   <Route path='/dashboard' component={Dashboard} />
+   <Route path='/' exact component={Dashboard} />
+   <Route path='/OrderSummary' exact component={OrderSummary} />
+   <Route path='/Login' exact component={Login} />
    </Switch>
+
    </Router>
   );
 }
