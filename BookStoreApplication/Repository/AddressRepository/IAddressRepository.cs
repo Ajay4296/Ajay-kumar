@@ -8,7 +8,7 @@ namespace Repository.AddressRepository
 {
    public interface IAddressRepository
     {
-        IEnumerable<AddressModel> GetAddress();
+        AddressModel GetCustomerAddress(string email);
         Task<int> AddDetailAddress(AddressModel addressModel);
     }
 }

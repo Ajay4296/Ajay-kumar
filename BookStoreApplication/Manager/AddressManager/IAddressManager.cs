@@ -8,7 +8,7 @@ namespace Manager.AddressManager
 {
    public interface IAddressManager
     {
-        IEnumerable<AddressModel> GetAddress();
+        AddressModel GetCustomerAddress(string email);
         Task<int> AddDetailAddress(AddressModel addressModel);
     }
 }

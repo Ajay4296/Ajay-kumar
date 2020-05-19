@@ -9,18 +9,19 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip'; 
 
 class DisplayBooks extends Component {
+    
     render() {
         return (
             <>
                 <div className='bookcount-sortby-div'>
-                    <Typography variant='h5'>
+                    <Typography id='display-book-title' variant='h5'>
                         Books<span id='bookcountfont'>({this.props.bookCount} items)</span>
                         </Typography>
-                    <div>
-                        <select name="Sort By Relevance" id="Sort_By_Relevance" >
+                    <div className='sortby-div'>
+                        <select name="Sort By Relevance" id="Sort_By_Relevance" onChange={this.props.sortByRelevanceHandler} >
                             <option value="-1" selected>Sort By Relevance</option>
-                            <option name="price:low to high">price:low to high</option>
-                            <option name="price:high to low">price:high to low</option>
+                            <option name="price:low to high">price: low to high</option>
+                            <option name="price:high to low">price: high to low</option>
                             <option name="Newest Arrivals">Newest Arrivals</option>
                         </select>
                     </div>
@@ -34,27 +35,22 @@ class DisplayBooks extends Component {
                                         
                                         <Tooltip  title={ele.summary}> 
                                         <CardActionArea> 
-                                            <img id='img' src={ele.bookImage} />
+                                            <img id='img-book' src={ele.bookImage} />
                                             
                                             {
                                                 /* <CardMedia
                                             
-
                                 image={logo}
                             /> */}
                                             <CardContent id='card-content'>
                                                 <Typography gutterBottom variant="h5" component="h2">
-
                                                      {ele.bookTittle}
-
                                                 </Typography>
                                                 <Typography id='note-content' variant="body2" color="textSecondary" component="p">
                                                     by: {ele.authorName}
                                                 </Typography>
                                                 <Typography id='note-content' variant="body2" color="textSecondary" component="p">
-
                                                     ₹ {ele.price}
-
                                                 </Typography>
                                             </CardContent>
                                         </CardActionArea>
@@ -66,37 +62,29 @@ class DisplayBooks extends Component {
                                             <Button
                                                 variant='outlined'
                                                 color='primary'
-                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookID)}}
+                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookID,ele.bookCount)}}
                                             > Added to bag</Button> :
                                             <>
                                             <Button
                                                 variant='outlined'
                                                 color='primary'
-                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookID)}}
+                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookID,ele.bookCount)}}
                                             > Add to bag</Button>
                                             <Button
                                                 variant='outlined'
                                                 color='secondary'
-                                                onClick = {this.props.addToWishlistClickHandler}
+                                                onClick = {()=>this.props.addToWishlistClickHandler(ele.bookID)}
                                             > WishList</Button>
                                             </>
                                         }
                                         </CardActions>
                                     </Card>
-
                                 </>
                             );
                         })
                     }
-
                 </div>
-                {/* <div className='pagination-div'>
-                    <Pagination 
-                    count={Math.floor(this.props.bookCount/12)} 
-                    color="primary" 
-                    onClick={this.props.onChangePaginationHandler} />
-
-                </div> */}
+               
             </>
         )
 
