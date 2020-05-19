@@ -15,13 +15,15 @@ using System.Threading;
 
 namespace NUnitTestBookStoreProject
 {
+    /// <summary>
+    /// Test class
+    /// </summary>
     public class BookStoreTestCases
     {
+     
         BookStoreModel book = new BookStoreModel();
-        [SetUp]
-        public void Setup()
-        {
-        }
+        private string email;
+      
         /// <summary>
         /// invoking controller AddBook method with mock for bookmanager interface and testing return type 
         /// </summary>
@@ -40,6 +42,7 @@ namespace NUnitTestBookStoreProject
             var data = controller.AddBookDetails(book);
             Assert.IsNotNull(data);
         }
+
         /// <summary>
         /// invkoing manager class addbook method and with parameter  repository intereface  to using mock as instance interface implemneted class 
         /// </summary>
@@ -58,6 +61,7 @@ namespace NUnitTestBookStoreProject
             var data = manager.AddBooksDetail(book);
             Assert.IsNotNull(data);
         }
+
         /// <summary>
         /// Given instance and checking the API in controller for GetALLBooks() method 
         /// testing return value is not null
@@ -70,6 +74,7 @@ namespace NUnitTestBookStoreProject
             var data = controller.GetALLBooks();
             Assert.IsNotNull(data);
         }
+
         /// <summary>
         /// invoking the Getallbooks method from BookRepository class which implements repositroy interface
         /// </summary>
@@ -81,6 +86,7 @@ namespace NUnitTestBookStoreProject
             var data = manager.GetALLBooks();
             Assert.IsNotNull(data);
         }
+
         /// <summary>
         /// invoking the countbook method from  controller class with arguments  Ibookmanger interface 
         /// is implemented by bookmanger class
@@ -93,6 +99,7 @@ namespace NUnitTestBookStoreProject
             var count = controller.CountBook();
             Assert.IsNotNull(count);
         }
+
         /// <summary>
         ///invoking the countbook method from manager class with arguments Ibookrepository interface
         /// is implemented by bookmanger class
@@ -105,6 +112,7 @@ namespace NUnitTestBookStoreProject
             var count = manager.CountBook();
             Assert.IsNotNull(count);
         }
+
         /// <summary>
         ///invoking the addcart method from manager class with arguments Icartrepository interface
         /// is implemented by cartrepository class
@@ -121,6 +129,7 @@ namespace NUnitTestBookStoreProject
             var data = cartmanager.AddCart(cartmodel);
             Assert.IsNotNull(data);
         }
+
         /// <summary>
         ///invoking the deletecart method from cartmanager class with arguments Icartrepository interface
         /// is implemented by cartrepository  class
@@ -137,6 +146,7 @@ namespace NUnitTestBookStoreProject
             var data = cartmanager.DeleteCart(cartmodel.CartID);
             Assert.Null(data);
         }
+
         /// <summary>
         /// invoking the getaddress method  from i addressmanager class with arguments Iaddresrepository interface is implemented by
         /// address classs
@@ -146,9 +156,10 @@ namespace NUnitTestBookStoreProject
         {
             var service = new Mock<IAddressRepository>();
             var addressmanager = new ProductAddressManager(service.Object);
-            var data = addressmanager.GetAddress();
+            var data = addressmanager.GetCustomerAddress(email);
             Assert.IsNotNull(data);
         }
+
         /// <summary>
         ///invoking the add detail  method from repository class 
         /// </summary>
@@ -157,17 +168,18 @@ namespace NUnitTestBookStoreProject
         {
             AddressModel addressmodel = new AddressModel();
             addressmodel.CityTown = "khammam";
-            addressmodel.ContactNumber = 9505012267;
+            addressmodel.ContactNumber = "9505012267";
             addressmodel.Email = "nalagatiravindghar@gmail.com";
             addressmodel.FullName = "Nalagati Ravindhar";
-            addressmodel.ZipCode = 507159;
+            addressmodel.ZipCode = "507159";
             addressmodel.LandMark = "oppo police station";
-            addressmodel.Password = "applechoki1434";
+            
             var service = new Mock<IAddressRepository>();
             var addressmanager = new ProductAddressManager(service.Object);
             var data = addressmanager.AddDetailAddress(addressmodel);
             Assert.IsNotNull(data);
         }
+
         /// <summary>
         ///invoking the getaddress method from addresscontroller class with arguments Iaddressmanager repository which will get instance 
         /// </summary>
@@ -176,8 +188,9 @@ namespace NUnitTestBookStoreProject
         {
             var service = new Mock<IAddressManager>();
             var addresscontroller = new AddressController(service.Object);
-            var data = addresscontroller.GetAddress();
+            var data = addresscontroller.GetCustomerAddress(email);
         }
+
         /// <summary>
         /// invoking the adddetailaddress method from addresscontroller  class with arguements Addreesmodel class
         /// </summary>
@@ -186,12 +199,11 @@ namespace NUnitTestBookStoreProject
         {
             AddressModel addressmodel = new AddressModel();
             addressmodel.CityTown = "khammam";
-            addressmodel.ContactNumber = 9505012267;
+            addressmodel.ContactNumber = "9505012267";
             addressmodel.Email = "nalagatiravindghar@gmail.com";
             addressmodel.FullName = "Nalagati Ravindhar";
-            addressmodel.ZipCode = 507159;
-            addressmodel.LandMark = "oppo police station";
-            addressmodel.Password = "applechoki1434";
+            addressmodel.ZipCode = "507159";
+            addressmodel.LandMark = "oppo police station";           
             var service = new Mock<IAddressManager>();
             var addresscontroller = new AddressController(service.Object);
             var data = addresscontroller.AddDetailAddreess(addressmodel);

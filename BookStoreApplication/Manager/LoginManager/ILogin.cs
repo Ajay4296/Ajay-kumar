@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Manager.LoginManager
 {
+    /// <summary>
+    /// Login interface
+    /// </summary>
     public interface ILogin
     {
         /// <summary>

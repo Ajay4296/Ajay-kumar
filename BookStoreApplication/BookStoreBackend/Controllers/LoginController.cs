@@ -9,6 +9,10 @@ using Model.Model;
 
 namespace BookStoreBackend.Controllers
 {
+    /// <summary>
+    /// Login controller class
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase

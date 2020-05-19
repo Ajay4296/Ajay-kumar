@@ -9,17 +9,33 @@ using Model.Model;
 
 namespace BookStoreBackend.Controllers
 {
+    /// <summary>
+    /// Address controller class
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [Route("api/[controller]")]
     [ApiController]
     public class AddressController : ControllerBase
     {
+        /// <summary>
+        /// The address manager
+        /// </summary>
         private readonly IAddressManager addressManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddressController"/> class.
+        /// </summary>
+        /// <param name="AddressManager">The address manager.</param>
         public AddressController(IAddressManager AddressManager)
         {
             this.addressManager = AddressManager;
         }
 
+        /// <summary>
+        /// Gets the customer address.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <returns></returns>
         [Route("GetCustomerAddress")]
         [HttpGet]
         public AddressModel GetCustomerAddress(string email)
@@ -27,9 +43,13 @@ namespace BookStoreBackend.Controllers
             return this.addressManager.GetCustomerAddress(email);
         }
 
-    
 
-    [Route("AddDetailAddress")]
+        /// <summary>
+        /// Adds the detail addreess.
+        /// </summary>
+        /// <param name="addressModel">The address model.</param>
+        /// <returns></returns>
+        [Route("AddDetailAddress")]
         [HttpPost]
         public async Task<IActionResult> AddDetailAddreess(AddressModel addressModel)
         {
@@ -43,7 +63,6 @@ namespace BookStoreBackend.Controllers
                 return this.BadRequest();
             }
 
-        }
-           
+        }           
     }
 }

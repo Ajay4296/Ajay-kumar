@@ -1,13 +1,14 @@
 ﻿using Model.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 using Repository.DBContext;
 
 namespace Repository.LoginRepo
 {
+    /// <summary>
+    /// Implementation of login repository interface
+    /// </summary>
+    /// <seealso cref="Repository.LoginRepo.ILoginRepo" />
     public class ImpLoginRepo : ILoginRepo
     {
         /// <summary>

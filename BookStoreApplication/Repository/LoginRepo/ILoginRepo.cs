@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Repository.LoginRepo
 {
+    /// <summary>
+    /// Interface class of Login repository
+    /// </summary>
     public interface ILoginRepo
     {
         /// <summary>

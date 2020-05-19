@@ -6,20 +6,36 @@ using System.Text;
 
 namespace Model.Model
 {
+    /// <summary>
+    /// cart model class
+    /// </summary>
     public class CartModel
     {
+        /// <summary>
+        /// Gets or sets the cart identifier.
+        /// </summary>
+        /// <value>
+        /// The cart identifier.
+        /// </value>
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int CartID { get; set; }
 
-       // [ForeignKey("book")]
+        /// <summary>
+        /// Gets or sets the book identifier.
+        /// </summary>
+        /// <value>
+        /// The book identifier.
+        /// </value>
         public int Book_ID { get; set; }
 
-        public int SelectBookCount { get; set; }
-
-        //[ForeignKey("Book_ID")]
-        //public BookStoreModel book { get; set; }
-
+        /// <summary>
+        /// Gets or sets the select book count.
+        /// </summary>
+        /// <value>
+        /// The select book count.
+        /// </value>
+        public int SelectBookCount { get; set; }     
 
     }
 }

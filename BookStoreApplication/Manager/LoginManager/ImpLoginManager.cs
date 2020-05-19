@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Manager.LoginManager
 {
+    /// <summary>
+    /// Implementation of Login Interface 
+    /// </summary>
+    /// <seealso cref="Manager.LoginManager.ILogin" />
     public class ImpLoginManager : ILogin
     {
         /// <summary>
