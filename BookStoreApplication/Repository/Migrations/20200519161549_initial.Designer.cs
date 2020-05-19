@@ -9,8 +9,8 @@ using Repository.DBContext;
 namespace Repository.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20200515070654_finalEntry")]
-    partial class finalEntry
+    [Migration("20200519161549_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,24 +48,19 @@ namespace Repository.Migrations
                     b.Property<string>("Email")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AddressType")
-                        .IsRequired();
+                    b.Property<string>("AddressType");
 
-                    b.Property<string>("CityTown")
-                        .IsRequired();
+                    b.Property<string>("CityTown");
 
-                    b.Property<int>("ContactNumber");
+                    b.Property<string>("ContactNumber");
 
-                    b.Property<string>("DeliveryAddress")
-                        .IsRequired();
+                    b.Property<string>("DeliveryAddress");
 
-                    b.Property<string>("FullName")
-                        .IsRequired();
+                    b.Property<string>("FullName");
 
-                    b.Property<string>("LandMark")
-                        .IsRequired();
+                    b.Property<string>("LandMark");
 
-                    b.Property<int>("ZipCode");
+                    b.Property<string>("ZipCode");
 
                     b.HasKey("Email");
 

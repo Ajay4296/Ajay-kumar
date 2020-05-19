@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repository.Migrations
 {
-    public partial class finalEntry : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,13 +12,13 @@ namespace Repository.Migrations
                 columns: table => new
                 {
                     Email = table.Column<string>(nullable: false),
-                    FullName = table.Column<string>(nullable: false),
-                    ContactNumber = table.Column<int>(nullable: false),
-                    DeliveryAddress = table.Column<string>(nullable: false),
-                    ZipCode = table.Column<int>(nullable: false),
-                    CityTown = table.Column<string>(nullable: false),
-                    LandMark = table.Column<string>(nullable: false),
-                    AddressType = table.Column<string>(nullable: false)
+                    FullName = table.Column<string>(nullable: true),
+                    ContactNumber = table.Column<string>(nullable: true),
+                    DeliveryAddress = table.Column<string>(nullable: true),
+                    ZipCode = table.Column<string>(nullable: true),
+                    CityTown = table.Column<string>(nullable: true),
+                    LandMark = table.Column<string>(nullable: true),
+                    AddressType = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

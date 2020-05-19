@@ -20,9 +20,8 @@ namespace NUnitTestBookStoreProject
     /// </summary>
     public class BookStoreTestCases
     {
-     
-        BookStoreModel book = new BookStoreModel();
-        private string email;
+        readonly BookStoreModel book = new BookStoreModel();
+        private readonly string email;
       
         /// <summary>
         /// invoking controller AddBook method with mock for bookmanager interface and testing return type 
