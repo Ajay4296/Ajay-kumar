@@ -36,7 +36,7 @@ namespace BookStoreBackend.Controllers
         /// </summary>
         /// <param name="email">The email.</param>
         /// <returns></returns>
-        [Route("GetCustomerAddress")]
+        //[Route("GetCustomerAddress")]
         [HttpGet]
         public AddressModel GetCustomerAddress(string email)
         {
@@ -49,7 +49,7 @@ namespace BookStoreBackend.Controllers
         /// </summary>
         /// <param name="addressModel">The address model.</param>
         /// <returns></returns>
-        [Route("AddDetailAddress")]
+        //[Route("AddDetailAddress")]
         [HttpPost]
         public async Task<IActionResult> AddDetailAddreess(AddressModel addressModel)
         {

@@ -36,9 +36,9 @@ namespace BookStoreBackend.Controllers
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns></returns>
-        [Route("AddUser")]
+       // [Route("")]
         [HttpPost]
-        public async Task<IActionResult> AddUser(User user)
+        public async Task<IActionResult> GetUser(User user)
         {
             var result = await this.loginManager.AddUser(user);
 
