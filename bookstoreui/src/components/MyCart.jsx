@@ -267,6 +267,7 @@ class MyCart extends Component {
                                         </Button>
                                     </div> : null
                                 }
+
                             </div>
                             <div className='customer-details-div'>
                                 <Typography variant="h5">Customer Details</Typography>
@@ -443,7 +444,9 @@ class MyCart extends Component {
                                                 </>
                                             )
                                         }) : null
+
                                 }
+
                                 {
                                     this.state.showOrderSummary ?
                                         <div className='place-order-btn-div'>
@@ -456,9 +459,13 @@ class MyCart extends Component {
                                              </Button>
                                         </div> : null
                                 }
+
+
                             </div>
                         </div>
+
                 }
+
             </>
         )
     }

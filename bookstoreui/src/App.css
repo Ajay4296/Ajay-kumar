@@ -300,6 +300,7 @@ h2#welcome-text {
     margin-bottom: 20px;
     min-height: 699px;
 }
+
 } */
 
 @media all and (max-width:768px)  
@@ -309,6 +310,7 @@ h2#welcome-text {
     margin-right: 10%;
     margin-left: 10%;
 }
+
 .search-textfield {
   width: 0px;
 }

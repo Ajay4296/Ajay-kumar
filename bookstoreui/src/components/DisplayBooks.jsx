@@ -84,7 +84,12 @@ class DisplayBooks extends Component {
                         })
                     }
                 </div>
-               
+                {/* <div className='pagination-div'>
+                    <Pagination 
+                    count={Math.floor(this.props.bookCount/12)} 
+                    color="primary" 
+                    onClick={this.props.onChangePaginationHandler} />
+                </div> */}
             </>
         )
 

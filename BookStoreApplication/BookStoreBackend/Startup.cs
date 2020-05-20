@@ -49,16 +49,24 @@ namespace BookStoreBackend
         {            
             services.AddDbContextPool<UserDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UserDbConnection")));          
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IBookManager, BookManager>();
+
             services.AddTransient<IAddressManager, ProductAddressManager>();
             services.AddTransient<IAddressRepository, ProductAddressRepository>();
+
             services.AddTransient<ICartManager, CartManager>();
+
             services.AddTransient<ICartRepository, CartRepository>();
             services.AddTransient<ICartRepository, CartRepository>();
+
             services.AddTransient<ICartManager,CartManager>();
+
             services.AddTransient<ILoginRepo, ImpLoginRepo>();
             services.AddTransient<ILogin,ImpLoginManager>();
+
+            services.AddSingleton<IConfiguration>(Configuration);
 
             services.AddSwaggerGen(c =>
             {

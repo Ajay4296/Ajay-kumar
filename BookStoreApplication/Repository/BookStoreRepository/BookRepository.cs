@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Model;
 using Repository.DBContext;
 
@@ -22,14 +23,17 @@ namespace Repository
         /// The user database context
         /// </summary>
         private readonly UserDbContext userDBContext;
+        private readonly IConfiguration configuration;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BookRepository"/> class.
         /// </summary>
         /// <param name="userDBContext">The user database context.</param>
-        public BookRepository(UserDbContext userDBContext)
+        public BookRepository(UserDbContext userDBContext, IConfiguration configuration)
         {
             this.userDBContext = userDBContext;
+            this.configuration = configuration;
+
         }
 
         /// <summary>
@@ -80,7 +84,7 @@ namespace Repository
                 var stream = file.OpenReadStream();
                 var name = file.FileName;
 
-                Account account = new Account("dwfuzvg7h", "335663819648742", "BKYXockUt0Hs_3Vs5BIQBG2JK6o");
+                Account account = new Account(configuration["Cloudinary:CloudName"], configuration["Cloudinary:APIKey"], configuration["Cloudinary:APISecret"]);
 
                 Cloudinary cloudinary = new Cloudinary(account);
 

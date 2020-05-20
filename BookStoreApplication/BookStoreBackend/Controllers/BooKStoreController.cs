@@ -35,7 +35,7 @@ namespace BookStoreBackend.Controllers
         /// Gets all books.
         /// </summary>
         /// <returns></returns>
-        [Route("GetALLBooks")]
+       // [Route("")]
         [HttpGet]
         public IEnumerable<BookStoreModel> GetALLBooks()
         {
@@ -47,7 +47,7 @@ namespace BookStoreBackend.Controllers
         /// </summary>
         /// <param name="bookStoreModel">The book store model.</param>
         /// <returns></returns>
-        [Route("AddBookDetails")]
+        //[Route("AddBookDetails")]
         [HttpPost]
         public async Task<IActionResult> AddBookDetails(BookStoreModel bookStoreModel)
         {
@@ -66,7 +66,7 @@ namespace BookStoreBackend.Controllers
         /// Counts the book.
         /// </summary>
         /// <returns></returns>
-        [Route("CountBook")]
+        [Route("GetCount")]
         [HttpGet]
         public int CountBook()
         {
@@ -80,7 +80,7 @@ namespace BookStoreBackend.Controllers
         /// <param name="file">The file.</param>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        [Route("Image")]
+        [Route("ImageUpload")]
         [HttpPost]
         public string Image(IFormFile file, int id)
         {

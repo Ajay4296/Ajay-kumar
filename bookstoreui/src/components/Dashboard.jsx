@@ -140,12 +140,13 @@ class Dashboard extends Component {
 
     addToWishlistClickHandler = async (clickedID) => {
         let wishlistCount = this.state.wishlistCount;
+        let wishlist = this.state.wishlist
         let result = this.state.books.filter(ele=>{
             return ele.bookID == clickedID
         })
       await  this.setState({
             wishlistCount: wishlistCount + 1,
-            wishlist : [...result]
+            wishlist: wishlist.concat(result)
         })
         console.log(this.state.wishlist)
     }
@@ -186,9 +187,11 @@ class Dashboard extends Component {
                                 paginateNumber={this.paginate} />
                         </>
                 }
+
                 <Footer />
             </>
         )
+
     }
 }
 export default withRouter(Dashboard);
