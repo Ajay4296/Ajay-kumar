@@ -39,7 +39,7 @@ namespace BookStoreBackend.Controllers
         /// <param name="cartModel">The cart model.</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        [Route("AddCart")]
+        //[Route("AddCart")]
         [HttpPost]
         public async Task<IActionResult> AddCart(CartModel cartModel)
         {
@@ -69,7 +69,7 @@ namespace BookStoreBackend.Controllers
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        [Route("DeleteCart")]
+        //[Route("DeleteCart")]
         [HttpDelete]
         public CartModel DeleteCart(int id)
         {
@@ -80,7 +80,7 @@ namespace BookStoreBackend.Controllers
         /// Counts the cart.
         /// </summary>
         /// <returns></returns>
-        [Route("CountCart")]
+        [Route("GetCount")]
         [HttpGet]
         public int CountCart()
         {
@@ -91,7 +91,7 @@ namespace BookStoreBackend.Controllers
         /// Gets all cart value.
         /// </summary>
         /// <returns></returns>
-        [Route("GetAllCartValue")]
+       // [Route("")]
         [HttpGet]
         public IQueryable GetAllCartValue()
         {
