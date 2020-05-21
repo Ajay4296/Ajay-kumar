@@ -26,7 +26,7 @@ namespace Model.Model
         /// <summary>
         /// Gets or sets the Email 
         /// </summary>
-        [Required]        
+        [Required(ErrorMessage = "Email cannot be empty")]        
         public string Email { get; set; }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Model.Model
         /// <value>
         /// The full name.
         /// </value>
-        [Required]
+        [Required(ErrorMessage = "FullName cannot be empty")]
         public string FullName { get; set; }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Model.Model
         /// <value>
         /// The contact number.
         /// </value>
-        [Required]
+        [Required(ErrorMessage = "ContactNumber cannot be empty")]
         public string ContactNumber { get; set; }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Model.Model
         /// <value>
         /// The delivery address.
         /// </value>
-        [Required] 
+        [Required(ErrorMessage = "DeliveryAddress cannot be empty")] 
         public string DeliveryAddress { get; set; }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Model.Model
         /// <value>
         /// The zip code.
         /// </value>
-        [Required] 
+        [Required(ErrorMessage = "ZipCode cannot be empty")] 
         public string ZipCode { get; set; }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Model.Model
         /// <value>
         /// The city town.
         /// </value>
-        [Required] 
+        [Required(ErrorMessage = "CityTown cannot be empty")] 
         public string CityTown { get; set; }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Model.Model
         /// <value>
         /// The land mark.
         /// </value>
-        [Required]
+        [Required(ErrorMessage = "LandMark cannot be empty")]
         public string LandMark { get; set; }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Model.Model
         /// <value>
         /// The type of the address.
         /// </value>
-        [Required] 
+        [Required(ErrorMessage = "AddressType cannot be empty")] 
         public string AddressType { get; set; }
         
     }

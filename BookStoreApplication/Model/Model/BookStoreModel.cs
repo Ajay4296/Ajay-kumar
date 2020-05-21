@@ -28,7 +28,7 @@ namespace Model
         /// <value>
         /// The book tittle.
         /// </value>
-        [Required]
+        [Required(ErrorMessage = "BookTitle cannot be empty")]
         public string BookTittle { get; set; }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Model
         /// <value>
         /// The name of the author.
         /// </value>
-        [Required]
+        [Required(ErrorMessage = "AuthorName cannot be empty")]
         public string AuthorName { get; set; }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Model
         /// <value>
         /// The price.
         /// </value>
-        [Required]
+        [Required(ErrorMessage = "Price cannot be empty")]
         public double Price { get; set; }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Model
         /// <value>
         /// The summary.
         /// </value>
-        [Required] 
+        [Required(ErrorMessage = "Summary cannot be empty")] 
         public string Summary { get; set; }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Model
         /// <value>
         /// The book image.
         /// </value>
-        [Required] 
+        [Required(ErrorMessage = "BookImage cannot be empty")] 
         public string BookImage { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Model
         /// <value>
         /// The book count.
         /// </value>
-        [Required]
+        [Required(ErrorMessage = "BookCount cannot be empty")]
         public int BookCount { get; set; }
     }
 }

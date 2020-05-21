@@ -29,10 +29,10 @@ namespace Model.Model
         /// <value>
         /// The password.
         /// </value>
-        [Required]
+        [Required(ErrorMessage = "Password cannot be empty")]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Email cannot be empty")]
         public string Email { get; set; }
 
         
