@@ -35,9 +35,9 @@ namespace Repository.LoginRepo
         /// </returns>
         public Task<int> AddUser(UserLogin user)
         {
-            bool IsProductNameExist = this.userDbContext.Users.Any
+            bool IsEmailNameExist = this.userDbContext.Users.Any
             (x => x.Email == user.Email && x.UserLoginID != user.UserLoginID);
-            if (IsProductNameExist == false)
+            if (IsEmailNameExist == false)
             {
                 this.userDbContext.Users.Add(user);
             }           

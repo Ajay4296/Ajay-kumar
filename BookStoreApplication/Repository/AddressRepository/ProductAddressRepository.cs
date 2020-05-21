@@ -43,7 +43,7 @@ namespace Repository.AddressRepository
         public Task<int> AddDetailAddress(AddressModel addressModel)
         {
             bool IsEmailNameExist = this.addressDB.AddressSpace.Any
-           (x => x.Email == addressModel.Email && x.AddressModelID != addressModel.UserLoginID);
+           (x => x.Email == addressModel.Email && x.AddressModelID != addressModel.AddressModelID);
             if (IsEmailNameExist == false)
             {
                 addressDB.AddressSpace.Add(addressModel);
