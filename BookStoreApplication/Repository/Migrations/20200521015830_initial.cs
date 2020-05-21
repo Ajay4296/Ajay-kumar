@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Repository.Migrations
+namespace BookStoreRepositoryLayer.Migrations
 {
     public partial class initial : Migration
     {
@@ -12,13 +12,13 @@ namespace Repository.Migrations
                 columns: table => new
                 {
                     Email = table.Column<string>(nullable: false),
-                    FullName = table.Column<string>(nullable: true),
-                    ContactNumber = table.Column<string>(nullable: true),
-                    DeliveryAddress = table.Column<string>(nullable: true),
-                    ZipCode = table.Column<string>(nullable: true),
-                    CityTown = table.Column<string>(nullable: true),
-                    LandMark = table.Column<string>(nullable: true),
-                    AddressType = table.Column<string>(nullable: true)
+                    FullName = table.Column<string>(nullable: false),
+                    ContactNumber = table.Column<string>(nullable: false),
+                    DeliveryAddress = table.Column<string>(nullable: false),
+                    ZipCode = table.Column<string>(nullable: false),
+                    CityTown = table.Column<string>(nullable: false),
+                    LandMark = table.Column<string>(nullable: false),
+                    AddressType = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,11 +31,11 @@ namespace Repository.Migrations
                 {
                     BookID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BookTittle = table.Column<string>(nullable: true),
-                    AuthorName = table.Column<string>(nullable: true),
+                    BookTittle = table.Column<string>(nullable: false),
+                    AuthorName = table.Column<string>(nullable: false),
                     Price = table.Column<double>(nullable: false),
-                    Summary = table.Column<string>(nullable: true),
-                    BookImage = table.Column<string>(nullable: true),
+                    Summary = table.Column<string>(nullable: false),
+                    BookImage = table.Column<string>(nullable: false),
                     BookCount = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

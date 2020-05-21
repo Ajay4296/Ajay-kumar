@@ -6,9 +6,11 @@ using Manager.LoginManager;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model.Model;
+using BookStoreRepositoryLayer.Common;
 
 namespace BookStoreBackend.Controllers
 {
+   
     /// <summary>
     /// Login controller class
     /// </summary>
@@ -21,6 +23,13 @@ namespace BookStoreBackend.Controllers
         /// The login manager
         /// </summary>
         private readonly ILogin loginManager;
+
+        public class JsonErrorModel
+        {
+            public int ErrorCode { get; set; }
+
+            public string ErrorMessage { get; set; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginController"/> class.
@@ -46,10 +55,9 @@ namespace BookStoreBackend.Controllers
             {
                 return this.Ok(user);
             }
-            else
-            {
-                return this.BadRequest();
-            }
+            
+                return this.BadRequest(JsonReturn());
+            
         }
 
         /// <summary>
@@ -65,10 +73,20 @@ namespace BookStoreBackend.Controllers
             var result = this.loginManager.Login(userChanges);
             if (result == true)
             {
-                return this.Ok(userChanges.Email);
+                return this.Ok(userChanges);
             }
 
-            return this.BadRequest("Login Failed");
+            return this.BadRequest(JsonReturn());
+        }
+
+        private object JsonReturn()
+        {
+            var error = new JsonErrorModel
+            {                
+                ErrorMessage = "Login Error"
+            };
+
+            return error;
         }
     }
 

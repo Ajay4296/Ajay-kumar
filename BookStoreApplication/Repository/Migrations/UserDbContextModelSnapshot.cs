@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository.DBContext;
 
-namespace Repository.Migrations
+namespace BookStoreRepositoryLayer.Migrations
 {
     [DbContext(typeof(UserDbContext))]
     partial class UserDbContextModelSnapshot : ModelSnapshot
@@ -24,17 +24,21 @@ namespace Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AuthorName");
+                    b.Property<string>("AuthorName")
+                        .IsRequired();
 
                     b.Property<int>("BookCount");
 
-                    b.Property<string>("BookImage");
+                    b.Property<string>("BookImage")
+                        .IsRequired();
 
-                    b.Property<string>("BookTittle");
+                    b.Property<string>("BookTittle")
+                        .IsRequired();
 
                     b.Property<double>("Price");
 
-                    b.Property<string>("Summary");
+                    b.Property<string>("Summary")
+                        .IsRequired();
 
                     b.HasKey("BookID");
 
@@ -46,19 +50,26 @@ namespace Repository.Migrations
                     b.Property<string>("Email")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AddressType");
+                    b.Property<string>("AddressType")
+                        .IsRequired();
 
-                    b.Property<string>("CityTown");
+                    b.Property<string>("CityTown")
+                        .IsRequired();
 
-                    b.Property<string>("ContactNumber");
+                    b.Property<string>("ContactNumber")
+                        .IsRequired();
 
-                    b.Property<string>("DeliveryAddress");
+                    b.Property<string>("DeliveryAddress")
+                        .IsRequired();
 
-                    b.Property<string>("FullName");
+                    b.Property<string>("FullName")
+                        .IsRequired();
 
-                    b.Property<string>("LandMark");
+                    b.Property<string>("LandMark")
+                        .IsRequired();
 
-                    b.Property<string>("ZipCode");
+                    b.Property<string>("ZipCode")
+                        .IsRequired();
 
                     b.HasKey("Email");
 

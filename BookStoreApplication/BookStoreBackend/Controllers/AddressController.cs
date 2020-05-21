@@ -2,6 +2,7 @@
 using System.Collections.Generic;                                                       
 using System.Linq;
 using System.Threading.Tasks;
+using BookStoreRepositoryLayer.Common;
 using Manager.AddressManager;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,10 @@ using Model.Model;
 
 namespace BookStoreBackend.Controllers
 {
+    //public class HandelBadRequest
+    //{
+    //    public string ErrorMessage { get; set; }
+    //}
     /// <summary>
     /// Address controller class
     /// </summary>
@@ -57,12 +62,20 @@ namespace BookStoreBackend.Controllers
             if (result == 1)
             {
                 return this.Ok(addressModel);
-            }
-            else
-            {
-                return this.BadRequest();
-            }
+            }            
+                return this.BadRequest(JsonReturn());
+            
 
-        }           
+        }
+
+        public object JsonReturn()
+        {
+            var error = new HandelBadRequest
+            {
+                ErrorMessage = "Something really bad happened"
+            };
+
+            return error;
+        }
     }
 }

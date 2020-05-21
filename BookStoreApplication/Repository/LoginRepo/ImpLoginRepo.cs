@@ -35,6 +35,7 @@ namespace Repository.LoginRepo
         public Task<int> AddUser(User user)
         {
             this.userDbContext.Users.Add(user);
+          
             var result = this.userDbContext.SaveChangesAsync();
             return result;
         }
