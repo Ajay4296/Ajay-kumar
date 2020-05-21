@@ -1,5 +1,6 @@
 ﻿using Model.Model;
 using Repository.DBContext;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Repository.AddressRepository
@@ -41,7 +42,13 @@ namespace Repository.AddressRepository
         /// <returns></returns>
         public Task<int> AddDetailAddress(AddressModel addressModel)
         {
-            addressDB.AddressSpace.Add(addressModel);           
+            bool IsEmailNameExist = this.addressDB.AddressSpace.Any
+           (x => x.Email == addressModel.Email && x.AddressModelID != addressModel.UserLoginID);
+            if (IsEmailNameExist == false)
+            {
+                addressDB.AddressSpace.Add(addressModel);
+            }
+                     
             var result = addressDB.SaveChangesAsync();
             return result;
         }    
