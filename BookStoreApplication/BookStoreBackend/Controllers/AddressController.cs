@@ -63,22 +63,9 @@ namespace BookStoreBackend.Controllers
             {
                 return this.Ok(addressModel);
             }            
-                return this.BadRequest(JsonReturn());           
+                return this.BadRequest(JsonErrorModel.Json());           
 
         }
-
-        /// <summary>
-        /// Jsons the return.
-        /// </summary>
-        /// <returns></returns>
-        public object JsonReturn()
-        {
-            var error = new HandelBadRequest
-            {
-                ErrorMessage = "AddressController response failed"
-            };
-
-            return error;
-        }
+       
     }
 }

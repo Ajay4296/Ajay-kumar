@@ -22,14 +22,7 @@ namespace BookStoreBackend.Controllers
         /// <summary>
         /// The login manager
         /// </summary>
-        private readonly ILogin loginManager;
-
-        public class JsonErrorModel
-        {
-            public int ErrorCode { get; set; }
-
-            public string ErrorMessage { get; set; }
-        }
+        private readonly ILogin loginManager;        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginController"/> class.
@@ -55,7 +48,7 @@ namespace BookStoreBackend.Controllers
             {
                 return this.Ok(user);
             }            
-                return this.BadRequest(JsonReturn());
+                return this.BadRequest(JsonErrorModel.Json());
             
         }
 
@@ -75,22 +68,9 @@ namespace BookStoreBackend.Controllers
                 return this.Ok(userChanges);
             }
 
-            return this.BadRequest(JsonReturn());
+            return this.BadRequest(JsonErrorModel.Json());
         }
-
-        /// <summary>
-        /// Jsons the return.
-        /// </summary>
-        /// <returns></returns>
-        private object JsonReturn()
-        {
-            var error = new JsonErrorModel
-            {                
-                ErrorMessage = "Login Error"
-            };
-
-            return error;
-        }
+       
     }
 
 }

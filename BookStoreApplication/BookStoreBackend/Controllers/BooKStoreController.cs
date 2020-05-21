@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookStoreRepositoryLayer.Common;
 using Manager;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -58,7 +59,7 @@ namespace BookStoreBackend.Controllers
             }
             else
             {
-                return this.BadRequest();
+                return this.BadRequest(JsonErrorModel.Json());
 
             }
         }
