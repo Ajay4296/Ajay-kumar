@@ -28,6 +28,7 @@ namespace Model
         /// <value>
         /// The book tittle.
         /// </value>
+        [Required]
         public string BookTittle { get; set; }
 
         /// <summary>
@@ -36,6 +37,7 @@ namespace Model
         /// <value>
         /// The name of the author.
         /// </value>
+        [Required]
         public string AuthorName { get; set; }
 
         /// <summary>
@@ -44,6 +46,7 @@ namespace Model
         /// <value>
         /// The price.
         /// </value>
+        [Required]
         public double Price { get; set; }
 
         /// <summary>
@@ -52,6 +55,7 @@ namespace Model
         /// <value>
         /// The summary.
         /// </value>
+        [Required] 
         public string Summary { get; set; }
 
         /// <summary>
@@ -60,6 +64,7 @@ namespace Model
         /// <value>
         /// The book image.
         /// </value>
+        [Required] 
         public string BookImage { get; set; }
 
         /// <summary>
@@ -68,6 +73,7 @@ namespace Model
         /// <value>
         /// The book count.
         /// </value>
+        [Required]
         public int BookCount { get; set; }
     }
 }

@@ -27,6 +27,7 @@ namespace Model.Model
         /// <value>
         /// The full name.
         /// </value>
+        [Required]
         public string FullName { get; set; }
 
         /// <summary>
@@ -35,6 +36,7 @@ namespace Model.Model
         /// <value>
         /// The contact number.
         /// </value>
+        [Required]
         public string ContactNumber { get; set; }
 
         /// <summary>
@@ -43,6 +45,7 @@ namespace Model.Model
         /// <value>
         /// The delivery address.
         /// </value>
+        [Required] 
         public string DeliveryAddress { get; set; }
 
         /// <summary>
@@ -51,6 +54,7 @@ namespace Model.Model
         /// <value>
         /// The zip code.
         /// </value>
+        [Required] 
         public string ZipCode { get; set; }
 
         /// <summary>
@@ -59,6 +63,7 @@ namespace Model.Model
         /// <value>
         /// The city town.
         /// </value>
+        [Required] 
         public string CityTown { get; set; }
 
         /// <summary>
@@ -67,6 +72,7 @@ namespace Model.Model
         /// <value>
         /// The land mark.
         /// </value>
+        [Required]
         public string LandMark { get; set; }
 
         /// <summary>
@@ -75,6 +81,7 @@ namespace Model.Model
         /// <value>
         /// The type of the address.
         /// </value>
+        [Required] 
         public string AddressType { get; set; }
     }
 }

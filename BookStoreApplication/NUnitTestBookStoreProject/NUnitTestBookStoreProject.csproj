@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -14,10 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookStoreBackend\BookStoreBackend.csproj" />
-    <ProjectReference Include="..\Manager\Manager.csproj" />
-    <ProjectReference Include="..\Model\Model.csproj" />
-    <ProjectReference Include="..\Repository\Repository.csproj" />
+    <ProjectReference Include="..\BookStoreBackend\BookStoreWebApi.csproj" />
+    <ProjectReference Include="..\Manager\BookStoreBussinessLayer.csproj" />
+    <ProjectReference Include="..\Model\BookStoreCommonLayer.csproj" />
+    <ProjectReference Include="..\Repository\BookStoreRepositoryLayer.csproj" />
   </ItemGroup>
 
 </Project>
