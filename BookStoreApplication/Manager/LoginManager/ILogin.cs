@@ -17,13 +17,13 @@ namespace Manager.LoginManager
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
         /// <returns>It return true if Login successful.</returns>
-        bool Login(User userChanges);
+        bool Login(UserLogin userChanges);
 
         /// <summary>
         /// Adds the user.
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns>It return 1 if user added successfully</returns>
-        Task<int> AddUser(User user);
+        Task<int> AddUser(UserLogin user);
     }
 }

@@ -93,7 +93,7 @@ namespace BookStoreRepositoryLayer.Migrations
                     b.ToTable("CartTable");
                 });
 
-            modelBuilder.Entity("Model.Model.User", b =>
+            modelBuilder.Entity("Model.Model.UserLogin", b =>
                 {
                     b.Property<string>("Email")
                         .ValueGeneratedOnAdd();

@@ -53,7 +53,7 @@ namespace Repository.DBContext
         /// <value>
         /// The users.
         /// </value>
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserLogin> Users { get; set; }
 
 
     }

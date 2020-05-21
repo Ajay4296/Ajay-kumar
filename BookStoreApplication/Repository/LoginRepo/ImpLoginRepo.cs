@@ -32,7 +32,7 @@ namespace Repository.LoginRepo
         /// <returns>
         /// It return 1 if user added successfully
         /// </returns>
-        public Task<int> AddUser(User user)
+        public Task<int> AddUser(UserLogin user)
         {
             this.userDbContext.Users.Add(user);
           
@@ -48,7 +48,7 @@ namespace Repository.LoginRepo
         /// <returns>
         /// It return true if Login successful.
         /// </returns>
-        public bool Login(User userChanges)
+        public bool Login(UserLogin userChanges)
         {
             var result = this.userDbContext.Users.Where(id => id.Email == userChanges.Email && id.Password == userChanges.Password).FirstOrDefault();
             if (result != null)

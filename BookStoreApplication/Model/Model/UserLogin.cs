@@ -6,9 +6,9 @@ using System.Text;
 namespace Model.Model
 {
     /// <summary>
-    /// User class
+    /// UserLogin class
     /// </summary>
-    public class User
+    public class UserLogin
     {
         /// <summary>
         /// Gets or sets the email.

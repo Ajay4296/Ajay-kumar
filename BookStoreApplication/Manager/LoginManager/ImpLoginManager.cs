@@ -34,7 +34,7 @@ namespace Manager.LoginManager
         /// <returns>
         /// It return 1 if user added successfully
         /// </returns>
-        public Task<int> AddUser(User user)
+        public Task<int> AddUser(UserLogin user)
         {
             return this.loginRepository.AddUser(user);
         }
@@ -47,7 +47,7 @@ namespace Manager.LoginManager
         /// <returns>
         /// It return true if Login successful.
         /// </returns>
-        public bool Login(User userChanges)
+        public bool Login(UserLogin userChanges)
         {
             return this.loginRepository.Login(userChanges);
         }

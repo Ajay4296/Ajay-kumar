@@ -75,7 +75,7 @@ namespace BookStoreBackend.Controllers
         {
             var error = new HandelBadRequest
             {
-                ErrorMessage = "Something really bad happened"
+                ErrorMessage = "AddressController response failed"
             };
 
             return error;

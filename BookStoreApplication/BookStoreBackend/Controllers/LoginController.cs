@@ -47,7 +47,7 @@ namespace BookStoreBackend.Controllers
         /// <returns></returns>
        // [Route("")]
         [HttpPost]
-        public async Task<IActionResult> GetUser(User user)
+        public async Task<IActionResult> GetUser(UserLogin user)
         {
             var result = await this.loginManager.AddUser(user);
 
@@ -67,7 +67,7 @@ namespace BookStoreBackend.Controllers
         /// <returns></returns>
         [Route("Login")]
         [HttpPost]
-        public IActionResult Login(User userChanges)
+        public IActionResult Login(UserLogin userChanges)
         {
             var result = this.loginManager.Login(userChanges);
             if (result == true)
