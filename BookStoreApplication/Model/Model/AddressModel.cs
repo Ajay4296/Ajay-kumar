@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using CloudinaryDotNet.Actions;
 
 namespace Model.Model
 {
@@ -83,6 +84,7 @@ namespace Model.Model
         /// </value>
         [Required] 
         public string AddressType { get; set; }
+        
     }
 }
  

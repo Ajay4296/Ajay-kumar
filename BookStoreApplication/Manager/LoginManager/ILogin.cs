@@ -25,5 +25,7 @@ namespace Manager.LoginManager
         /// <param name="user">The user.</param>
         /// <returns>It return 1 if user added successfully</returns>
         Task<int> AddUser(UserLogin user);
+
+       
     }
 }

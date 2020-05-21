@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Linq;
 using Repository.DBContext;
+using System.Web.Mvc;
 
 namespace Repository.LoginRepo
 {
@@ -34,7 +35,13 @@ namespace Repository.LoginRepo
         /// </returns>
         public Task<int> AddUser(UserLogin user)
         {
-            this.userDbContext.Users.Add(user);
+            bool IsProductNameExist = this.userDbContext.Users.Any
+            (x => x.Email == user.Email && x.UserLoginID != user.UserLoginID);
+            if (IsProductNameExist == false)
+            {
+                this.userDbContext.Users.Add(user);
+            }
+            
           
             var result = this.userDbContext.SaveChangesAsync();
             return result;
@@ -49,7 +56,8 @@ namespace Repository.LoginRepo
         /// It return true if Login successful.
         /// </returns>
         public bool Login(UserLogin userChanges)
-        {
+        {         
+
             var result = this.userDbContext.Users.Where(id => id.Email == userChanges.Email && id.Password == userChanges.Password).FirstOrDefault();
             if (result != null)
             {
@@ -59,7 +67,7 @@ namespace Repository.LoginRepo
             {
                 return false;
             }
-        }
+        }       
     }
 }
 
