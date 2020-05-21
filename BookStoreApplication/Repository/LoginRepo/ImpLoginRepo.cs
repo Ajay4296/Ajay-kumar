@@ -40,8 +40,7 @@ namespace Repository.LoginRepo
             if (IsProductNameExist == false)
             {
                 this.userDbContext.Users.Add(user);
-            }
-            
+            }           
           
             var result = this.userDbContext.SaveChangesAsync();
             return result;

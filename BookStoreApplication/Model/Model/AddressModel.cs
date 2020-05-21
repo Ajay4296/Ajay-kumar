@@ -14,12 +14,19 @@ namespace Model.Model
     public class AddressModel
     {
         /// <summary>
-        /// Gets or sets the email.
+        /// Gets or sets the AddressModel  identifier.
         /// </summary>
         /// <value>
-        /// The email.
+        /// The AddressModel identifier.
         /// </value>
-        [Key]        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        public int AddressModelID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Email 
+        /// </summary>
+        [Required]        
         public string Email { get; set; }
 
         /// <summary>

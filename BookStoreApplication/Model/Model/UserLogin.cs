@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using System.Web.Mvc;
 using SQLite;
@@ -18,6 +19,7 @@ namespace Model.Model
         /// <value>
         /// The email.
         /// </value>
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]        
         [Key]
         public int UserLoginID { get; set; }
 
