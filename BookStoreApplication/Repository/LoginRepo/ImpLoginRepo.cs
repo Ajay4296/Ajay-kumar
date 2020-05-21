@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Repository.DBContext;
 using System.Web.Mvc;
+using BookStoreRepositoryLayer.Common;
 
 namespace Repository.LoginRepo
 {
@@ -39,6 +40,7 @@ namespace Repository.LoginRepo
             (x => x.Email == user.Email && x.UserLoginID != user.UserLoginID);
             if (IsEmailNameExist == false)
             {
+                user.Password= PasswordEncodeAndDecode.base64Encode(user.Password);
                 this.userDbContext.Users.Add(user);
             }           
           
@@ -55,8 +57,8 @@ namespace Repository.LoginRepo
         /// It return true if Login successful.
         /// </returns>
         public bool Login(UserLogin userChanges)
-        {         
-
+        {
+            userChanges.Password = PasswordEncodeAndDecode.base64Decode(userChanges.Password);
             var result = this.userDbContext.Users.Where(id => id.Email == userChanges.Email && id.Password == userChanges.Password).FirstOrDefault();
             if (result != null)
             {
