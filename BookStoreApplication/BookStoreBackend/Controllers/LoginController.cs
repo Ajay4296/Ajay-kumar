@@ -54,8 +54,7 @@ namespace BookStoreBackend.Controllers
             if (result == 1)
             {
                 return this.Ok(user);
-            }
-            
+            }            
                 return this.BadRequest(JsonReturn());
             
         }
@@ -79,6 +78,10 @@ namespace BookStoreBackend.Controllers
             return this.BadRequest(JsonReturn());
         }
 
+        /// <summary>
+        /// Jsons the return.
+        /// </summary>
+        /// <returns></returns>
         private object JsonReturn()
         {
             var error = new JsonErrorModel
