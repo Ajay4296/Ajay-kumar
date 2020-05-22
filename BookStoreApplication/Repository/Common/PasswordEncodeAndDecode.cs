@@ -38,5 +38,6 @@ namespace BookStoreRepositoryLayer.Common
                 throw new Exception("Error in base64Decode" + ex.Message);
             }
         }
+        
     }
 }

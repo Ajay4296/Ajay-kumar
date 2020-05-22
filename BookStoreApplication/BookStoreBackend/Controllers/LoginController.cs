@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model.Model;
 using BookStoreRepositoryLayer.Common;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Microsoft.Extensions.Configuration;
+using BookStoreWebApi.Controllers;
 
 namespace BookStoreBackend.Controllers
 {
@@ -17,6 +22,7 @@ namespace BookStoreBackend.Controllers
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [Route("api/[controller]")]
     [ApiController]
+
     public class LoginController : ControllerBase
     {
         /// <summary>
@@ -31,14 +37,14 @@ namespace BookStoreBackend.Controllers
         public LoginController(ILogin loginManager)
         {
             this.loginManager = loginManager;
-        }
+        }        
 
         /// <summary>
         /// Adds the user.
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns></returns>
-       // [Route("")]
+        // [Route("")]
         [HttpPost]
         public async Task<IActionResult> GetUser(UserLogin user)
         {
@@ -62,16 +68,21 @@ namespace BookStoreBackend.Controllers
         [HttpPost]
         public IActionResult Login(UserLogin userChanges)
         {
+            IActionResult response = Unauthorized();
             var result = this.loginManager.Login(userChanges);
 
             if (result == true)
             {
+                var tokenString = TokenGeneratorController.GenerateJSONWebToken();
+                response = Ok(new { token = tokenString });
                 return this.Ok(userChanges);
             }
 
             return this.BadRequest(JsonErrorModel.Json());
         }
-      
+
+
+       
     }
 
 }
