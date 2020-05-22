@@ -15,7 +15,7 @@ namespace BookStoreWebApi.Controllers
     [ApiController]
     public class TokenGeneratorController : ControllerBase
     {
-        private static IConfiguration _config;
+        private  IConfiguration _config;
 
         public TokenGeneratorController(IConfiguration config)
         {
@@ -23,7 +23,7 @@ namespace BookStoreWebApi.Controllers
         }
 
         [HttpGet("GetTokken")]
-        public static string GenerateJSONWebToken()
+        public object GenerateJSONWebToken()
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -35,6 +35,7 @@ namespace BookStoreWebApi.Controllers
               signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+            
         }
     }
 }

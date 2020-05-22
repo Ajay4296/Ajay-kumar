@@ -73,8 +73,8 @@ namespace BookStoreBackend.Controllers
 
             if (result == true)
             {
-                var tokenString = TokenGeneratorController.GenerateJSONWebToken();
-                response = Ok(new { token = tokenString });
+                //var tokenString = TokenGeneratorController.GenerateJSONWebToken();
+               // response = Ok(new { token = tokenString });
                 return this.Ok(userChanges);
             }
 
