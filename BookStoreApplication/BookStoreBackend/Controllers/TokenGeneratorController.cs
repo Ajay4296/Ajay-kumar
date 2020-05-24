@@ -7,17 +7,31 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace BookStoreWebApi.Controllers
 {
+    /// <summary>
+    /// TokenGenerator class controller
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class TokenGeneratorController : ControllerBase
     {
+        /// <summary>
+        /// IConfiguration
+        /// </summary>
         private IConfiguration _config;
 
+        /// <summary>
+        /// constructor 
+        /// </summary>
+        /// <param name="config"></param>
         public TokenGeneratorController(IConfiguration config)
         {
             _config = config;
         }
 
+        /// <summary>
+        /// Token generator API
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetTokken")]
         public object GenerateJSONWebToken()
         {
