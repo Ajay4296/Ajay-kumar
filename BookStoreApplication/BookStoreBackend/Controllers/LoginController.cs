@@ -12,6 +12,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using BookStoreWebApi.Controllers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookStoreBackend.Controllers
 {
@@ -22,7 +23,7 @@ namespace BookStoreBackend.Controllers
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [Route("api/[controller]")]
     [ApiController]
-
+    [Authorize]
     public class LoginController : ControllerBase
     {
         /// <summary>

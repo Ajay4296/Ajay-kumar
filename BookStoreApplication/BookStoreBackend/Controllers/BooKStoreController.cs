@@ -36,7 +36,7 @@ namespace BookStoreBackend.Controllers
         /// Gets all books.
         /// </summary>
         /// <returns></returns>
-       // [Route("")]
+       
         [HttpGet]
         public IEnumerable<BookStoreModel> GetALLBooks()
         {
