@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;                                                       
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BookStoreRepositoryLayer.Common;
 using Manager.AddressManager;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model.Model;
 
@@ -60,10 +56,10 @@ namespace BookStoreBackend.Controllers
             if (result == 1)
             {
                 return this.Ok(addressModel);
-            }            
-                return this.BadRequest(JsonErrorModel.Json());           
+            }
+            return this.BadRequest(JsonErrorModel.Json());
 
         }
-       
+
     }
 }

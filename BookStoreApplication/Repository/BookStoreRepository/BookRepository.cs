@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
@@ -17,7 +16,7 @@ namespace Repository
     /// Implementation of 
     /// </summary>
     /// <seealso cref="Repository.IBookRepository" />
-    public class BookRepository:IBookRepository
+    public class BookRepository : IBookRepository
     {
         /// <summary>
         /// The user database context
@@ -95,7 +94,7 @@ namespace Repository
 
                 ImageUploadResult uploadResult = cloudinary.Upload(uploadParams);
                 cloudinary.Api.UrlImgUp.BuildUrl(String.Format("{0}.{1}", uploadResult.PublicId, uploadResult.Format));
-                
+
                 var data = this.userDBContext.BookStore.Where(book => book.BookID == id).FirstOrDefault();
                 data.BookImage = uploadResult.Uri.ToString();
 

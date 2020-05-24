@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BookStoreRepositoryLayer.Common
 {
-   public class PasswordEncodeAndDecode
+    public class PasswordEncodeAndDecode
     {
         public static string base64Encode(string sData) // Encode    
         {
@@ -38,6 +36,6 @@ namespace BookStoreRepositoryLayer.Common
                 throw new Exception("Error in base64Decode" + ex.Message);
             }
         }
-        
+
     }
 }

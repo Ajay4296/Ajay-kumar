@@ -1,10 +1,6 @@
-﻿using Model.Model;
-using Repository;
+﻿using System.Threading.Tasks;
+using Model.Model;
 using Repository.AddressRepository;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Manager.AddressManager
 {
@@ -47,6 +43,6 @@ namespace Manager.AddressManager
         {
             return this.addressRepository.AddDetailAddress(addressModel);
         }
-    
+
     }
 }

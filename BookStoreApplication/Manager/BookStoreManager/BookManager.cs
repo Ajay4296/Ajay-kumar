@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Model;
@@ -64,7 +62,7 @@ namespace Manager
         /// <returns></returns>
         public string Image(IFormFile file, int id)
         {
-            return bookRepository.Image(file,id);
+            return bookRepository.Image(file, id);
         }
     }
 }

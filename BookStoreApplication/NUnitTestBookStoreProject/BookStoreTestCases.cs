@@ -8,10 +8,7 @@ using Moq;
 using NUnit.Framework;
 using Repository;
 using Repository.AddressRepository;
-using Repository.DBContext;
 using Repository.Repository;
-using System.Runtime.CompilerServices;
-using System.Threading;
 
 namespace NUnitTestBookStoreProject
 {
@@ -22,7 +19,7 @@ namespace NUnitTestBookStoreProject
     {
         readonly BookStoreModel book = new BookStoreModel();
         private readonly string email;
-      
+
         /// <summary>
         /// invoking controller AddBook method with mock for bookmanager interface and testing return type 
         /// </summary>
@@ -172,7 +169,7 @@ namespace NUnitTestBookStoreProject
             addressmodel.FullName = "Nalagati Ravindhar";
             addressmodel.ZipCode = "507159";
             addressmodel.LandMark = "oppo police station";
-            
+
             var service = new Mock<IAddressRepository>();
             var addressmanager = new ProductAddressManager(service.Object);
             var data = addressmanager.AddDetailAddress(addressmodel);
@@ -202,7 +199,7 @@ namespace NUnitTestBookStoreProject
             addressmodel.Email = "nalagatiravindghar@gmail.com";
             addressmodel.FullName = "Nalagati Ravindhar";
             addressmodel.ZipCode = "507159";
-            addressmodel.LandMark = "oppo police station";           
+            addressmodel.LandMark = "oppo police station";
             var service = new Mock<IAddressManager>();
             var addresscontroller = new AddressController(service.Object);
             var data = addresscontroller.AddDetailAddreess(addressmodel);

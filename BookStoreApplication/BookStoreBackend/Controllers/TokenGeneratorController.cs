@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -15,7 +11,7 @@ namespace BookStoreWebApi.Controllers
     [ApiController]
     public class TokenGeneratorController : ControllerBase
     {
-        private  IConfiguration _config;
+        private IConfiguration _config;
 
         public TokenGeneratorController(IConfiguration config)
         {
@@ -35,7 +31,7 @@ namespace BookStoreWebApi.Controllers
               signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-            
+
         }
     }
 }

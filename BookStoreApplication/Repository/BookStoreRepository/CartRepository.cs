@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Model;
 using Model.Model;
 using Repository.DBContext;
 
@@ -48,7 +45,7 @@ namespace Repository.Repository
         /// <returns></returns>
         public CartModel DeleteCart(int id)
         {
-           CartModel cartModel= userDbContext.CartTable.Find(id);
+            CartModel cartModel = userDbContext.CartTable.Find(id);
             if (cartModel != null)
             {
                 userDbContext.CartTable.Remove(cartModel);

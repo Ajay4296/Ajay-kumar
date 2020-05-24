@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Manager;
 using Manager.Manager;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Model;
 using Model.Model;
 
 namespace BookStoreBackend.Controllers
@@ -56,11 +52,11 @@ namespace BookStoreBackend.Controllers
                 }
             }
 
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
-           
+
 
         }
 

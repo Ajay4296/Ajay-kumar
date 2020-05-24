@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
-
-namespace BookStoreRepositoryLayer.Common
+﻿namespace BookStoreRepositoryLayer.Common
 {
-   public class JwtToken
+    public class JwtToken
     {
         //private string GenerateJSONWebToken(object userInfo)
         //{

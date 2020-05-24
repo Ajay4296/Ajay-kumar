@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BookStoreRepositoryLayer.Common;
 using Manager;
@@ -36,7 +34,7 @@ namespace BookStoreBackend.Controllers
         /// Gets all books.
         /// </summary>
         /// <returns></returns>
-       
+
         [HttpGet]
         public IEnumerable<BookStoreModel> GetALLBooks()
         {
@@ -86,7 +84,7 @@ namespace BookStoreBackend.Controllers
         [HttpPost]
         public string Image(IFormFile file, int id)
         {
-            return bookManager.Image(file,id);
+            return bookManager.Image(file, id);
         }
     }
 }

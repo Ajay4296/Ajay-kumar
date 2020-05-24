@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Model.Model
 {
@@ -27,7 +24,7 @@ namespace Model.Model
         /// <value>
         /// The book identifier.
         /// </value>
-        [Required(ErrorMessage ="Book_ID should not be empty")]
+        [Required(ErrorMessage = "Book_ID should not be empty")]
         public int Book_ID { get; set; }
 
         /// <summary>
@@ -36,8 +33,8 @@ namespace Model.Model
         /// <value>
         /// The select book count.
         /// </value>
-        [Required(ErrorMessage = "SelectBookCount should not be empty")] 
-        public int SelectBookCount { get; set; }     
+        [Required(ErrorMessage = "SelectBookCount should not be empty")]
+        public int SelectBookCount { get; set; }
 
     }
 }

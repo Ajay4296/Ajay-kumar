@@ -1,7 +1,7 @@
-﻿using Model.Model;
-using Repository.DBContext;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using Model.Model;
+using Repository.DBContext;
 
 namespace Repository.AddressRepository
 {
@@ -9,7 +9,7 @@ namespace Repository.AddressRepository
     /// business code is written here
     /// </summary>
     /// <seealso cref="Repository.AddressRepository.IAddressRepository" />
-    public class ProductAddressRepository :IAddressRepository
+    public class ProductAddressRepository : IAddressRepository
     {
         /// <summary>
         /// The address database
@@ -48,10 +48,10 @@ namespace Repository.AddressRepository
             {
                 addressDB.AddressSpace.Add(addressModel);
             }
-                     
+
             var result = addressDB.SaveChangesAsync();
             return result;
-        }    
-               
+        }
+
     }
 }

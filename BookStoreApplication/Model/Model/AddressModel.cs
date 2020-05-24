@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-using CloudinaryDotNet.Actions;
 
 namespace Model.Model
 {
@@ -26,7 +21,7 @@ namespace Model.Model
         /// <summary>
         /// Gets or sets the Email 
         /// </summary>
-        [Required(ErrorMessage = "Email cannot be empty")]        
+        [Required(ErrorMessage = "Email cannot be empty")]
         public string Email { get; set; }
 
         /// <summary>
@@ -53,7 +48,7 @@ namespace Model.Model
         /// <value>
         /// The delivery address.
         /// </value>
-        [Required(ErrorMessage = "DeliveryAddress cannot be empty")] 
+        [Required(ErrorMessage = "DeliveryAddress cannot be empty")]
         public string DeliveryAddress { get; set; }
 
         /// <summary>
@@ -62,7 +57,7 @@ namespace Model.Model
         /// <value>
         /// The zip code.
         /// </value>
-        [Required(ErrorMessage = "ZipCode cannot be empty")] 
+        [Required(ErrorMessage = "ZipCode cannot be empty")]
         public string ZipCode { get; set; }
 
         /// <summary>
@@ -71,7 +66,7 @@ namespace Model.Model
         /// <value>
         /// The city town.
         /// </value>
-        [Required(ErrorMessage = "CityTown cannot be empty")] 
+        [Required(ErrorMessage = "CityTown cannot be empty")]
         public string CityTown { get; set; }
 
         /// <summary>
@@ -89,9 +84,8 @@ namespace Model.Model
         /// <value>
         /// The type of the address.
         /// </value>
-        [Required(ErrorMessage = "AddressType cannot be empty")] 
+        [Required(ErrorMessage = "AddressType cannot be empty")]
         public string AddressType { get; set; }
-        
+
     }
 }
- 

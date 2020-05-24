@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using BookStoreRepositoryLayer.Common;
 using Manager.LoginManager;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Model.Model;
-using BookStoreRepositoryLayer.Common;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text;
-using Microsoft.Extensions.Configuration;
-using BookStoreWebApi.Controllers;
-using Microsoft.AspNetCore.Authorization;
 
 namespace BookStoreBackend.Controllers
 {
-   
+
     /// <summary>
     /// Login controller class
     /// </summary>
@@ -29,7 +20,7 @@ namespace BookStoreBackend.Controllers
         /// <summary>
         /// The login manager
         /// </summary>
-        private readonly ILogin loginManager;        
+        private readonly ILogin loginManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginController"/> class.
@@ -38,7 +29,7 @@ namespace BookStoreBackend.Controllers
         public LoginController(ILogin loginManager)
         {
             this.loginManager = loginManager;
-        }        
+        }
 
         /// <summary>
         /// Adds the user.
@@ -54,9 +45,9 @@ namespace BookStoreBackend.Controllers
             if (result == 1)
             {
                 return this.Ok(user);
-            }            
-                return this.BadRequest(JsonErrorModel.Json());
-            
+            }
+            return this.BadRequest(JsonErrorModel.Json());
+
         }
 
         /// <summary>
@@ -75,7 +66,7 @@ namespace BookStoreBackend.Controllers
             if (result == true)
             {
                 //var tokenString = TokenGeneratorController.GenerateJSONWebToken();
-               // response = Ok(new { token = tokenString });
+                // response = Ok(new { token = tokenString });
                 return this.Ok(userChanges);
             }
 
@@ -83,7 +74,7 @@ namespace BookStoreBackend.Controllers
         }
 
 
-       
+
     }
 
 }

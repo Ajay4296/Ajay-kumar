@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Model.Model;
-using Model;
 using Repository.Repository;
-using System.Linq;
 
 namespace Manager.Manager
 {

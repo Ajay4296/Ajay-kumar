@@ -1,9 +1,8 @@
-﻿using Model.Model;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using System.Linq;
-using Repository.DBContext;
-using System.Web.Mvc;
 using BookStoreRepositoryLayer.Common;
+using Model.Model;
+using Repository.DBContext;
 
 namespace Repository.LoginRepo
 {
@@ -40,10 +39,10 @@ namespace Repository.LoginRepo
             (x => x.Email == user.Email && x.UserLoginID != user.UserLoginID);
             if (IsEmailNameExist == false)
             {
-                user.Password= PasswordEncodeAndDecode.base64Encode(user.Password);
+                user.Password = PasswordEncodeAndDecode.base64Encode(user.Password);
                 this.userDbContext.Users.Add(user);
-            }           
-          
+            }
+
             var result = this.userDbContext.SaveChangesAsync();
             return result;
         }
@@ -68,7 +67,7 @@ namespace Repository.LoginRepo
             {
                 return false;
             }
-        }       
+        }
     }
 }
 

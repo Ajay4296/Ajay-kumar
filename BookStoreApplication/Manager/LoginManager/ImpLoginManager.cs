@@ -1,9 +1,6 @@
-﻿using Model.Model;
+﻿using System.Threading.Tasks;
+using Model.Model;
 using Repository.LoginRepo;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Manager.LoginManager
 {

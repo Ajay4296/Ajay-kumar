@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Principal;
-using System.Text;
 
 namespace Model
 {
@@ -55,7 +51,7 @@ namespace Model
         /// <value>
         /// The summary.
         /// </value>
-        [Required(ErrorMessage = "Summary cannot be empty")] 
+        [Required(ErrorMessage = "Summary cannot be empty")]
         public string Summary { get; set; }
 
         /// <summary>
@@ -64,7 +60,7 @@ namespace Model
         /// <value>
         /// The book image.
         /// </value>
-        [Required(ErrorMessage = "BookImage cannot be empty")] 
+        [Required(ErrorMessage = "BookImage cannot be empty")]
         public string BookImage { get; set; }
 
         /// <summary>

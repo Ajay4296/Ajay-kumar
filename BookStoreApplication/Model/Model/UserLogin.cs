@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-using System.Web.Mvc;
-using SQLite;
 
 namespace Model.Model
 {
@@ -19,7 +14,7 @@ namespace Model.Model
         /// <value>
         /// The email.
         /// </value>
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int UserLoginID { get; set; }
 
@@ -35,7 +30,7 @@ namespace Model.Model
         [Required(ErrorMessage = "Email cannot be empty")]
         public string Email { get; set; }
 
-        
+
 
 
 

@@ -1,8 +1,5 @@
-﻿using Model.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Model.Model;
 
 namespace Manager.LoginManager
 {
@@ -26,6 +23,6 @@ namespace Manager.LoginManager
         /// <returns>It return 1 if user added successfully</returns>
         Task<int> AddUser(UserLogin user);
 
-       
+
     }
 }
