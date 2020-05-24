@@ -6,10 +6,7 @@ using Model.Model;
 
 namespace BookStoreBackend.Controllers
 {
-    //public class HandelBadRequest
-    //{
-    //    public string ErrorMessage { get; set; }
-    //}
+    
     /// <summary>
     /// Address controller class
     /// </summary>
