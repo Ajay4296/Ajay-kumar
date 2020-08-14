@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using CloudinaryDotNet;
@@ -7,104 +9,72 @@ using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Model;
-using Repository.DBContext;
-
 
 namespace Repository
 {
-    /// <summary>
-    /// Implementation of 
-    /// </summary>
-    /// <seealso cref="Repository.IBookRepository" />
+  
     public class BookRepository : IBookRepository
     {
-        /// <summary>
-        /// The user database context
-        /// </summary>
-        private readonly UserDbContext userDBContext;
         private readonly IConfiguration configuration;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BookRepository"/> class.
-        /// </summary>
-        /// <param name="userDBContext">The user database context.</param>
-        public BookRepository(UserDbContext userDBContext, IConfiguration configuration)
+        public BookRepository(IConfiguration configuration)
         {
-            this.userDBContext = userDBContext;
             this.configuration = configuration;
-
         }
-
-        /// <summary>
-        /// Counts the book.
-        /// </summary>
-        /// <returns></returns>
+    
+        public int AddBooks(BookStoreModel storeModel)
+        {
+            using (SqlConnection con = new SqlConnection(configuration["ConnectionStrings:UserDbConnection"])) 
+            { 
+                SqlCommand cmd = new SqlCommand("AddBooks", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@BookTittle", storeModel.BookTittle);
+                cmd.Parameters.AddWithValue("@AuthorName", storeModel.AuthorName);
+                cmd.Parameters.AddWithValue("@Price", storeModel.Price);
+                cmd.Parameters.AddWithValue("@Summary", storeModel.Summary);
+                cmd.Parameters.AddWithValue("@BookImage", storeModel.BookImage);
+                cmd.Parameters.AddWithValue("@BookCount", storeModel.BookCount);
+                con.Open();
+                int row = cmd.ExecuteNonQuery();
+                con.Close();
+                return row;
+            }
+        }
+        public IEnumerable<BookStoreModel> GetBooks()
+        {
+            List<BookStoreModel> bookList = new List<BookStoreModel>();
+            using (SqlConnection con = new SqlConnection(configuration["ConnectionStrings:UserDbConnection"]))
+            {
+                SqlCommand cmd = new SqlCommand("GETBOOK", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    BookStoreModel bookStore = new BookStoreModel();
+                    bookStore.BookID = Convert.ToInt32(rdr["BookID"]);
+                    bookStore.BookTittle = rdr["BookTittle"].ToString();
+                    bookStore.AuthorName = rdr["AuthorName"].ToString();
+                    bookStore.Price = Convert.ToInt32(rdr["Price"]);
+                    bookStore.BookImage = rdr["BookImage"].ToString();
+                    bookStore.Summary = rdr["Summary"].ToString();
+                    bookStore.BookCount = Convert.ToInt32(rdr["BookCount"]);
+                   bookList.Add(bookStore);
+                }
+                con.Close();
+            }
+            return bookList;
+        }
         public int CountBook()
         {
-            var result = userDBContext.BookStore.ToList();
-            return result.Count;
-        }
-
-        /// <summary>
-        /// Gets all books.
-        /// </summary>
-        /// <returns></returns>
-        IEnumerable<BookStoreModel> IBookRepository.GetALLBooks()
-        {
-            return userDBContext.BookStore;
-        }
-
-        /// <summary>
-        /// Adds the books detail.
-        /// </summary>
-        /// <param name="bookStoreModel">The book store model.</param>
-        /// <returns></returns>
-        public Task<int> AddBooksDetail(BookStoreModel bookStoreModel)
-        {
-            userDBContext.BookStore.Add(bookStoreModel);
-            var result = userDBContext.SaveChangesAsync();
-            return result;
-        }
-
-        /// <summary>
-        /// Images the specified file.
-        /// </summary>
-        /// <param name="file">The file.</param>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
-        public string Image(IFormFile file, int id)
-        {
-            try
+            using (SqlConnection con = new SqlConnection(configuration["ConnectionStrings:UserDbConnection"]))
             {
-                if (file == null)
-                {
-                    return "Empty";
-                }
-                var stream = file.OpenReadStream();
-                var name = file.FileName;
-
-                Account account = new Account(configuration["Cloudinary:CloudName"], configuration["Cloudinary:APIKey"], configuration["Cloudinary:APISecret"]);
-
-                Cloudinary cloudinary = new Cloudinary(account);
-
-                var uploadParams = new ImageUploadParams()
-                {
-                    File = new FileDescription(name, stream)
-                };
-
-                ImageUploadResult uploadResult = cloudinary.Upload(uploadParams);
-                cloudinary.Api.UrlImgUp.BuildUrl(String.Format("{0}.{1}", uploadResult.PublicId, uploadResult.Format));
-
-                var data = this.userDBContext.BookStore.Where(book => book.BookID == id).FirstOrDefault();
-                data.BookImage = uploadResult.Uri.ToString();
-
-
-                var result = this.userDBContext.SaveChanges();
-                return data.BookImage;
-            }
-            catch (Exception e)
-            {
-                return e.Message;
+                SqlCommand cmd = new SqlCommand("CountBook", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                int count = (int)cmd.ExecuteScalar(); 
+                con.Close();
+                return count;
             }
         }
     }

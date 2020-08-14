@@ -1,90 +1,88 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using Model.Model;
-using Repository.DBContext;
+using Microsoft.Extensions.Configuration;
+using Model;
+using Model.Model; 
 
 namespace Repository.Repository
 {
-    /// <summary>
-    /// implementstion of ICartRepository interface
-    /// </summary>
-    /// <seealso cref="Repository.Repository.ICartRepository" />
     public class CartRepository : ICartRepository
     {
-        /// <summary>
-        /// The user database context
-        /// </summary>
-        private readonly UserDbContext userDbContext;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CartRepository"/> class.
-        /// </summary>
-        /// <param name="userDbContext">The user database context.</param>
-        public CartRepository(UserDbContext userDbContext)
+        // string connectionString = "Server=(localdb)\\MSSQLLocalDB;database=BOOKSTOREDATABASE;Trusted_Connection=True";
+        private readonly IConfiguration configuration;
+        public CartRepository(IConfiguration configuration)
         {
-            this.userDbContext = userDbContext;
+            this.configuration = configuration;
         }
-
-        /// <summary>
-        /// Adds the cart.
-        /// </summary>
-        /// <param name="cartModel">The cart model.</param>
-        /// <returns></returns>
-        public Task<int> AddCart(CartModel cartModel)
+        public int AddCart(CartModel cartModel)
         {
-            userDbContext.CartTable.Add(cartModel);
-            var result = userDbContext.SaveChangesAsync();
-            return result;
-        }
-
-        /// <summary>
-        /// Deletes the cart.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
-        public CartModel DeleteCart(int id)
-        {
-            CartModel cartModel = userDbContext.CartTable.Find(id);
-            if (cartModel != null)
+            using (SqlConnection con = new SqlConnection(configuration["ConnectionStrings:UserDbConnection"]))
             {
-                userDbContext.CartTable.Remove(cartModel);
-                userDbContext.SaveChanges();
+                SqlCommand cmd = new SqlCommand("AddCart", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@BookID", cartModel.BookID);
+                cmd.Parameters.AddWithValue("@CountCart", cartModel.SelectBookCount);
+                con.Open();
+             int row =  cmd.ExecuteNonQuery(); 
+                con.Close();
+                return row;
             }
-            return cartModel;
         }
-
-        /// <summary>
-        /// Counts the cart.
-        /// </summary>
-        /// <returns></returns>
-        public int CountCart()
+        public IEnumerable<BookStoreModel> GetCart()
         {
-            var result = userDbContext.CartTable.ToList();
-            return result.Count;
-        }
-
-        /// <summary>
-        /// Gets all cart value.
-        /// </summary>
-        /// <returns></returns>
-        public IQueryable GetAllCartValue()
-        {
-            var result = this.userDbContext.CartTable.Join(this.userDbContext.BookStore,
-                Cart => Cart.Book_ID,
-                Book => Book.BookID,
-                (Cart, Book) =>
-                new
+            List<BookStoreModel> cartList = new List<BookStoreModel>();
+            using (SqlConnection con = new SqlConnection(configuration["ConnectionStrings:UserDbConnection"]))
+            {
+                SqlCommand cmd = new SqlCommand("GetCart", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
                 {
-                    cartID = Cart.CartID,
-                    bookId = Book.BookID,
-                    bookTitle = Book.BookTittle,
-                    authorName = Book.AuthorName,
-                    bookImage = Book.BookImage,
-                    bookPrice = Book.Price,
-                    numOfCopies = Cart.SelectBookCount
-                });
-            return result;
+                    BookStoreModel storeModel = new BookStoreModel();
+                    storeModel.BookID = Convert.ToInt32(rdr["BookID"]);
+                    storeModel.BookTittle = rdr["BookTittle"].ToString();
+                   storeModel.AuthorName = rdr["AuthorName"].ToString();
+                  storeModel.BookImage = rdr["BookImage"].ToString();
+                   storeModel.Price = Convert.ToInt32(rdr["Price"]);
+                    storeModel.Summary= rdr["Summary"].ToString();
+                    storeModel.Price = Convert.ToInt32(rdr["Price"]);
+                    cartList.Add(storeModel);
+                }
+                con.Close();
+            }
+            return cartList;
+        }  
+           
+        public string DeleteCart(int id)
+        {
+            using (SqlConnection con = new SqlConnection(configuration["ConnectionStrings:UserDbConnection"]))
+            {
+                SqlCommand cmd = new SqlCommand("DeleteCart", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                 cmd.Parameters.AddWithValue("@CartId", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            return "SuccessFully Deleted";
+        }
+
+        public int CartCount()
+        {
+            using (SqlConnection con = new SqlConnection(configuration["ConnectionStrings:UserDbConnection"]))
+            {
+                SqlCommand cmd = new SqlCommand("CountCart", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                int count = (int)cmd.ExecuteScalar();
+                con.Close();
+                return count;
+            }
         }
     }
 }

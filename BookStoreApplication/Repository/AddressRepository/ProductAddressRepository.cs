@@ -1,57 +1,63 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Model.Model;
-using Repository.DBContext;
 
 namespace Repository.AddressRepository
 {
-    /// <summary>
-    /// business code is written here
-    /// </summary>
-    /// <seealso cref="Repository.AddressRepository.IAddressRepository" />
+
     public class ProductAddressRepository : IAddressRepository
     {
-        /// <summary>
-        /// The address database
-        /// </summary>
-        private readonly UserDbContext addressDB;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ProductAddressRepository"/> class.
-        /// </summary>
-        /// <param name="addressDB">The address database.</param>
-        public ProductAddressRepository(UserDbContext addressDB)
+        private readonly IConfiguration configuration;
+        public ProductAddressRepository(IConfiguration configuration)
         {
-            this.addressDB = addressDB;
+            this.configuration = configuration;
         }
-
-        /// <summary>
-        /// Gets the customer address.
-        /// </summary>
-        /// <param name="email">The email.</param>
-        /// <returns></returns>
-        public AddressModel GetCustomerAddress(string email)
+        public void  Addaddress(AddressModel addressModel)
         {
-            return addressDB.AddressSpace.Find(email);
-        }
-
-        /// <summary>
-        /// Adds the detail address.
-        /// </summary>
-        /// <param name="addressModel">The address model.</param>
-        /// <returns></returns>
-        public Task<int> AddDetailAddress(AddressModel addressModel)
-        {
-            bool IsEmailNameExist = this.addressDB.AddressSpace.Any
-           (x => x.Email == addressModel.Email && x.AddressModelID != addressModel.AddressModelID);
-            if (IsEmailNameExist == false)
+            using (SqlConnection con = new SqlConnection(configuration["ConnectionStrings:UserDbConnection"]))
             {
-                addressDB.AddressSpace.Add(addressModel);
+                SqlCommand cmd = new SqlCommand("ADDRESS", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+               ///cmd.Parameters.AddWithValue("@ADDRESS", addressModel.AddressModelID);
+                cmd.Parameters.AddWithValue("@NAME", addressModel.FullName);
+                cmd.Parameters.AddWithValue("@EMAIL", addressModel.Email);
+                cmd.Parameters.AddWithValue("@DELIVERYaDDRESS", addressModel.DeliveryAddress);
+                cmd.Parameters.AddWithValue("@PIN", addressModel.ZipCode);
+                cmd.Parameters.AddWithValue("@PHONENUM", addressModel.ContactNumber);
+                con.Open();
+              int row =  cmd.ExecuteNonQuery();
+                con.Close();
             }
-
-            var result = addressDB.SaveChangesAsync();
-            return result;
         }
 
+        public IEnumerable<AddressModel> GetAllAddress()
+        {
+            List<AddressModel> addresses = new List<AddressModel>();
+            using (SqlConnection con = new SqlConnection(configuration["ConnectionStrings:UserDbConnection"]))
+            {
+                SqlCommand cmd = new SqlCommand("GetAllAddress", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    AddressModel addressModel = new AddressModel();
+                    addressModel.AddressModelID = Convert.ToInt32(rdr["ADDRESSID"]);
+                   addressModel.FullName = rdr["NAME"].ToString();
+                   addressModel.Email = rdr["EMAIL"].ToString();
+                   addressModel.DeliveryAddress = rdr["DELIVERYADDRESS"].ToString();
+                   addressModel.ZipCode = Convert.ToInt32(rdr["PIN"]);
+                    addressModel.ContactNumber = Convert.ToInt32(rdr["PHONENUM"]);
+                    addresses.Add(addressModel);
+                }
+                con.Close();
+            }
+            return addresses;
+        }
     }
 }

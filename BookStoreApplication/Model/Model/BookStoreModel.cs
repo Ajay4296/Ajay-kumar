@@ -14,8 +14,8 @@ namespace Model
         /// <value>
         /// The book identifier.
         /// </value>
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key]
+       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       // [Key]
         public int BookID { get; set; }
 
         /// <summary>

@@ -1,11 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Model.Model;
 
 namespace Repository.AddressRepository
 {
     public interface IAddressRepository
     {
-        AddressModel GetCustomerAddress(string email);
-        Task<int> AddDetailAddress(AddressModel addressModel);
+        IEnumerable<AddressModel> GetAllAddress();
+        void Addaddress(AddressModel addressModel);
     }
 }

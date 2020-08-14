@@ -1,10 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BookStoreRepositoryLayer.Common;
+using BookStoreRepositoryLayer.JsonErrorHandler;
 using Manager;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
 using Model;
+using Newtonsoft.Json;
+using Repository.Common;
+using static Repository.Common.BookStoreException;
 
 namespace BookStoreBackend.Controllers
 {
@@ -12,79 +19,82 @@ namespace BookStoreBackend.Controllers
     /// Bookstore controller class
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
+    
+     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BookStoreController : ControllerBase
     {
-        /// <summary>
-        /// The book manager
-        /// </summary>
+       
         private readonly IBookManager bookManager;
+        private readonly ILogger logger;
+        public readonly IDistributedCache distributedCache;
+        public string key = "book";
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BookStoreController"/> class.
-        /// </summary>
-        /// <param name="bookManager">The book manager.</param>
-        public BookStoreController(IBookManager bookManager)
+        public BookStoreController(IBookManager bookManager, IDistributedCache distributedCache, ILoggerFactory factory)
         {
             this.bookManager = bookManager;
+            this.distributedCache = distributedCache;
+            this.logger = factory.CreateLogger("BookCategory");
         }
-
-        /// <summary>
-        /// Gets all books.
-        /// </summary>
-        /// <returns></returns>
+        MSMQ msmq = new MSMQ();
 
         [HttpGet]
-        public IEnumerable<BookStoreModel> GetALLBooks()
+        public IEnumerable<BookStoreModel> GetBooks()
         {
-            return bookManager.GetALLBooks();
-        }
-
-        /// <summary>
-        /// Adds the book details.
-        /// </summary>
-        /// <param name="bookStoreModel">The book store model.</param>
-        /// <returns></returns>
-        //[Route("AddBookDetails")]
-        [HttpPost]
-        public async Task<IActionResult> AddBookDetails(BookStoreModel bookStoreModel)
-        {
-            var result = await this.bookManager.AddBooksDetail(bookStoreModel);
-            if (result == 1)
+            logger.LogInformation("Get All Book Detail");
+            var cache = this.distributedCache.GetString(key);
+            if (cache == null)
             {
-                return this.Ok(bookStoreModel);
+                var result = this.bookManager.GetBooks();
+                if (result != null)
+                {
+                    var jsonmodel = JsonConvert.SerializeObject(result);
+                    this.distributedCache.SetString(key, jsonmodel);
+                    return result;
+                }
+                else
+                {
+                    return (IEnumerable<BookStoreModel>)NotFound();
+                }
             }
             else
             {
-                return this.BadRequest(JsonErrorModel.Json());
-
+                var model = JsonConvert.DeserializeObject<List<BookStoreModel>>(cache);
+                return model;
             }
         }
 
-        /// <summary>
-        /// Counts the book.
-        /// </summary>
-        /// <returns></returns>
-        [Route("GetCount")]
+        [HttpPost]
+        public IActionResult AddBooks(BookStoreModel bookStoreModel)
+        {
+            var result = bookManager.AddBooks(bookStoreModel);
+            try
+            {
+                if (result == 1)
+                {
+                    this.distributedCache.Remove(key);
+                    msmq.SendMessage("Books name " + bookStoreModel.BookTittle + " added successfully.", result);
+                    return this.Ok(bookStoreModel);
+                }
+                else
+                {
+                    return this.BadRequest(JsonErrorModel.Json());
+                }
+            }
+            catch(BookStoreException)
+            {
+                return BadRequest(Exception_type.Invalid_exception.ToString());
+            }
+               }
+
+        [Route("CountBook")]
         [HttpGet]
         public int CountBook()
         {
+            logger.LogInformation("Get Number of Books");
             return bookManager.CountBook();
-
         }
-
-        /// <summary>
-        /// Images the specified file.
-        /// </summary>
-        /// <param name="file">The file.</param>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
-        [Route("ImageUpload")]
-        [HttpPost]
-        public string Image(IFormFile file, int id)
-        {
-            return bookManager.Image(file, id);
-        }
+    
     }
-}
+} 

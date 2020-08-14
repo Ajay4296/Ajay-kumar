@@ -1,62 +1,50 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using BookStoreRepositoryLayer.Common;
 using Manager.AddressManager;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Model.Model;
 
 namespace BookStoreBackend.Controllers
 {
-    
+
     /// <summary>
     /// Address controller class
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
+   
+     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AddressController : ControllerBase
     {
-        /// <summary>
-        /// The address manager
-        /// </summary>
         private readonly IAddressManager addressManager;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AddressController"/> class.
-        /// </summary>
-        /// <param name="AddressManager">The address manager.</param>
-        public AddressController(IAddressManager AddressManager)
+        private readonly ILogger<AddressController> logger;
+        public AddressController(IAddressManager AddressManager, ILogger<AddressController> logger)
         {
             this.addressManager = AddressManager;
+           this.logger = logger;
         }
 
-        /// <summary>
-        /// Gets the customer address.
-        /// </summary>
-        /// <param name="email">The email.</param>
-        /// <returns></returns>
         [HttpGet]
-        public AddressModel GetCustomerAddress(string email)
+        public IEnumerable<AddressModel> GetAllAddress()
         {
-            return this.addressManager.GetCustomerAddress(email);
+            logger.LogTrace("Trace Log");
+            logger.LogDebug("Debug Log");
+            logger.LogInformation("Information Log");
+            logger.LogWarning("Warning Log");
+            logger.LogError("Error Log");
+            logger.LogCritical("Critical Log");
+            return addressManager.GetAllAddress();
         }
 
-
-        /// <summary>
-        /// Adds the detail addreess.
-        /// </summary>
-        /// <param name="addressModel">The address model.</param>
-        /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> AddDetailAddreess(AddressModel addressModel)
+        public void AddAddress(AddressModel addressModel)
         {
-            var result = await this.addressManager.AddDetailAddress(addressModel);
-            if (result == 1)
-            {
-                return this.Ok(addressModel);
-            }
-            return this.BadRequest(JsonErrorModel.Json());
-
+            addressManager.AddAddress(addressModel);
         }
-
     }
 }

@@ -21,6 +21,13 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
+      "SecurityDefinitions": {
+        "Jwt": {
+          "Type": "apikey",
+          "name": "Authorization",
+          "in": "header"
+        }
+      },
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

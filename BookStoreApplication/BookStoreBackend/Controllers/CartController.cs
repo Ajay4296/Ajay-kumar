@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Manager.Manager;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Model;
 using Model.Model;
+using Repository.Common;
+using static Repository.Common.BookStoreException;
 
 namespace BookStoreBackend.Controllers
 {
@@ -11,6 +16,8 @@ namespace BookStoreBackend.Controllers
     /// Cart controller class
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
+    /// 
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CartController : ControllerBase
@@ -29,69 +36,43 @@ namespace BookStoreBackend.Controllers
             this.CartManager = CartManager;
         }
 
-        /// <summary>
-        /// Adds the cart.
-        /// </summary>
-        /// <param name="cartModel">The cart model.</param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
-        //[Route("AddCart")]
         [HttpPost]
-        public async Task<IActionResult> AddCart(CartModel cartModel)
-        {
+        public  IActionResult AddCart(CartModel cartModel)
+        { 
+                var result = CartManager.AddCart(cartModel);
             try
             {
-                var result = await this.CartManager.AddCart(cartModel);
-                if (result == 1)
+                if (result == 0)
                 {
-                    return this.Ok(cartModel);
-                }
-                else
-                {
+
                     return this.BadRequest();
+
                 }
+                return this.Ok(cartModel);
             }
-
-            catch (Exception e)
+            catch (BookStoreException)
             {
-                throw new Exception(e.Message);
+                return BadRequest(Exception_type.Invalid_exception.ToString());
             }
-
-
         }
-
-        /// <summary>
-        /// Deletes the cart.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
-        //[Route("DeleteCart")]
-        [HttpDelete]
-        public CartModel DeleteCart(int id)
+        
+       [HttpDelete]
+        public string DeleteCart(int id)
         {
             return CartManager.DeleteCart(id);
         }
 
-        /// <summary>
-        /// Counts the cart.
-        /// </summary>
-        /// <returns></returns>
-        [Route("GetCount")]
+        [Route("CountCart")]
         [HttpGet]
         public int CountCart()
         {
             return CartManager.CountCart();
         }
 
-        /// <summary>
-        /// Gets all cart value.
-        /// </summary>
-        /// <returns></returns>
-       // [Route("")]
         [HttpGet]
-        public IQueryable GetAllCartValue()
+        public IEnumerable<BookStoreModel> GetCart()
         {
-            return CartManager.GetAllCartValue();
+            return CartManager.GetCart();
         }
     }
 }

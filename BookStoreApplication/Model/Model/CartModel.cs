@@ -14,8 +14,8 @@ namespace Model.Model
         /// <value>
         /// The cart identifier.
         /// </value>
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key]
+       [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       [Key]
         public int CartID { get; set; }
 
         /// <summary>
@@ -24,8 +24,10 @@ namespace Model.Model
         /// <value>
         /// The book identifier.
         /// </value>
-        [Required(ErrorMessage = "Book_ID should not be empty")]
-        public int Book_ID { get; set; }
+       
+       
+
+        public int BookID { get; set; }
 
         /// <summary>
         /// Gets or sets the select book count.
@@ -35,6 +37,5 @@ namespace Model.Model
         /// </value>
         [Required(ErrorMessage = "SelectBookCount should not be empty")]
         public int SelectBookCount { get; set; }
-
     }
 }

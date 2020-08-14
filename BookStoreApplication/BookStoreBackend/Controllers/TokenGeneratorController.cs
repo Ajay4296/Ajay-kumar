@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
@@ -14,24 +14,13 @@ namespace BookStoreWebApi.Controllers
     [ApiController]
     public class TokenGeneratorController : ControllerBase
     {
-        /// <summary>
-        /// IConfiguration
-        /// </summary>
         private IConfiguration _config;
 
-        /// <summary>
-        /// constructor 
-        /// </summary>
-        /// <param name="config"></param>
         public TokenGeneratorController(IConfiguration config)
         {
             _config = config;
         }
 
-        /// <summary>
-        /// Token generator API
-        /// </summary>
-        /// <returns></returns>
         [HttpGet("GetTokken")]
         public object GenerateJSONWebToken()
         {
@@ -48,4 +37,4 @@ namespace BookStoreWebApi.Controllers
 
         }
     }
-}
+}*/

@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Model;
 using Model.Model;
 using Repository.Repository;
 
@@ -30,7 +32,7 @@ namespace Manager.Manager
         /// </summary>
         /// <param name="cartModel">The cart model.</param>
         /// <returns></returns>
-        public Task<int> AddCart(CartModel cartModel)
+        public int AddCart(CartModel cartModel)
         {
             return cartRepository.AddCart(cartModel);
         }
@@ -40,7 +42,7 @@ namespace Manager.Manager
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public CartModel DeleteCart(int id)
+       public string DeleteCart(int id)
         {
             return cartRepository.DeleteCart(id);
         }
@@ -51,16 +53,16 @@ namespace Manager.Manager
         /// <returns></returns>
         public int CountCart()
         {
-            return cartRepository.CountCart();
+            return cartRepository.CartCount();
         }
 
         /// <summary>
         /// Gets all cart value.
         /// </summary>
         /// <returns></returns>
-        public IQueryable GetAllCartValue()
+        public IEnumerable<BookStoreModel> GetCart()
         {
-            return cartRepository.GetAllCartValue();
+            return cartRepository.GetCart();
         }
     }
 }

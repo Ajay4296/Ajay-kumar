@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore;
+﻿using BookStoreRepositoryLayer.JsonErrorHandler;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace BookStoreBackend
@@ -14,6 +15,8 @@ namespace BookStoreBackend
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
+            MSMQ message = new MSMQ();
+            string value = message.ReceiveMessage();
             CreateWebHostBuilder(args).Build().Run();
         }
 

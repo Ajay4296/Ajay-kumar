@@ -30,7 +30,7 @@ namespace Manager
         /// Counts the book.
         /// </summary>
         /// <returns></returns>
-        public int CountBook()
+       public int CountBook()
         {
             return bookRepository.CountBook();
         }
@@ -39,9 +39,9 @@ namespace Manager
         /// Gets all books.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<BookStoreModel> GetALLBooks()
+        public IEnumerable<BookStoreModel> GetBooks()
         {
-            return bookRepository.GetALLBooks();
+            return bookRepository.GetBooks();
         }
 
         /// <summary>
@@ -49,9 +49,9 @@ namespace Manager
         /// </summary>
         /// <param name="bookStoreModel">The book store model.</param>
         /// <returns></returns>
-        public Task<int> AddBooksDetail(BookStoreModel bookStoreModel)
+        public int AddBooks(BookStoreModel bookStoreModel)
         {
-            return this.bookRepository.AddBooksDetail(bookStoreModel);
+            return bookRepository.AddBooks(bookStoreModel);
         }
 
         /// <summary>
@@ -60,9 +60,9 @@ namespace Manager
         /// <param name="file">The file.</param>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public string Image(IFormFile file, int id)
+       /* public string Image(IFormFile file, int id)
         {
             return bookRepository.Image(file, id);
-        }
+        }*/
     }
 }
